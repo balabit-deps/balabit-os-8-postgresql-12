@@ -2,12 +2,12 @@
 .\"     Title: psql
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
-.\"      Date: 2020
-.\"    Manual: PostgreSQL 12.5 Documentation
-.\"    Source: PostgreSQL 12.5
+.\"      Date: 2021
+.\"    Manual: PostgreSQL 12.6 Documentation
+.\"    Source: PostgreSQL 12.6
 .\"  Language: English
 .\"
-.TH "PSQL" "1" "2020" "PostgreSQL 12.5" "PostgreSQL 12.5 Documentation"
+.TH "PSQL" "1" "2021" "PostgreSQL 12.6" "PostgreSQL 12.6 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -656,7 +656,7 @@ is currently connected, followed by the string
 .\}
 .nf
 $ \fBpsql testdb\fR
-psql (12\&.5)
+psql (12\&.6)
 Type "help" for help\&.
 
 testdb=>
@@ -807,7 +807,7 @@ string is taken from the existing connection\*(Aqs parameters\&. An exception is
 \fIhost\fR
 setting is changed from its previous value using the positional syntax, any
 \fIhostaddr\fR
-setting present in the existing connection\*(Aqs parameters is dropped\&. When the command neither specifies nor reuses a particular parameter, the
+setting present in the existing connection\*(Aqs parameters is dropped\&. Also, any password used for the existing connection will be re\-used only if the user, host, and port settings are not changed\&. When the command neither specifies nor reuses a particular parameter, the
 libpq
 default is used\&.
 .sp
