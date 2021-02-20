@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>pg_dump</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="app-pgconfig.html" title="pg_config" /><link rel="next" href="app-pg-dumpall.html" title="pg_dumpall" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">pg_dump</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="app-pgconfig.html" title="pg_config">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="reference-client.html" title="PostgreSQL Client Applications">Up</a></td><th width="60%" align="center">PostgreSQL Client Applications</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 12.5 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="app-pg-dumpall.html" title="pg_dumpall">Next</a></td></tr></table><hr></hr></div><div class="refentry" id="APP-PGDUMP"><div class="titlepage"></div><a id="id-1.9.4.12.1" class="indexterm"></a><div class="refnamediv"><h2><span class="refentrytitle">pg_dump</span></h2><p>pg_dump — 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>pg_dump</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="app-pgconfig.html" title="pg_config" /><link rel="next" href="app-pg-dumpall.html" title="pg_dumpall" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">pg_dump</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="app-pgconfig.html" title="pg_config">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="reference-client.html" title="PostgreSQL Client Applications">Up</a></td><th width="60%" align="center">PostgreSQL Client Applications</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 12.6 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="app-pg-dumpall.html" title="pg_dumpall">Next</a></td></tr></table><hr></hr></div><div class="refentry" id="APP-PGDUMP"><div class="titlepage"></div><a id="id-1.9.4.12.1" class="indexterm"></a><div class="refnamediv"><h2><span class="refentrytitle">pg_dump</span></h2><p>pg_dump — 
    extract a <span class="productname">PostgreSQL</span> database into a script file or other archive file
   </p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p id="id-1.9.4.12.4.1"><code class="command">pg_dump</code> [<em class="replaceable"><code>connection-option</code></em>...] [<em class="replaceable"><code>option</code></em>...] [<em class="replaceable"><code>dbname</code></em>]</p></div></div><div class="refsect1" id="PG-DUMP-DESCRIPTION"><h2>
    Description
@@ -84,8 +84,8 @@
         restore might generate some harmless error messages, if any objects
         were not present in the destination database.)
        </p><p>
-        This option is only meaningful for the plain-text format.  For
-        the archive formats, you can specify the option when you
+        This option is ignored when emitting an archive (non-text) output
+        file.  For the archive formats, you can specify the option when you
         call <code class="command">pg_restore</code>.
        </p></dd><dt><span class="term"><code class="option">-C</code><br /></span><span class="term"><code class="option">--create</code></span></dt><dd><p>
         Begin the output with a command to create the
@@ -104,8 +104,8 @@
         Access privileges for the database itself are also dumped,
         unless <code class="option">--no-acl</code> is specified.
        </p><p>
-        This option is only meaningful for the plain-text format.  For
-        the archive formats, you can specify the option when you
+        This option is ignored when emitting an archive (non-text) output
+        file.  For the archive formats, you can specify the option when you
         call <code class="command">pg_restore</code>.
        </p></dd><dt><span class="term"><code class="option">-E <em class="replaceable"><code>encoding</code></em></code><br /></span><span class="term"><code class="option">--encoding=<em class="replaceable"><code>encoding</code></em></code></span></dt><dd><p>
         Create the dump in the specified character set encoding. By default,
@@ -243,8 +243,8 @@
         To make a script that can be restored by any user, but will give
         that user ownership of all the objects, specify <code class="option">-O</code>.
        </p><p>
-        This option is only meaningful for the plain-text format.  For
-        the archive formats, you can specify the option when you
+        This option is ignored when emitting an archive (non-text) output
+        file.  For the archive formats, you can specify the option when you
         call <code class="command">pg_restore</code>.
        </p></dd><dt><span class="term"><code class="option">-R</code><br /></span><span class="term"><code class="option">--no-reconnect</code></span></dt><dd><p>
         This option is obsolete but still accepted for backwards
@@ -322,7 +322,7 @@
         Prevent dumping of access privileges (grant/revoke commands).
        </p></dd><dt><span class="term"><code class="option">-Z <em class="replaceable"><code>0..9</code></em></code><br /></span><span class="term"><code class="option">--compress=<em class="replaceable"><code>0..9</code></em></code></span></dt><dd><p>
         Specify the compression level to use.  Zero means no compression.
-        For the custom archive format, this specifies compression of
+        For the custom and directory archive formats, this specifies compression of
         individual table-data segments, and the default is to compress
         at a moderate level.
         For plain text output, setting a nonzero compression level causes
@@ -361,8 +361,8 @@
         a superuser name with <code class="option">-S</code>, or preferably be careful to
         start the resulting script as a superuser.
        </p><p>
-        This option is only meaningful for the plain-text format.  For
-        the archive formats, you can specify the option when you
+        This option is ignored when emitting an archive (non-text) output
+        file.  For the archive formats, you can specify the option when you
         call <code class="command">pg_restore</code>.
        </p></dd><dt><span class="term"><code class="option">--enable-row-security</code></span></dt><dd><p>
         This option is relevant only when dumping the contents of a table
@@ -456,8 +456,8 @@
         With this option, all objects will be created in whichever
         tablespace is the default during restore.
        </p><p>
-        This option is only meaningful for the plain-text format.  For
-        the archive formats, you can specify the option when you
+        This option is ignored when emitting an archive (non-text) output
+        file.  For the archive formats, you can specify the option when you
         call <code class="command">pg_restore</code>.
        </p></dd><dt><span class="term"><code class="option">--no-unlogged-table-data</code></span></dt><dd><p>
         Do not dump the contents of unlogged tables.  This option has no
@@ -780,4 +780,4 @@ CREATE DATABASE foo WITH TEMPLATE template0;
 
 </p><pre class="screen">
 <code class="prompt">$</code> <strong class="userinput"><code>pg_dump -t "\"MixedCaseName\"" mydb &gt; mytab.sql</code></strong>
-</pre></div><div class="refsect1" id="id-1.9.4.12.11"><h2>See Also</h2><span class="simplelist"><a class="xref" href="app-pg-dumpall.html" title="pg_dumpall"><span class="refentrytitle"><span class="application">pg_dumpall</span></span></a>, <a class="xref" href="app-pgrestore.html" title="pg_restore"><span class="refentrytitle">pg_restore</span></a>, <a class="xref" href="app-psql.html" title="psql"><span class="refentrytitle"><span class="application">psql</span></span></a></span></div></div><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navfooter"><hr></hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="app-pgconfig.html" title="pg_config">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="reference-client.html" title="PostgreSQL Client Applications">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="app-pg-dumpall.html" title="pg_dumpall">Next</a></td></tr><tr><td width="40%" align="left" valign="top">pg_config </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="PostgreSQL 12.5 Documentation">Home</a></td><td width="40%" align="right" valign="top"> <span xmlns="http://www.w3.org/1999/xhtml" class="application">pg_dumpall</span></td></tr></table></div></body></html>
+</pre></div><div class="refsect1" id="id-1.9.4.12.11"><h2>See Also</h2><span class="simplelist"><a class="xref" href="app-pg-dumpall.html" title="pg_dumpall"><span class="refentrytitle"><span class="application">pg_dumpall</span></span></a>, <a class="xref" href="app-pgrestore.html" title="pg_restore"><span class="refentrytitle">pg_restore</span></a>, <a class="xref" href="app-psql.html" title="psql"><span class="refentrytitle"><span class="application">psql</span></span></a></span></div></div><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navfooter"><hr></hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="app-pgconfig.html" title="pg_config">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="reference-client.html" title="PostgreSQL Client Applications">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="app-pg-dumpall.html" title="pg_dumpall">Next</a></td></tr><tr><td width="40%" align="left" valign="top">pg_config </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="PostgreSQL 12.6 Documentation">Home</a></td><td width="40%" align="right" valign="top"> <span xmlns="http://www.w3.org/1999/xhtml" class="application">pg_dumpall</span></td></tr></table></div></body></html>

@@ -1,3 +1,41 @@
+postgresql-12 (12.6-0ubuntu0.20.04.1) focal-security; urgency=medium
+
+  * New upstream version (LP: #1915254)
+    + Fix incorrect detection of concurrent page splits while inserting
+      into a GiST index (Heikki Linnakangas)
+
+      Concurrent insertions could lead to a corrupt index with entries
+      placed in the wrong pages.  It's recommended to reindex any GiST
+      index that's been subject to concurrent insertions.
+
+    + Fix CREATE INDEX CONCURRENTLY to wait for concurrent prepared
+      transactions (Andrey Borodin)
+
+      At the point where CREATE INDEX CONCURRENTLY waits for all concurrent
+      transactions to complete so that it can see rows they inserted, it
+      must also wait for all prepared transactions to complete, for the
+      same reason.  Its failure to do so meant that rows inserted by
+      prepared transactions might be omitted from the new index, causing
+      queries relying on the index to miss such rows. In installations that
+      have enabled prepared transactions (max_prepared_transactions > 0),
+      it's recommended to reindex any concurrently-built indexes in case
+      this problem occurred when they were built.
+
+    + Fix information leakage in constraint-violation error messages
+      (Heikki Linnakangas)
+
+      If an UPDATE command attempts to move a row to a different partition
+      but finds that it violates some constraint on the new partition, and
+      the columns in that partition are in different physical positions
+      than in the parent table, the error message could reveal the contents
+      of columns that the user does not have SELECT privilege on.
+      (CVE-2021-3393)
+
+    + Details about these and many further changes can be found at:
+      https://www.postgresql.org/docs/10/static/release-12-6.html
+
+ -- Christian Ehrhardt <christian.ehrhardt@canonical.com>  Wed, 10 Feb 2021 11:47:33 +0100
+
 postgresql-12 (12.5-0ubuntu0.20.04.1bb1) focal; urgency=medium
 
   * Balabit patched version

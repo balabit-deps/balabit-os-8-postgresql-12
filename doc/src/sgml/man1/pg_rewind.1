@@ -2,12 +2,12 @@
 .\"     Title: pg_rewind
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
-.\"      Date: 2020
-.\"    Manual: PostgreSQL 12.5 Documentation
-.\"    Source: PostgreSQL 12.5
+.\"      Date: 2021
+.\"    Manual: PostgreSQL 12.6 Documentation
+.\"    Source: PostgreSQL 12.6
 .\"  Language: English
 .\"
-.TH "PG_REWIND" "1" "2020" "PostgreSQL 12.5" "PostgreSQL 12.5 Documentation"
+.TH "PG_REWIND" "1" "2021" "PostgreSQL 12.6" "PostgreSQL 12.6 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -49,10 +49,7 @@ examines the timeline histories of the source and target clusters to determine t
 pg_wal
 directory reaching all the way back to the point of divergence\&. The point of divergence can be found either on the target timeline, the source timeline, or their common ancestor\&. In the typical failover scenario where the target cluster was shut down soon after the divergence, this is not a problem, but if the target cluster ran for a long time after the divergence, the old WAL files might no longer be present\&. In that case, they can be manually copied from the WAL archive to the
 pg_wal
-directory, or fetched on startup by configuring
-primary_conninfo
-or
-restore_command\&. The use of
+directory\&. The use of
 pg_rewind
 is not limited to failover, e\&.g\&., a standby server can be promoted, run some write transactions, and then rewound to become a standby again\&.
 .PP

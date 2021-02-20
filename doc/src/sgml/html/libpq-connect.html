@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>33.1. Database Connection Control Functions</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="libpq.html" title="Chapter 33. libpq - C Library" /><link rel="next" href="libpq-status.html" title="33.2. Connection Status Functions" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">33.1. Database Connection Control Functions</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="libpq.html" title="Chapter 33. libpq - C Library">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="libpq.html" title="Chapter 33. libpq - C Library">Up</a></td><th width="60%" align="center">Chapter 33. <span xmlns="http://www.w3.org/1999/xhtml" class="application">libpq</span> - C Library</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 12.5 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="libpq-status.html" title="33.2. Connection Status Functions">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="LIBPQ-CONNECT"><div class="titlepage"><div><div><h2 class="title" style="clear: both">33.1. Database Connection Control Functions</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="libpq-connect.html#LIBPQ-CONNSTRING">33.1.1. Connection Strings</a></span></dt><dt><span class="sect2"><a href="libpq-connect.html#LIBPQ-PARAMKEYWORDS">33.1.2. Parameter Key Words</a></span></dt></dl></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>33.1. Database Connection Control Functions</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="libpq.html" title="Chapter 33. libpq - C Library" /><link rel="next" href="libpq-status.html" title="33.2. Connection Status Functions" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">33.1. Database Connection Control Functions</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="libpq.html" title="Chapter 33. libpq - C Library">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="libpq.html" title="Chapter 33. libpq - C Library">Up</a></td><th width="60%" align="center">Chapter 33. <span xmlns="http://www.w3.org/1999/xhtml" class="application">libpq</span> - C Library</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 12.6 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="libpq-status.html" title="33.2. Connection Status Functions">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="LIBPQ-CONNECT"><div class="titlepage"><div><div><h2 class="title" style="clear: both">33.1. Database Connection Control Functions</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="libpq-connect.html#LIBPQ-CONNSTRING">33.1.1. Connection Strings</a></span></dt><dt><span class="sect2"><a href="libpq-connect.html#LIBPQ-PARAMKEYWORDS">33.1.2. Parameter Key Words</a></span></dt></dl></div><p>
    The following functions deal with making a connection to a
    <span class="productname">PostgreSQL</span> backend server.  An
    application program can have several backend connections open at
@@ -59,29 +59,47 @@ PGconn *PQconnectdbParams(const char * const *keywords,
        The currently recognized parameter key words are listed in
        <a class="xref" href="libpq-connect.html#LIBPQ-PARAMKEYWORDS" title="33.1.2. Parameter Key Words">Section 33.1.2</a>.
       </p><p>
-       When <code class="literal">expand_dbname</code> is non-zero, the
-       <em class="parameter"><code>dbname</code></em> key word value is allowed to be recognized
-       as a connection string. Only the first occurrence of
-       <em class="parameter"><code>dbname</code></em> is expanded this way, any subsequent
-       <em class="parameter"><code>dbname</code></em> value is processed as plain database name. More
-       details on the possible connection string formats appear in
-       <a class="xref" href="libpq-connect.html#LIBPQ-CONNSTRING" title="33.1.1. Connection Strings">Section 33.1.1</a>.
-      </p><p>
        The passed arrays can be empty to use all default parameters, or can
-       contain one or more parameter settings. They should be matched in length.
-       Processing will stop at the first <code class="symbol">NULL</code> element
+       contain one or more parameter settings. They must be matched in length.
+       Processing will stop at the first <code class="symbol">NULL</code> entry
        in the <code class="literal">keywords</code> array.
+       Also, if the <code class="literal">values</code> entry associated with a
+       non-<code class="symbol">NULL</code> <code class="literal">keywords</code> entry is
+       <code class="symbol">NULL</code> or an empty string, that entry is ignored and
+       processing continues with the next pair of array entries.
       </p><p>
-       If  any  parameter is <code class="symbol">NULL</code> or an empty string, the corresponding
-       environment variable (see <a class="xref" href="libpq-envars.html" title="33.14. Environment Variables">Section 33.14</a>) is checked.
-       If the  environment  variable is not set either, then the indicated
-       built-in defaults are used.
+       When <code class="literal">expand_dbname</code> is non-zero, the value for
+       the first <em class="parameter"><code>dbname</code></em> key word is checked to see
+       if it is a <em class="firstterm">connection string</em>.  If so, it
+       is <span class="quote">“<span class="quote">expanded</span>”</span> into the individual connection
+       parameters extracted from the string.  The value is considered to
+       be a connection string, rather than just a database name, if it
+       contains an equal sign (<code class="literal">=</code>) or it begins with a
+       URI scheme designator.  (More details on connection string formats
+       appear in <a class="xref" href="libpq-connect.html#LIBPQ-CONNSTRING" title="33.1.1. Connection Strings">Section 33.1.1</a>.)  Only the first
+       occurrence of <em class="parameter"><code>dbname</code></em> is treated in this way;
+       any subsequent <em class="parameter"><code>dbname</code></em> parameter is processed
+       as a plain database name.
       </p><p>
-       In general key words are processed from the beginning of these arrays in index
-       order. The effect of this is that when key words are repeated, the last processed
-       value is retained. Therefore, through careful placement of the
-       <em class="parameter"><code>dbname</code></em> key word, it is possible to determine what may
-       be overridden by a <em class="parameter"><code>conninfo</code></em> string, and what may not.
+       In general the parameter arrays are processed from start to end.
+       If any key word is repeated, the last value (that is
+       not <code class="symbol">NULL</code> or empty) is used.  This rule applies in
+       particular when a key word found in a connection string conflicts
+       with one appearing in the <code class="literal">keywords</code> array.  Thus,
+       the programmer may determine whether array entries can override or
+       be overridden by values taken from a connection string.  Array
+       entries appearing before an expanded <em class="parameter"><code>dbname</code></em>
+       entry can be overridden by fields of the connection string, and in
+       turn those fields are overridden by array entries appearing
+       after <em class="parameter"><code>dbname</code></em> (but, again, only if those
+       entries supply non-empty values).
+      </p><p>
+       After processing all the array entries and any expanded connection
+       string, any connection parameters that remain unset are filled with
+       default values.  If an unset parameter's corresponding environment
+       variable (see <a class="xref" href="libpq-envars.html" title="33.14. Environment Variables">Section 33.14</a>) is set, its value is
+       used.  If the environment variable is not set either, then the
+       parameter's built-in default value is used.
       </p></dd><dt id="LIBPQ-PQCONNECTDB"><span class="term"><code class="function">PQconnectdb</code><a id="id-1.7.3.8.2.11.2.1.2" class="indexterm"></a></span></dt><dd><p>
        Makes a new connection to the database server.
 
@@ -371,8 +389,8 @@ void PQreset(PGconn *conn);
 </pre><p>
       </p><p>
        This function will close the connection
-       to the server and attempt to  reestablish  a  new
-       connection to the same server, using all the same
+       to the server and attempt to establish a new
+       connection, using all the same
        parameters previously used.  This might be useful for
        error recovery if a working connection is lost.
       </p></dd><dt id="LIBPQ-PQRESETSTART"><span class="term"><code class="function">PQresetStart</code><a id="id-1.7.3.8.2.11.11.1.2" class="indexterm"></a><br /></span><span class="term"><code class="function">PQresetPoll</code><a id="id-1.7.3.8.2.11.11.2.2" class="indexterm"></a></span></dt><dd><p>
@@ -385,7 +403,7 @@ PostgresPollingStatusType PQresetPoll(PGconn *conn);
 </pre><p>
       </p><p>
        These functions will close the connection to the server and attempt to
-       reestablish a new connection to the same server, using all the same
+       establish a new connection, using all the same
        parameters previously used. This can be useful for error recovery if a
        working connection is lost. They differ from <code class="function">PQreset</code> (above) in that they
        act in a nonblocking manner. These functions suffer from the same
@@ -470,13 +488,13 @@ host=localhost port=5432 dbname=mydb connect_timeout=10
    </p></div><div class="sect3" id="id-1.7.3.8.3.6"><div class="titlepage"><div><div><h4 class="title">33.1.1.2. Connection URIs</h4></div></div></div><p>
    The general form for a connection <acronym class="acronym">URI</acronym> is:
 </p><pre class="synopsis">
-postgresql://[user[:password]@][netloc][:port][,...][/dbname][?param1=value1&amp;...]
+postgresql://[user[:password]@][host][:port][,...][/dbname][?param1=value1&amp;...]
 </pre><p>
    </p><p>
     The <acronym class="acronym">URI</acronym> scheme designator can be either
     <code class="literal">postgresql://</code> or <code class="literal">postgres://</code>.  Each
-    of the <acronym class="acronym">URI</acronym> parts is optional.  The following examples
-    illustrate valid <acronym class="acronym">URI</acronym> syntax uses:
+    of the remaining <acronym class="acronym">URI</acronym> parts is optional.  The
+    following examples illustrate valid <acronym class="acronym">URI</acronym> syntax:
 </p><pre class="programlisting">
 postgresql://
 postgresql://localhost
@@ -487,37 +505,37 @@ postgresql://user:secret@localhost
 postgresql://other@localhost/otherdb?connect_timeout=10&amp;application_name=myapp
 postgresql://host1:123,host2:456/somedb?target_session_attrs=any&amp;application_name=myapp
 </pre><p>
-    Components of the hierarchical part of the <acronym class="acronym">URI</acronym> can also
-    be given as parameters.  For example:
+    Values that would normally appear in the hierarchical part of
+    the <acronym class="acronym">URI</acronym> can alternatively be given as named
+    parameters.  For example:
 </p><pre class="programlisting">
 postgresql:///mydb?host=localhost&amp;port=5433
 </pre><p>
+    All named parameters must match key words listed in
+    <a class="xref" href="libpq-connect.html#LIBPQ-PARAMKEYWORDS" title="33.1.2. Parameter Key Words">Section 33.1.2</a>, except that for compatibility
+    with JDBC connection <acronym class="acronym">URI</acronym>s, instances
+    of <code class="literal">ssl=true</code> are translated into
+    <code class="literal">sslmode=require</code>.
    </p><p>
     Percent-encoding may be used to include symbols with special meaning in any
     of the <acronym class="acronym">URI</acronym> parts, e.g., replace <code class="literal">=</code> with
     <code class="literal">%3D</code>.
 
    </p><p>
-    Any connection parameters not corresponding to key words listed in <a class="xref" href="libpq-connect.html#LIBPQ-PARAMKEYWORDS" title="33.1.2. Parameter Key Words">Section 33.1.2</a> are ignored and a warning message about them
-    is sent to <code class="filename">stderr</code>.
-   </p><p>
-    For improved compatibility with JDBC connection <acronym class="acronym">URI</acronym>s,
-    instances of parameter <code class="literal">ssl=true</code> are translated into
-    <code class="literal">sslmode=require</code>.
-   </p><p>
-    The host part may be either host name or an IP address.  To specify an
-    IPv6 host address, enclose it in square brackets:
+    The host part may be either a host name or an IP address.  To specify an
+    IPv6 address, enclose it in square brackets:
 </p><pre class="synopsis">
 postgresql://[2001:db8::1234]/database
 </pre><p>
    </p><p>
-    The host component is interpreted as described for the parameter <a class="xref" href="libpq-connect.html#LIBPQ-CONNECT-HOST">host</a>.  In particular, a Unix-domain socket
-    connection is chosen if the host part is either empty or starts with a
-    slash, otherwise a TCP/IP connection is initiated.  Note, however, that the
+    The host part is interpreted as described for the parameter <a class="xref" href="libpq-connect.html#LIBPQ-CONNECT-HOST">host</a>.  In particular, a Unix-domain socket
+    connection is chosen if the host part is either empty or looks like an
+    absolute path name,
+    otherwise a TCP/IP connection is initiated.  Note, however, that the
     slash is a reserved character in the hierarchical part of the URI.  So, to
     specify a non-standard Unix-domain socket directory, either omit the host
-    specification in the URI and specify the host as a parameter, or
-    percent-encode the path in the host component of the URI:
+    part of the URI and specify the host as a named parameter, or
+    percent-encode the path in the host part of the URI:
 </p><pre class="programlisting">
 postgresql:///dbname?host=/var/lib/postgresql
 postgresql://%2Fvar%2Flib%2Fpostgresql/dbname
@@ -821,6 +839,14 @@ postgresql://%2Fvar%2Flib%2Fpostgresql/dbname
         accepted but <span class="application">libpq</span> will not actually attempt
         an <acronym class="acronym">SSL</acronym>
         connection.<a id="id-1.7.3.8.4.2.1.21.2.2.10" class="indexterm"></a>
+       </p><p>
+        Note that if <acronym class="acronym">GSSAPI</acronym> encryption is possible,
+        that will be used in preference to <acronym class="acronym">SSL</acronym>
+        encryption, regardless of the value of <code class="literal">sslmode</code>.
+        To force use of <acronym class="acronym">SSL</acronym> encryption in an
+        environment that has working <acronym class="acronym">GSSAPI</acronym>
+        infrastructure (such as a Kerberos server), also
+        set <code class="literal">gssencmode</code> to <code class="literal">disable</code>.
        </p></dd><dt id="LIBPQ-CONNECT-REQUIRESSL"><span class="term"><code class="literal">requiressl</code></span></dt><dd><p>
         This option is deprecated in favor of the <code class="literal">sslmode</code>
         setting.
@@ -901,6 +927,15 @@ postgresql://%2Fvar%2Flib%2Fpostgresql/dbname
         This must match the service name specified in the server
         configuration for Kerberos authentication to succeed. (See also
         <a class="xref" href="gssapi-auth.html" title="20.6. GSSAPI Authentication">Section 20.6</a>.)
+        The default value is normally <code class="literal">postgres</code>,
+        but that can be changed when
+        building <span class="productname">PostgreSQL</span> via
+        the <code class="option">--with-krb-srvnam</code> option
+        of <span class="application">configure</span>.
+        In most environments, this parameter never needs to be changed.
+        Some Kerberos implementations might require a different service name,
+        such as Microsoft Active Directory which requires the service name
+        to be in upper case (<code class="literal">POSTGRES</code>).
        </p></dd><dt id="LIBPQ-CONNECT-GSSLIB"><span class="term"><code class="literal">gsslib</code></span></dt><dd><p>
         GSS library to use for GSSAPI authentication.
         Currently this is disregarded except on Windows builds that include
@@ -923,4 +958,4 @@ postgresql://%2Fvar%2Flib%2Fpostgresql/dbname
         attempt had failed.  The default value of this parameter,
         <code class="literal">any</code>, regards all connections as acceptable.
       </p></dd></dl></div><p>
-   </p></div></div><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navfooter"><hr></hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="libpq.html" title="Chapter 33. libpq - C Library">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="libpq.html" title="Chapter 33. libpq - C Library">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="libpq-status.html" title="33.2. Connection Status Functions">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 33. <span xmlns="http://www.w3.org/1999/xhtml" class="application">libpq</span> - C Library </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="PostgreSQL 12.5 Documentation">Home</a></td><td width="40%" align="right" valign="top"> 33.2. Connection Status Functions</td></tr></table></div></body></html>
+   </p></div></div><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navfooter"><hr></hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="libpq.html" title="Chapter 33. libpq - C Library">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="libpq.html" title="Chapter 33. libpq - C Library">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="libpq-status.html" title="33.2. Connection Status Functions">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 33. <span xmlns="http://www.w3.org/1999/xhtml" class="application">libpq</span> - C Library </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="PostgreSQL 12.6 Documentation">Home</a></td><td width="40%" align="right" valign="top"> 33.2. Connection Status Functions</td></tr></table></div></body></html>
