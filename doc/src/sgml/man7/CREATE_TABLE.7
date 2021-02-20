@@ -2,12 +2,12 @@
 .\"     Title: CREATE TABLE
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
-.\"      Date: 2020
-.\"    Manual: PostgreSQL 12.5 Documentation
-.\"    Source: PostgreSQL 12.5
+.\"      Date: 2021
+.\"    Manual: PostgreSQL 12.6 Documentation
+.\"    Source: PostgreSQL 12.6
 .\"  Language: English
 .\"
-.TH "CREATE TABLE" "7" "2020" "PostgreSQL 12.5" "PostgreSQL 12.5 Documentation"
+.TH "CREATE TABLE" "7" "2021" "PostgreSQL 12.6" "PostgreSQL 12.6 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -585,17 +585,20 @@ UNIQUE ( \fIcolumn_name\fR [, \&.\&.\&. ] ) [ INCLUDE ( \fIcolumn_name\fR [, \&.
 .RS 4
 The
 UNIQUE
-constraint specifies that a group of one or more columns of a table can contain only unique values\&. The behavior of the unique table constraint is the same as that for column constraints, with the additional capability to span multiple columns\&.
+constraint specifies that a group of one or more columns of a table can contain only unique values\&. The behavior of a unique table constraint is the same as that of a unique column constraint, with the additional capability to span multiple columns\&. The constraint therefore enforces that any two rows must differ in at least one of these columns\&.
 .sp
 For the purpose of a unique constraint, null values are not considered equal\&.
 .sp
-Each unique table constraint must name a set of columns that is different from the set of columns named by any other unique or primary key constraint defined for the table\&. (Otherwise it would just be the same constraint listed twice\&.)
+Each unique constraint should name a set of columns that is different from the set of columns named by any other unique or primary key constraint defined for the table\&. (Otherwise, redundant unique constraints will be discarded\&.)
 .sp
 When establishing a unique constraint for a multi\-level partition hierarchy, all the columns in the partition key of the target partitioned table, as well as those of all its descendant partitioned tables, must be included in the constraint definition\&.
 .sp
-Adding a unique constraint will automatically create a unique btree index on the column or group of columns used in the constraint\&. The optional clause
+Adding a unique constraint will automatically create a unique btree index on the column or group of columns used in the constraint\&.
+.sp
+The optional
 INCLUDE
-adds to that index one or more columns on which the uniqueness is not enforced\&. Note that although the constraint is not enforced on the included columns, it still depends on them\&. Consequently, some operations on these columns (e\&.g\&.,
+clause adds to that index one or more columns that are simply
+\(lqpayload\(rq: uniqueness is not enforced on them, and the index cannot be searched on the basis of those columns\&. However they can be retrieved by an index\-only scan\&. Note that although the constraint is not enforced on included columns, it still depends on them\&. Consequently, some operations on such columns (e\&.g\&.,
 DROP COLUMN) can cause cascaded constraint and index deletion\&.
 .RE
 .PP
@@ -613,18 +616,22 @@ PRIMARY KEY
 enforces the same data constraints as a combination of
 UNIQUE
 and
-NOT NULL, but identifying a set of columns as the primary key also provides metadata about the design of the schema, since a primary key implies that other tables can rely on this set of columns as a unique identifier for rows\&.
+NOT NULL\&. However, identifying a set of columns as the primary key also provides metadata about the design of the schema, since a primary key implies that other tables can rely on this set of columns as a unique identifier for rows\&.
 .sp
+When placed on a partitioned table,
 PRIMARY KEY
-constraints share the restrictions that
+constraints share the restrictions previously decribed for
 UNIQUE
-constraints have when placed on partitioned tables\&.
+constraints\&.
 .sp
 Adding a
 PRIMARY KEY
-constraint will automatically create a unique btree index on the column or group of columns used in the constraint\&. The optional
+constraint will automatically create a unique btree index on the column or group of columns used in the constraint\&.
+.sp
+The optional
 INCLUDE
-clause allows a list of columns to be specified which will be included in the non\-key portion of the index\&. Although uniqueness is not enforced on the included columns, the constraint still depends on them\&. Consequently, some operations on the included columns (e\&.g\&.,
+clause adds to that index one or more columns that are simply
+\(lqpayload\(rq: uniqueness is not enforced on them, and the index cannot be searched on the basis of those columns\&. However they can be retrieved by an index\-only scan\&. Note that although the constraint is not enforced on included columns, it still depends on them\&. Consequently, some operations on such columns (e\&.g\&.,
 DROP COLUMN) can cause cascaded constraint and index deletion\&.
 .RE
 .PP
