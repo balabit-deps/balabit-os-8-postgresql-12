@@ -13238,9 +13238,10 @@ strict $.**.HR
      is a JSON path string literal, written according to the rules given in
      <xref linkend="datatype-jsonpath"/>.  This means in particular that any
      backslashes you want to use in the regular expression must be doubled.
-     For example, to match strings that contain only digits:
+     For example, to match string values of the root document that contain
+     only digits:
 <programlisting>
-'$ ? (@ like_regex "^\\d+$")'
+$.* ? (@ like_regex "^\\d+$")
 </programlisting>
     </para>
 
@@ -21686,6 +21687,7 @@ postgres=# SELECT * FROM pg_walfile_name_offset(pg_stop_backup());
     be <literal>pg_catalog</literal>, but that is not a requirement;
     the collations could be installed into some other schema as well.
     The function returns the number of new collation objects it created.
+    Use of this function is restricted to superusers.
    </para>
 
    <table id="functions-info-partition">

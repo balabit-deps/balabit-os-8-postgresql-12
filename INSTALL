@@ -866,6 +866,12 @@ Installation Procedure
 
         PostgreSQL, contrib, and documentation successfully made. Ready to install.
 
+    If you want to build everything that can be built, including the
+    additional modules ("contrib"), but without the documentation, type
+    instead:
+
+        make world-bin
+
     If you want to invoke the build from another makefile rather than
     manually, you must unset MAKELEVEL or set it to zero, for instance
     like this:
@@ -916,6 +922,11 @@ Installation Procedure
         make install-world
 
     This also installs the documentation.
+
+    If you built the world without the documentation above, type
+    instead:
+
+        make install-world-bin
 
     You can use make install-strip instead of make install to strip the
     executable files and libraries as they are installed. This will save
