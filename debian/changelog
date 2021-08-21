@@ -1,3 +1,22 @@
+postgresql-12 (12.8-0ubuntu0.20.04.1) focal-security; urgency=medium
+
+  * New upstream version (LP: #1939396).
+
+    + Disallow SSL renegotiation more completely (Michael Paquier)
+
+      SSL renegotiation has been disabled for some time, but the server
+      would still cooperate with a client-initiated renegotiation request.
+      A maliciously crafted renegotiation request could result in a server
+      crash (see OpenSSL issue CVE-2021-3449).  Disable the feature
+      altogether on OpenSSL versions that permit doing so, which are
+      1.1.0h and newer.
+      (CVE-2021-3449)
+
+    + Details about these and many further changes can be found at:
+      https://www.postgresql.org/docs/12/release-12-8.html
+
+ -- Christian Ehrhardt <christian.ehrhardt@canonical.com>  Tue, 10 Aug 2021 14:18:34 +0200
+
 postgresql-12 (12.7-0ubuntu0.20.04.1bb1) focal; urgency=medium
 
   * Balabit patched version
