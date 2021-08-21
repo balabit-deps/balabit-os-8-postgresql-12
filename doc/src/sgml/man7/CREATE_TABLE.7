@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
 .\"      Date: 2021
-.\"    Manual: PostgreSQL 12.7 Documentation
-.\"    Source: PostgreSQL 12.7
+.\"    Manual: PostgreSQL 12.8 Documentation
+.\"    Source: PostgreSQL 12.8
 .\"  Language: English
 .\"
-.TH "CREATE TABLE" "7" "2021" "PostgreSQL 12.7" "PostgreSQL 12.7 Documentation"
+.TH "CREATE TABLE" "7" "2021" "PostgreSQL 12.8" "PostgreSQL 12.8 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -461,7 +461,7 @@ STORAGE
 settings, resulting in the copied columns in the new table having type\-specific default settings\&. For more on
 STORAGE
 settings, see
-Section\ \&68.2\&.
+Section\ \&69.2\&.
 .RE
 .PP
 INCLUDING ALL
@@ -865,7 +865,7 @@ CREATE INDEX (\fBCREATE_INDEX\fR(7))\&. The storage parameters currently availab
 toast\&., which controls the behavior of the table\*(Aqs secondary
 TOAST
 table, if any (see
-Section\ \&68.2
+Section\ \&69.2
 for more information about TOAST)\&. If a table parameter value is set and the equivalent
 toast\&.
 parameter is not, the TOAST table will use the table\*(Aqs parameter value\&. Specifying these parameters for partitioned tables is not supported, but you may specify them for individual leaf partitions\&.
