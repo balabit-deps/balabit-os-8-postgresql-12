@@ -2155,11 +2155,12 @@ sql_help_CREATE_EVENT_TRIGGER(PQExpBuffer buf)
 	appendPQExpBuffer(buf,
 					  "CREATE EVENT TRIGGER %s\n"
 					  "    ON %s\n"
-					  "    [ WHEN %s IN (filter_value [, ... ]) [ AND ... ] ]\n"
+					  "    [ WHEN %s IN (%s [, ... ]) [ AND ... ] ]\n"
 					  "    EXECUTE { FUNCTION | PROCEDURE } %s()",
 					  _("name"),
 					  _("event"),
 					  _("filter_variable"),
+					  _("filter_value"),
 					  _("function_name"));
 }
 

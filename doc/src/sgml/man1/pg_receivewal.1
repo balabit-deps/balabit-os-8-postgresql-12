@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
 .\"      Date: 2021
-.\"    Manual: PostgreSQL 12.8 Documentation
-.\"    Source: PostgreSQL 12.8
+.\"    Manual: PostgreSQL 12.9 Documentation
+.\"    Source: PostgreSQL 12.9
 .\"  Language: English
 .\"
-.TH "PG_RECEIVEWAL" "1" "2021" "PostgreSQL 12.8" "PostgreSQL 12.8 Documentation"
+.TH "PG_RECEIVEWAL" "1" "2021" "PostgreSQL 12.9" "PostgreSQL 12.9 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -77,6 +77,34 @@ pg_hba\&.conf
 must permit the replication connection\&. The server must also be configured with
 max_wal_senders
 set high enough to leave at least one session available for the stream\&.
+.PP
+The starting point of the write\-ahead log streaming is calculated when
+pg_receivewal
+starts:
+.sp
+.RS 4
+.ie n \{\
+\h'-04' 1.\h'+01'\c
+.\}
+.el \{\
+.sp -1
+.IP "  1." 4.2
+.\}
+First, scan the directory where the WAL segment files are written and find the newest completed segment file, using as starting point the beginning of the next WAL segment file\&. This is calculated independently on the compression method used to compress each segment\&.
+.RE
+.sp
+.RS 4
+.ie n \{\
+\h'-04' 2.\h'+01'\c
+.\}
+.el \{\
+.sp -1
+.IP "  2." 4.2
+.\}
+If a starting point cannot be calculated with the previous method, the latest WAL flush location is used as reported by the server from a
+IDENTIFY_SYSTEM
+command\&.
+.RE
 .PP
 If the connection is lost, or if it cannot be initially established, with a non\-fatal error,
 pg_receivewal
