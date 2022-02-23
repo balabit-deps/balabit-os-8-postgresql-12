@@ -1,3 +1,22 @@
+postgresql-12 (12.10-0ubuntu0.20.04.1) focal; urgency=medium
+
+  * New upstream version (LP: #1961127).
+
+    + A dump/restore is not required for those running 12.X.
+
+    + However, if you have applied REINDEX CONCURRENTLY to a TOAST table's
+      index, or observe failures to access TOAST datums, there has been a
+      fix for this problem. Any existing corrupted indexes can be repaired
+      by reindexing again.
+
+    + Also, if you are upgrading from a version earlier than 12.9, see
+      those release notes as well please.
+
+    + Details about these and many further changes can be found at:
+      https://www.postgresql.org/docs/12/release-12-10.html
+
+ -- Athos Ribeiro <athos.ribeiro@canonical.com>  Wed, 23 Feb 2022 08:36:18 -0300
+
 postgresql-12 (12.9-0ubuntu0.20.04.1) focal-security; urgency=medium
 
   * New upstream version (LP: #1950268).

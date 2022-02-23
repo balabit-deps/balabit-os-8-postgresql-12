@@ -2,12 +2,12 @@
 .\"     Title: ALTER TABLE
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
-.\"      Date: 2021
-.\"    Manual: PostgreSQL 12.9 Documentation
-.\"    Source: PostgreSQL 12.9
+.\"      Date: 2022
+.\"    Manual: PostgreSQL 12.10 Documentation
+.\"    Source: PostgreSQL 12.10
 .\"  Language: English
 .\"
-.TH "ALTER TABLE" "7" "2021" "PostgreSQL 12.9" "PostgreSQL 12.9 Documentation"
+.TH "ALTER TABLE" "7" "2022" "PostgreSQL 12.10" "PostgreSQL 12.10 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -600,16 +600,30 @@ This form changes the owner of the table, sequence, view, materialized view, or 
 .PP
 REPLICA IDENTITY
 .RS 4
-This form changes the information which is written to the write\-ahead log to identify rows which are updated or deleted\&. This option has no effect except when logical replication is in use\&.
+This form changes the information which is written to the write\-ahead log to identify rows which are updated or deleted\&. This option has no effect except when logical replication is in use\&. In all cases, no old values are logged unless at least one of the columns that would be logged differs between the old and new versions of the row\&.
+.PP
 DEFAULT
-(the default for non\-system tables) records the old values of the columns of the primary key, if any\&.
-USING INDEX
-records the old values of the columns covered by the named index, which must be unique, not partial, not deferrable, and include only columns marked
-NOT NULL\&.
+.RS 4
+Records the old values of the columns of the primary key, if any\&. This is the default for non\-system tables\&.
+.RE
+.PP
+USING INDEX \fIindex_name\fR
+.RS 4
+Records the old values of the columns covered by the named index, that must be unique, not partial, not deferrable, and include only columns marked
+NOT NULL\&. If this index is dropped, the behavior is the same as
+NOTHING\&.
+.RE
+.PP
 FULL
-records the old values of all columns in the row\&.
+.RS 4
+Records the old values of all columns in the row\&.
+.RE
+.PP
 NOTHING
-records no information about the old row\&. (This is the default for system tables\&.) In all cases, no old values are logged unless at least one of the columns that would be logged differs between the old and new versions of the row\&.
+.RS 4
+Records no information about the old row\&. This is the default for system tables\&.
+.RE
+.sp
 .RE
 .PP
 RENAME

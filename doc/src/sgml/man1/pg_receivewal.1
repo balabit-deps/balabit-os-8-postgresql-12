@@ -2,12 +2,12 @@
 .\"     Title: pg_receivewal
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
-.\"      Date: 2021
-.\"    Manual: PostgreSQL 12.9 Documentation
-.\"    Source: PostgreSQL 12.9
+.\"      Date: 2022
+.\"    Manual: PostgreSQL 12.10 Documentation
+.\"    Source: PostgreSQL 12.10
 .\"  Language: English
 .\"
-.TH "PG_RECEIVEWAL" "1" "2021" "PostgreSQL 12.9" "PostgreSQL 12.9 Documentation"
+.TH "PG_RECEIVEWAL" "1" "2022" "PostgreSQL 12.10" "PostgreSQL 12.10 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -90,7 +90,7 @@ starts:
 .sp -1
 .IP "  1." 4.2
 .\}
-First, scan the directory where the WAL segment files are written and find the newest completed segment file, using as starting point the beginning of the next WAL segment file\&. This is calculated independently on the compression method used to compress each segment\&.
+First, scan the directory where the WAL segment files are written and find the newest completed segment file, using as the starting point the beginning of the next WAL segment file\&.
 .RE
 .sp
 .RS 4
@@ -101,7 +101,7 @@ First, scan the directory where the WAL segment files are written and find the n
 .sp -1
 .IP "  2." 4.2
 .\}
-If a starting point cannot be calculated with the previous method, the latest WAL flush location is used as reported by the server from a
+If a starting point cannot be calculated with the previous method, the latest WAL flush location is used as reported by the server from an
 IDENTIFY_SYSTEM
 command\&.
 .RE
