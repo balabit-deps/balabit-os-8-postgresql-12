@@ -2,12 +2,12 @@
 .\"     Title: CREATE FOREIGN TABLE
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
-.\"      Date: 2021
-.\"    Manual: PostgreSQL 12.9 Documentation
-.\"    Source: PostgreSQL 12.9
+.\"      Date: 2022
+.\"    Manual: PostgreSQL 12.10 Documentation
+.\"    Source: PostgreSQL 12.10
 .\"  Language: English
 .\"
-.TH "CREATE FOREIGN TABLE" "7" "2021" "PostgreSQL 12.9" "PostgreSQL 12.9 Documentation"
+.TH "CREATE FOREIGN TABLE" "7" "2022" "PostgreSQL 12.10" "PostgreSQL 12.10 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -217,13 +217,33 @@ Some special\-purpose foreign data wrappers might be the only access mechanism f
 .PP
 Although
 PostgreSQL
-does not attempt to enforce constraints on foreign tables, it does assume that they are correct for purposes of query optimization\&. If there are rows visible in the foreign table that do not satisfy a declared constraint, queries on the table might produce incorrect answers\&. It is the user\*(Aqs responsibility to ensure that the constraint definition matches reality\&.
+does not attempt to enforce constraints on foreign tables, it does assume that they are correct for purposes of query optimization\&. If there are rows visible in the foreign table that do not satisfy a declared constraint, queries on the table might produce errors or incorrect answers\&. It is the user\*(Aqs responsibility to ensure that the constraint definition matches reality\&.
+.if n \{\
+.sp
+.\}
+.RS 4
+.it 1 an-trap
+.nr an-no-space-flag 1
+.nr an-break-flag 1
+.br
+.ps +1
+\fBCaution\fR
+.ps -1
+.br
+.PP
+When a foreign table is used as a partition of a partitioned table, there is an implicit constraint that its contents must satisfy the partitioning rule\&. Again, it is the user\*(Aqs responsibility to ensure that that is true, which is best done by installing a matching constraint on the remote server\&.
+.sp .5v
+.RE
+.PP
+Within a partitioned table containing foreign\-table partitions, an
+\fBUPDATE\fR
+that changes the partition key value can cause a row to be moved from a local partition to a foreign\-table partition, provided the foreign data wrapper supports tuple routing\&. However it is not currently possible to move a row from a foreign\-table partition to another partition\&. An
+\fBUPDATE\fR
+that would require doing that will fail due to the partitioning constraint, assuming that that is properly enforced by the remote server\&.
 .PP
 Similar considerations apply to generated columns\&. Stored generated columns are computed on insert or update on the local
 PostgreSQL
 server and handed to the foreign\-data wrapper for writing out to the foreign data store, but it is not enforced that a query of the foreign table returns values for stored generated columns that are consistent with the generation expression\&. Again, this might result in incorrect query results\&.
-.PP
-While rows can be moved from local partitions to a foreign\-table partition (provided the foreign data wrapper supports tuple routing), they cannot be moved from a foreign\-table partition to another partition\&.
 .SH "EXAMPLES"
 .PP
 Create foreign table

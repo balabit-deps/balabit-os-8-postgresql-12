@@ -2,12 +2,12 @@
 .\"     Title: COMMENT
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
-.\"      Date: 2021
-.\"    Manual: PostgreSQL 12.9 Documentation
-.\"    Source: PostgreSQL 12.9
+.\"      Date: 2022
+.\"    Manual: PostgreSQL 12.10 Documentation
+.\"    Source: PostgreSQL 12.10
 .\"  Language: English
 .\"
-.TH "COMMENT" "7" "2021" "PostgreSQL 12.9" "PostgreSQL 12.9 Documentation"
+.TH "COMMENT" "7" "2022" "PostgreSQL 12.10" "PostgreSQL 12.10 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -95,6 +95,10 @@ Only one comment string is stored for each object, so to modify a comment, issue
 command for the same object\&. To remove a comment, write
 NULL
 in place of the text string\&. Comments are automatically dropped when their object is dropped\&.
+.PP
+A
+SHARE UPDATE EXCLUSIVE
+lock is acquired on the object to be commented\&.
 .PP
 For most kinds of object, only the object\*(Aqs owner can set the comment\&. Roles don\*(Aqt have owners, so the rule for
 COMMENT ON ROLE
