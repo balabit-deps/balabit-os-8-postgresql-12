@@ -2,12 +2,12 @@
 .\"     Title: REFRESH MATERIALIZED VIEW
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
-.\"      Date: 2021
-.\"    Manual: PostgreSQL 12.9 Documentation
-.\"    Source: PostgreSQL 12.9
+.\"      Date: 2022
+.\"    Manual: PostgreSQL 12.10 Documentation
+.\"    Source: PostgreSQL 12.10
 .\"  Language: English
 .\"
-.TH "REFRESH MATERIALIZED VIEW" "7" "2021" "PostgreSQL 12.9" "PostgreSQL 12.9 Documentation"
+.TH "REFRESH MATERIALIZED VIEW" "7" "2022" "PostgreSQL 12.10" "PostgreSQL 12.10 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -73,13 +73,11 @@ The name (optionally schema\-qualified) of the materialized view to refresh\&.
 .RE
 .SH "NOTES"
 .PP
-While the default index for future
-\fBCLUSTER\fR(7)
-operations is retained,
-\fBREFRESH MATERIALIZED VIEW\fR
-does not order the generated rows based on this property\&. If you want the data to be ordered upon generation, you must use an
+If there is an
 ORDER BY
-clause in the backing query\&.
+clause in the materialized view\*(Aqs defining query, the original contents of the materialized view will be ordered that way; but
+\fBREFRESH MATERIALIZED VIEW\fR
+does not guarantee to preserve that ordering\&.
 .SH "EXAMPLES"
 .PP
 This command will replace the contents of the materialized view called

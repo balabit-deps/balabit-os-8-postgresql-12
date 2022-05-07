@@ -96,9 +96,9 @@ are enabled, as explained below:
     the case).
 
 -   To build the PL/Python server programming language, you need a
-    Python installation with the header files and the distutils module.
-    The minimum required version is Python 2.4. Python 3 is supported if
-    it's version 3.1 or later; but see the PL/Python documentation when
+    Python installation with the header files and the sysconfig module.
+    The minimum required version is Python 2.7. Python 3 is supported if
+    it's version 3.2 or later; but see the PL/Python documentation when
     using Python 3.
 
     Since PL/Python will be a shared library, the "libpython" library
