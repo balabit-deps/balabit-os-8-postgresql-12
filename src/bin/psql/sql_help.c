@@ -653,6 +653,7 @@ sql_help_ALTER_MATERIALIZED_VIEW(PQExpBuffer buf)
 					  "    ALTER [ COLUMN ] %s SET STORAGE { PLAIN | EXTERNAL | EXTENDED | MAIN }\n"
 					  "    CLUSTER ON %s\n"
 					  "    SET WITHOUT CLUSTER\n"
+					  "    SET TABLESPACE %s\n"
 					  "    SET ( %s [= %s] [, ... ] )\n"
 					  "    RESET ( %s [, ... ] )\n"
 					  "    OWNER TO { %s | CURRENT_USER | SESSION_USER }",
@@ -680,6 +681,7 @@ sql_help_ALTER_MATERIALIZED_VIEW(PQExpBuffer buf)
 					  _("attribute_option"),
 					  _("column_name"),
 					  _("index_name"),
+					  _("new_tablespace"),
 					  _("storage_parameter"),
 					  _("value"),
 					  _("storage_parameter"),
@@ -4882,7 +4884,7 @@ const struct _helpStruct QL_HELP[] = {
       N_("change the definition of a materialized view"),
       "sql-altermaterializedview",
       sql_help_ALTER_MATERIALIZED_VIEW,
-      23 },
+      24 },
 
     { "ALTER OPERATOR",
       N_("change the definition of an operator"),

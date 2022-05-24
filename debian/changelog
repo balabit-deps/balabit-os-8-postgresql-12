@@ -1,3 +1,32 @@
+postgresql-12 (12.11-0ubuntu0.20.04.1) focal-security; urgency=medium
+
+  * New upstream version (LP: #1973627)
+
+    + A dump/restore is not required for those running 12.X.
+
+    + However, if you are upgrading from a version earlier than 12.10,
+      see those release notes as well.
+
+    + Confine additional operations within "security restricted operation"
+      sandboxes (Sergey Shinderuk, Noah Misch).
+
+      Autovacuum, CLUSTER, CREATE INDEX, REINDEX, REFRESH MATERIALIZED VIEW,
+      and pg_amcheck activated the "security restricted operation" protection
+      mechanism too late, or even not at all in some code paths. A user having
+      permission to create non-temporary objects within a database could
+      define an object that would execute arbitrary SQL code with superuser
+      permissions the next time that autovacuum processed the object, or that
+      some superuser ran one of the affected commands against it.
+
+      The PostgreSQL Project thanks Alexander Lakhin for reporting this
+      problem.
+      (CVE-2022-1552)
+
+    + Details about these and many further changes can be found at:
+      https://www.postgresql.org/docs/12/release-12-11.html
+
+ -- Sergio Durigan Junior <sergio.durigan@canonical.com>  Tue, 17 May 2022 22:10:51 -0400
+
 postgresql-12 (12.10-0ubuntu0.20.04.1bb1) focal; urgency=medium
 
   * Balabit patched version
