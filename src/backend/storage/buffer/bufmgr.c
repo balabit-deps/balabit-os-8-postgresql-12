@@ -3514,7 +3514,9 @@ MarkBufferDirtyHint(Buffer buffer, bool buffer_std)
 			 * essential that CreateCheckpoint waits for virtual transactions
 			 * rather than full transactionids.
 			 */
-			MyPgXact->delayChkpt = delayChkpt = true;
+			Assert(!MyPgXact->delayChkpt);
+			MyPgXact->delayChkpt = true;
+			delayChkpt = true;
 			lsn = XLogSaveBufferForHint(buffer, buffer_std);
 		}
 

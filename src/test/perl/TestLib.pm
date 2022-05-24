@@ -37,6 +37,7 @@ our @EXPORT = qw(
   system_log
   run_log
   run_command
+  pump_until
 
   command_ok
   command_fails
@@ -52,7 +53,7 @@ our @EXPORT = qw(
   $windows_os
 );
 
-our ($windows_os, $tmp_check, $log_path, $test_logfile);
+our ($windows_os, $timeout_default, $tmp_check, $log_path, $test_logfile);
 
 BEGIN
 {
@@ -101,6 +102,10 @@ BEGIN
 		require Win32API::File;
 		Win32API::File->import(qw(createFile OsFHandleOpen CloseHandle));
 	}
+
+	$timeout_default = $ENV{PG_TEST_TIMEOUT_DEFAULT};
+	$timeout_default = 180
+	  if not defined $timeout_default or $timeout_default eq '';
 }
 
 INIT
@@ -193,33 +198,6 @@ sub tempdir_short
 	return File::Temp::tempdir(CLEANUP => 1);
 }
 
-# Translate a Perl file name to a host file name.  Currently, this is a no-op
-# except for the case of Perl=msys and host=mingw32.  The subject need not
-# exist, but its parent directory must exist.
-sub perl2host
-{
-	my ($subject) = @_;
-	return $subject unless $Config{osname} eq 'msys';
-	my $here = cwd;
-	my $leaf;
-	if (chdir $subject)
-	{
-		$leaf = '';
-	}
-	else
-	{
-		$leaf = '/' . basename $subject;
-		my $parent = dirname $subject;
-		chdir $parent or die "could not chdir \"$parent\": $!";
-	}
-
-	# this odd way of calling 'pwd -W' is the only way that seems to work.
-	my $dir = qx{sh -c "pwd -W"};
-	chomp $dir;
-	chdir $here;
-	return $dir . $leaf;
-}
-
 =pod
 
 =item has_wal_read_bug()
@@ -269,10 +247,39 @@ sub run_command
 	my ($cmd) = @_;
 	my ($stdout, $stderr);
 	my $result = IPC::Run::run $cmd, '>', \$stdout, '2>', \$stderr;
-	foreach ($stderr, $stdout) { s/\r\n/\n/g if $Config{osname} eq 'msys'; }
 	chomp($stdout);
 	chomp($stderr);
 	return ($stdout, $stderr);
+}
+
+=pod
+
+=item pump_until(proc, timeout, stream, until)
+
+Pump until string is matched on the specified stream, or timeout occurs.
+
+=cut
+
+sub pump_until
+{
+	my ($proc, $timeout, $stream, $until) = @_;
+	$proc->pump_nb();
+	while (1)
+	{
+		last if $$stream =~ /$until/;
+		if ($timeout->is_expired)
+		{
+			diag("pump_until: timeout expired when searching for \"$until\" with stream: \"$$stream\"");
+			return 0;
+		}
+		if (not $proc->pumpable())
+		{
+			diag("pump_until: process terminated unexpectedly when searching for \"$until\" with stream: \"$$stream\"");
+			return 0;
+		}
+		$proc->pump();
+	}
+	return 1;
 }
 
 # Generate a string made of the given range of ASCII characters
@@ -330,7 +337,6 @@ sub slurp_file
 	$contents = <$fh>;
 	close $fh;
 
-	$contents =~ s/\r\n/\n/g if $Config{osname} eq 'msys';
 	return $contents;
 }
 
@@ -566,7 +572,6 @@ sub command_like
 	my $result = IPC::Run::run $cmd, '>', \$stdout, '2>', \$stderr;
 	ok($result, "$test_name: exit code 0");
 	is($stderr, '', "$test_name: no stderr");
-	$stdout =~ s/\r\n/\n/g if $Config{osname} eq 'msys';
 	like($stdout, $expected_stdout, "$test_name: matches");
 	return;
 }
@@ -600,7 +605,6 @@ sub command_fails_like
 	print("# Running: " . join(" ", @{$cmd}) . "\n");
 	my $result = IPC::Run::run $cmd, '>', \$stdout, '2>', \$stderr;
 	ok(!$result, "$test_name: exit code not 0");
-	$stderr =~ s/\r\n/\n/g if $Config{osname} eq 'msys';
 	like($stderr, $expected_stderr, "$test_name: matches");
 	return;
 }
@@ -629,8 +633,6 @@ sub command_checks_all
 	  if $ret & 127;
 	$ret = $ret >> 8;
 
-	foreach ($stderr, $stdout) { s/\r\n/\n/g if $Config{osname} eq 'msys'; }
-
 	# check status
 	ok($ret == $expected_ret,
 		"$test_name status (got $ret vs expected $expected_ret)");
@@ -649,5 +651,44 @@ sub command_checks_all
 
 	return;
 }
+
+# support release 15+ perl module namespace
+
+package PostgreSQL::Test::Utils; ## no critic (ProhibitMultiplePackages)
+
+# we don't want to export anything here, but we want to support things called
+# via this package name explicitly.
+
+# use typeglobs to alias these functions and variables
+
+no warnings qw(once);
+
+*generate_ascii_string = *TestLib::generate_ascii_string;
+*slurp_dir = *TestLib::slurp_dir;
+*slurp_file = *TestLib::slurp_file;
+*append_to_file = *TestLib::append_to_file;
+*check_mode_recursive = *TestLib::check_mode_recursive;
+*chmod_recursive = *TestLib::chmod_recursive;
+*check_pg_config = *TestLib::check_pg_config;
+*system_or_bail = *TestLib::system_or_bail;
+*system_log = *TestLib::system_log;
+*run_log = *TestLib::run_log;
+*run_command = *TestLib::run_command;
+*command_ok = *TestLib::command_ok;
+*command_fails = *TestLib::command_fails;
+*command_exit_is = *TestLib::command_exit_is;
+*program_help_ok = *TestLib::program_help_ok;
+*program_version_ok = *TestLib::program_version_ok;
+*program_options_handling_ok = *TestLib::program_options_handling_ok;
+*command_like = *TestLib::command_like;
+*command_like_safe = *TestLib::command_like_safe;
+*command_fails_like = *TestLib::command_fails_like;
+*command_checks_all = *TestLib::command_checks_all;
+
+*windows_os = *TestLib::windows_os;
+*timeout_default = *TestLib::timeout_default;
+*tmp_check = *TestLib::tmp_check;
+*log_path = *TestLib::log_path;
+*test_logfile = *TestLib::test_log_file;
 
 1;

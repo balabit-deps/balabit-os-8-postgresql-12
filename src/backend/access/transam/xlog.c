@@ -8715,6 +8715,14 @@ CreateCheckPoint(int flags)
 	CheckpointStats.ckpt_start_t = GetCurrentTimestamp();
 
 	/*
+	 * Let smgr prepare for checkpoint; this has to happen outside the
+	 * critical section and before we determine the REDO pointer.  Note that
+	 * smgr must not do anything that'd have to be undone if we decide no
+	 * checkpoint is needed.
+	 */
+	SyncPreCheckpoint();
+
+	/*
 	 * Use a critical section to force system panic if we have trouble.
 	 */
 	START_CRIT_SECTION();
@@ -8727,13 +8735,6 @@ CreateCheckPoint(int flags)
 		UpdateControlFile();
 		LWLockRelease(ControlFileLock);
 	}
-
-	/*
-	 * Let smgr prepare for checkpoint; this has to happen before we determine
-	 * the REDO pointer.  Note that smgr must not do anything that'd have to
-	 * be undone if we decide no checkpoint is needed.
-	 */
-	SyncPreCheckpoint();
 
 	/* Begin filling in the checkpoint WAL record */
 	MemSet(&checkPoint, 0, sizeof(checkPoint));
@@ -8930,6 +8931,16 @@ CreateCheckPoint(int flags)
 	pfree(vxids);
 
 	CheckPointGuts(checkPoint.redo, flags);
+
+	vxids = GetVirtualXIDsDelayingChkptEnd(&nvxids);
+	if (nvxids > 0)
+	{
+		do
+		{
+			pg_usleep(10000L);	/* wait for 10 msec */
+		} while (HaveVirtualXIDsDelayingChkptEnd(vxids, nvxids));
+	}
+	pfree(vxids);
 
 	/*
 	 * Take a snapshot of running transactions and write this to WAL. This
@@ -10147,6 +10158,10 @@ VerifyOverwriteContrecord(xl_overwrite_contrecord *xlrec, XLogReaderState *state
 			 (uint32) xlrec->overwritten_lsn,
 			 (uint32) (state->overwrittenRecPtr >> 32),
 			 (uint32) state->overwrittenRecPtr);
+
+	/* We have safely skipped the aborted record */
+	abortedRecPtr = InvalidXLogRecPtr;
+	missingContrecPtr = InvalidXLogRecPtr;
 
 	ereport(LOG,
 			(errmsg("successfully skipped missing contrecord at %X/%X, overwritten at %s",
