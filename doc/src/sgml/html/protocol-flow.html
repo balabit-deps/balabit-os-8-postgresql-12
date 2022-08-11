@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>52.2. Message Flow</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="protocol-overview.html" title="52.1. Overview" /><link rel="next" href="sasl-authentication.html" title="52.3. SASL Authentication" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">52.2. Message Flow</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="protocol-overview.html" title="52.1. Overview">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="protocol.html" title="Chapter 52. Frontend/Backend Protocol">Up</a></td><th width="60%" align="center">Chapter 52. Frontend/Backend Protocol</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 12.11 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="sasl-authentication.html" title="52.3. SASL Authentication">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="PROTOCOL-FLOW"><div class="titlepage"><div><div><h2 class="title" style="clear: both">52.2. Message Flow</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="protocol-flow.html#id-1.10.5.7.3">52.2.1. Start-up</a></span></dt><dt><span class="sect2"><a href="protocol-flow.html#id-1.10.5.7.4">52.2.2. Simple Query</a></span></dt><dt><span class="sect2"><a href="protocol-flow.html#PROTOCOL-FLOW-EXT-QUERY">52.2.3. Extended Query</a></span></dt><dt><span class="sect2"><a href="protocol-flow.html#id-1.10.5.7.6">52.2.4. Function Call</a></span></dt><dt><span class="sect2"><a href="protocol-flow.html#PROTOCOL-COPY">52.2.5. COPY Operations</a></span></dt><dt><span class="sect2"><a href="protocol-flow.html#PROTOCOL-ASYNC">52.2.6. Asynchronous Operations</a></span></dt><dt><span class="sect2"><a href="protocol-flow.html#id-1.10.5.7.9">52.2.7. Canceling Requests in Progress</a></span></dt><dt><span class="sect2"><a href="protocol-flow.html#id-1.10.5.7.10">52.2.8. Termination</a></span></dt><dt><span class="sect2"><a href="protocol-flow.html#id-1.10.5.7.11">52.2.9. <acronym class="acronym">SSL</acronym> Session Encryption</a></span></dt><dt><span class="sect2"><a href="protocol-flow.html#id-1.10.5.7.12">52.2.10. <acronym class="acronym">GSSAPI</acronym> Session Encryption</a></span></dt></dl></div><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>52.2. Message Flow</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="protocol-overview.html" title="52.1. Overview" /><link rel="next" href="sasl-authentication.html" title="52.3. SASL Authentication" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">52.2. Message Flow</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="protocol-overview.html" title="52.1. Overview">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="protocol.html" title="Chapter 52. Frontend/Backend Protocol">Up</a></td><th width="60%" align="center">Chapter 52. Frontend/Backend Protocol</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 12.12 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="sasl-authentication.html" title="52.3. SASL Authentication">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="PROTOCOL-FLOW"><div class="titlepage"><div><div><h2 class="title" style="clear: both">52.2. Message Flow</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="protocol-flow.html#id-1.10.5.7.3">52.2.1. Start-up</a></span></dt><dt><span class="sect2"><a href="protocol-flow.html#id-1.10.5.7.4">52.2.2. Simple Query</a></span></dt><dt><span class="sect2"><a href="protocol-flow.html#PROTOCOL-FLOW-EXT-QUERY">52.2.3. Extended Query</a></span></dt><dt><span class="sect2"><a href="protocol-flow.html#PROTOCOL-FLOW-PIPELINING">52.2.4. Pipelining</a></span></dt><dt><span class="sect2"><a href="protocol-flow.html#id-1.10.5.7.7">52.2.5. Function Call</a></span></dt><dt><span class="sect2"><a href="protocol-flow.html#PROTOCOL-COPY">52.2.6. COPY Operations</a></span></dt><dt><span class="sect2"><a href="protocol-flow.html#PROTOCOL-ASYNC">52.2.7. Asynchronous Operations</a></span></dt><dt><span class="sect2"><a href="protocol-flow.html#id-1.10.5.7.10">52.2.8. Canceling Requests in Progress</a></span></dt><dt><span class="sect2"><a href="protocol-flow.html#id-1.10.5.7.11">52.2.9. Termination</a></span></dt><dt><span class="sect2"><a href="protocol-flow.html#id-1.10.5.7.12">52.2.10. <acronym class="acronym">SSL</acronym> Session Encryption</a></span></dt><dt><span class="sect2"><a href="protocol-flow.html#id-1.10.5.7.13">52.2.11. <acronym class="acronym">GSSAPI</acronym> Session Encryption</a></span></dt></dl></div><p>
    This section describes the message flow and the semantics of each
    message type.  (Details of the exact representation of each message
    appear in <a class="xref" href="protocol-message-formats.html" title="52.7. Message Formats">Section 52.7</a>.)  There are
@@ -152,7 +152,7 @@
         This message informs the frontend about the current (initial)
          setting of backend parameters, such as <a class="xref" href="runtime-config-client.html#GUC-CLIENT-ENCODING">client_encoding</a> or <a class="xref" href="runtime-config-client.html#GUC-DATESTYLE">DateStyle</a>.
          The frontend can ignore this message, or record the settings
-         for its future use; see <a class="xref" href="protocol-flow.html#PROTOCOL-ASYNC" title="52.2.6. Asynchronous Operations">Section 52.2.6</a> for
+         for its future use; see <a class="xref" href="protocol-flow.html#PROTOCOL-ASYNC" title="52.2.7. Asynchronous Operations">Section 52.2.7</a> for
          more details.  The frontend should not respond to this
          message, but should continue listening for a ReadyForQuery
          message.
@@ -191,10 +191,10 @@
         An SQL command completed normally.
        </p></dd><dt><span class="term">CopyInResponse</span></dt><dd><p>
         The backend is ready to copy data from the frontend to a
-        table; see <a class="xref" href="protocol-flow.html#PROTOCOL-COPY" title="52.2.5. COPY Operations">Section 52.2.5</a>.
+        table; see <a class="xref" href="protocol-flow.html#PROTOCOL-COPY" title="52.2.6. COPY Operations">Section 52.2.6</a>.
        </p></dd><dt><span class="term">CopyOutResponse</span></dt><dd><p>
         The backend is ready to copy data from a table to the
-        frontend; see <a class="xref" href="protocol-flow.html#PROTOCOL-COPY" title="52.2.5. COPY Operations">Section 52.2.5</a>.
+        frontend; see <a class="xref" href="protocol-flow.html#PROTOCOL-COPY" title="52.2.6. COPY Operations">Section 52.2.6</a>.
        </p></dd><dt><span class="term">RowDescription</span></dt><dd><p>
         Indicates that rows are about to be returned in response to
         a <code class="command">SELECT</code>, <code class="command">FETCH</code>, etc query.
@@ -226,7 +226,7 @@
     normally consists of RowDescription, zero or more
     DataRow messages, and then CommandComplete.
     <code class="command">COPY</code> to or from the frontend invokes special protocol
-    as described in <a class="xref" href="protocol-flow.html#PROTOCOL-COPY" title="52.2.5. COPY Operations">Section 52.2.5</a>.
+    as described in <a class="xref" href="protocol-flow.html#PROTOCOL-COPY" title="52.2.6. COPY Operations">Section 52.2.6</a>.
     All other query types normally produce only
     a CommandComplete message.
    </p><p>
@@ -253,7 +253,7 @@
    </p><p>
     A frontend must be prepared to accept ErrorResponse and
     NoticeResponse messages whenever it is expecting any other type of
-    message.  See also <a class="xref" href="protocol-flow.html#PROTOCOL-ASYNC" title="52.2.6. Asynchronous Operations">Section 52.2.6</a> concerning messages
+    message.  See also <a class="xref" href="protocol-flow.html#PROTOCOL-ASYNC" title="52.2.7. Asynchronous Operations">Section 52.2.7</a> concerning messages
     that the backend might generate due to outside events.
    </p><p>
     Recommended practice is to code frontends in a state-machine style
@@ -531,7 +531,46 @@ SELCT 1/0;
      performing the bind/describe/execute sequence for each one in succession.
      Another difference is that it will not return ParseComplete, BindComplete,
      CloseComplete, or NoData messages.
-    </p></div></div><div class="sect2" id="id-1.10.5.7.6"><div class="titlepage"><div><div><h3 class="title">52.2.4. Function Call</h3></div></div></div><p>
+    </p></div></div><div class="sect2" id="PROTOCOL-FLOW-PIPELINING"><div class="titlepage"><div><div><h3 class="title">52.2.4. Pipelining</h3></div></div></div><a id="id-1.10.5.7.6.2" class="indexterm"></a><p>
+    Use of the extended query protocol
+    allows <em class="firstterm">pipelining</em>, which means sending a series
+    of queries without waiting for earlier ones to complete.  This reduces
+    the number of network round trips needed to complete a given series of
+    operations.  However, the user must carefully consider the required
+    behavior if one of the steps fails, since later queries will already
+    be in flight to the server.
+   </p><p>
+    One way to deal with that is to make the whole query series be a
+    single transaction, that is wrap it in <code class="command">BEGIN</code> ...
+    <code class="command">COMMIT</code>.  However, this does not help if one wishes
+    for some of the commands to commit independently of others.
+   </p><p>
+    The extended query protocol provides another way to manage this
+    concern, which is to omit sending Sync messages between steps that
+    are dependent.  Since, after an error, the backend will skip command
+    messages until it finds Sync, this allows later commands in a pipeline
+    to be skipped automatically when an earlier one fails, without the
+    client having to manage that explicitly with <code class="command">BEGIN</code>
+    and <code class="command">COMMIT</code>.  Independently-committable segments
+    of the pipeline can be separated by Sync messages.
+   </p><p>
+    If the client has not issued an explicit <code class="command">BEGIN</code>,
+    then each Sync ordinarily causes an implicit <code class="command">COMMIT</code>
+    if the preceding step(s) succeeded, or an
+    implicit <code class="command">ROLLBACK</code> if they failed.  However, there
+    are a few DDL commands (such as <code class="command">CREATE DATABASE</code>)
+    that cannot be executed inside a transaction block.  If one of
+    these is executed in a pipeline, it will, upon success, force an
+    immediate commit to preserve database consistency.
+    A Sync immediately following one of these has no effect except to
+    respond with ReadyForQuery.
+   </p><p>
+    When using this method, completion of the pipeline must be determined
+    by counting ReadyForQuery messages and waiting for that to reach the
+    number of Syncs sent.  Counting command completion responses is
+    unreliable, since some of the commands may not be executed and thus not
+    produce a completion message.
+   </p></div><div class="sect2" id="id-1.10.5.7.7"><div class="titlepage"><div><div><h3 class="title">52.2.5. Function Call</h3></div></div></div><p>
     The Function Call sub-protocol allows the client to request a direct
     call of any function that exists in the database's
     <code class="structname">pg_proc</code> system catalog.  The client must have
@@ -567,7 +606,7 @@ SELCT 1/0;
         call.  Notices are in addition to other responses, i.e., the
         backend will continue processing the command.
        </p></dd></dl></div><p>
-   </p></div><div class="sect2" id="PROTOCOL-COPY"><div class="titlepage"><div><div><h3 class="title">52.2.5. COPY Operations</h3></div></div></div><p>
+   </p></div><div class="sect2" id="PROTOCOL-COPY"><div class="titlepage"><div><div><h3 class="title">52.2.6. COPY Operations</h3></div></div></div><p>
     The <code class="command">COPY</code> command allows high-speed bulk data transfer
     to or from the server.  Copy-in and copy-out operations each switch
     the connection into a distinct sub-protocol, which lasts until the
@@ -622,7 +661,7 @@ SELCT 1/0;
     It is possible for NoticeResponse and ParameterStatus messages to be
     interspersed between CopyData messages; frontends must handle these cases,
     and should be prepared for other asynchronous message types as well (see
-    <a class="xref" href="protocol-flow.html#PROTOCOL-ASYNC" title="52.2.6. Asynchronous Operations">Section 52.2.6</a>).  Otherwise, any message type other than
+    <a class="xref" href="protocol-flow.html#PROTOCOL-ASYNC" title="52.2.7. Asynchronous Operations">Section 52.2.7</a>).  Otherwise, any message type other than
     CopyData or CopyDone may be treated as terminating copy-out mode.
    </p><p>
     There is another Copy-related mode called copy-both, which allows
@@ -652,7 +691,7 @@ SELCT 1/0;
     the present implementation, all columns in a given <code class="command">COPY</code>
     operation will use the same format, but the message design does not
     assume this.)
-   </p></div><div class="sect2" id="PROTOCOL-ASYNC"><div class="titlepage"><div><div><h3 class="title">52.2.6. Asynchronous Operations</h3></div></div></div><p>
+   </p></div><div class="sect2" id="PROTOCOL-ASYNC"><div class="titlepage"><div><div><h3 class="title">52.2.7. Asynchronous Operations</h3></div></div></div><p>
     There are several cases in which the backend will send messages that
     are not specifically prompted by the frontend's command stream.
     Frontends must be prepared to deal with these messages at any time,
@@ -719,7 +758,7 @@ SELCT 1/0;
      It is unwise to design frontend logic that assumes that, however.
      Good practice is to be able to accept NotificationResponse at any
      point in the protocol.
-    </p></div></div><div class="sect2" id="id-1.10.5.7.9"><div class="titlepage"><div><div><h3 class="title">52.2.7. Canceling Requests in Progress</h3></div></div></div><p>
+    </p></div></div><div class="sect2" id="id-1.10.5.7.10"><div class="titlepage"><div><div><h3 class="title">52.2.8. Canceling Requests in Progress</h3></div></div></div><p>
     During the processing of a query, the frontend might request
     cancellation of the query.  The cancel request is not sent
     directly on the open connection to the backend for reasons of
@@ -767,7 +806,7 @@ SELCT 1/0;
     risk, in that unauthorized persons might try to cancel queries.
     The security risk is addressed by requiring a dynamically
     generated secret key to be supplied in cancel requests.
-   </p></div><div class="sect2" id="id-1.10.5.7.10"><div class="titlepage"><div><div><h3 class="title">52.2.8. Termination</h3></div></div></div><p>
+   </p></div><div class="sect2" id="id-1.10.5.7.11"><div class="titlepage"><div><div><h3 class="title">52.2.9. Termination</h3></div></div></div><p>
     The normal, graceful termination procedure is that the frontend
     sends a Terminate message and immediately closes the connection.
     On receipt of this message, the backend closes the connection and
@@ -795,7 +834,7 @@ SELCT 1/0;
     transaction block (<code class="command">BEGIN</code> ... <code class="command">COMMIT</code>
     sequence) then its results might be committed before the
     disconnection is recognized.
-   </p></div><div class="sect2" id="id-1.10.5.7.11"><div class="titlepage"><div><div><h3 class="title">52.2.9. <acronym class="acronym">SSL</acronym> Session Encryption</h3></div></div></div><p>
+   </p></div><div class="sect2" id="id-1.10.5.7.12"><div class="titlepage"><div><div><h3 class="title">52.2.10. <acronym class="acronym">SSL</acronym> Session Encryption</h3></div></div></div><p>
     If <span class="productname">PostgreSQL</span> was built with
     <acronym class="acronym">SSL</acronym> support, frontend/backend communications
     can be encrypted using <acronym class="acronym">SSL</acronym>.  This provides
@@ -852,7 +891,7 @@ SELCT 1/0;
     force <acronym class="acronym">SSL</acronym> encryption, the administrator can
     configure the server to reject unencrypted sessions as a byproduct
     of authentication checking.
-   </p></div><div class="sect2" id="id-1.10.5.7.12"><div class="titlepage"><div><div><h3 class="title">52.2.10. <acronym class="acronym">GSSAPI</acronym> Session Encryption</h3></div></div></div><p>
+   </p></div><div class="sect2" id="id-1.10.5.7.13"><div class="titlepage"><div><div><h3 class="title">52.2.11. <acronym class="acronym">GSSAPI</acronym> Session Encryption</h3></div></div></div><p>
     If <span class="productname">PostgreSQL</span> was built with
     <acronym class="acronym">GSSAPI</acronym> support, frontend/backend communications
     can be encrypted using <acronym class="acronym">GSSAPI</acronym>.  This provides
@@ -925,4 +964,4 @@ SELCT 1/0;
     force <acronym class="acronym">GSSAPI</acronym> encryption, the administrator can
     configure the server to reject unencrypted sessions as a byproduct
     of authentication checking.
-   </p></div></div><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navfooter"><hr></hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="protocol-overview.html" title="52.1. Overview">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="protocol.html" title="Chapter 52. Frontend/Backend Protocol">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="sasl-authentication.html" title="52.3. SASL Authentication">Next</a></td></tr><tr><td width="40%" align="left" valign="top">52.1. Overview </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="PostgreSQL 12.11 Documentation">Home</a></td><td width="40%" align="right" valign="top"> 52.3. SASL Authentication</td></tr></table></div></body></html>
+   </p></div></div><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navfooter"><hr></hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="protocol-overview.html" title="52.1. Overview">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="protocol.html" title="Chapter 52. Frontend/Backend Protocol">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="sasl-authentication.html" title="52.3. SASL Authentication">Next</a></td></tr><tr><td width="40%" align="left" valign="top">52.1. Overview </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="PostgreSQL 12.12 Documentation">Home</a></td><td width="40%" align="right" valign="top"> 52.3. SASL Authentication</td></tr></table></div></body></html>

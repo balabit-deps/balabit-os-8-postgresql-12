@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
 .\"      Date: 2022
-.\"    Manual: PostgreSQL 12.11 Documentation
-.\"    Source: PostgreSQL 12.11
+.\"    Manual: PostgreSQL 12.12 Documentation
+.\"    Source: PostgreSQL 12.12
 .\"  Language: English
 .\"
-.TH "CREATE DOMAIN" "7" "2022" "PostgreSQL 12.11" "PostgreSQL 12.11 Documentation"
+.TH "CREATE DOMAIN" "7" "2022" "PostgreSQL 12.12" "PostgreSQL 12.12 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -69,7 +69,7 @@ The underlying data type of the domain\&. This can include array specifiers\&.
 .PP
 \fIcollation\fR
 .RS 4
-An optional collation for the domain\&. If no collation is specified, the underlying data type\*(Aqs default collation is used\&. The underlying type must be collatable if
+An optional collation for the domain\&. If no collation is specified, the domain has the same collation behavior as its underlying data type\&. The underlying type must be collatable if
 COLLATE
 is specified\&.
 .RE
@@ -156,7 +156,7 @@ expression, and then change the behavior of that function\&.
 PostgreSQL
 does not disallow that, but it will not notice if there are stored values of the domain type that now violate the
 CHECK
-constraint\&. That would cause a subsequent database dump and reload to fail\&. The recommended way to handle such a change is to drop the constraint (using
+constraint\&. That would cause a subsequent database dump and restore to fail\&. The recommended way to handle such a change is to drop the constraint (using
 \fBALTER DOMAIN\fR), adjust the function definition, and re\-add the constraint, thereby rechecking it against stored data\&.
 .SH "EXAMPLES"
 .PP

@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
 .\"      Date: 2022
-.\"    Manual: PostgreSQL 12.11 Documentation
-.\"    Source: PostgreSQL 12.11
+.\"    Manual: PostgreSQL 12.12 Documentation
+.\"    Source: PostgreSQL 12.12
 .\"  Language: English
 .\"
-.TH "PG_UPGRADE" "1" "2022" "PostgreSQL 12.11" "PostgreSQL 12.11 Documentation"
+.TH "PG_UPGRADE" "1" "2022" "PostgreSQL 12.12" "PostgreSQL 12.12 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -40,7 +40,7 @@ pg_migrator) allows data stored in
 PostgreSQL
 data files to be upgraded to a later
 PostgreSQL
-major version without the data dump/reload typically required for major version upgrades, e\&.g\&., from 9\&.5\&.8 to 9\&.6\&.4 or from 10\&.7 to 11\&.2\&. It is not required for minor version upgrades, e\&.g\&., from 9\&.6\&.2 to 9\&.6\&.3 or from 10\&.1 to 10\&.2\&.
+major version without the data dump/restore typically required for major version upgrades, e\&.g\&., from 9\&.5\&.8 to 9\&.6\&.4 or from 10\&.7 to 11\&.2\&. It is not required for minor version upgrades, e\&.g\&., from 9\&.6\&.2 to 9\&.6\&.3 or from 10\&.1 to 10\&.2\&.
 .PP
 Major PostgreSQL releases regularly add new features that often change the layout of the system tables, but the internal data storage format rarely changes\&.
 pg_upgrade
@@ -423,7 +423,7 @@ can be on different file systems\&.) Clone mode provides the same speed and disk
 .sp
 The
 \fB\-\-jobs\fR
-option allows multiple CPU cores to be used for copying/linking of files and to dump and reload database schemas in parallel; a good place to start is the maximum of the number of CPU cores and tablespaces\&. This option can dramatically reduce the time to upgrade a multi\-database server running on a multiprocessor machine\&.
+option allows multiple CPU cores to be used for copying/linking of files and to dump and restore database schemas in parallel; a good place to start is the maximum of the number of CPU cores and tablespaces\&. This option can dramatically reduce the time to upgrade a multi\-database server running on a multiprocessor machine\&.
 .sp
 For Windows users, you must be logged into an administrative account, and then start a shell as the
 postgres
@@ -602,7 +602,7 @@ Configure streaming replication and log\-shipping standby servers: Configure the
 \fBpg_start_backup()\fR
 and
 \fBpg_stop_backup()\fR
-or take a file system backup as the standbys are still synchronized with the primary\&.)
+or take a file system backup as the standbys are still synchronized with the primary\&.) Replication slots are not copied and must be recreated\&.
 .RE
 .sp
 .RS 4

@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
 .\"      Date: 2022
-.\"    Manual: PostgreSQL 12.11 Documentation
-.\"    Source: PostgreSQL 12.11
+.\"    Manual: PostgreSQL 12.12 Documentation
+.\"    Source: PostgreSQL 12.12
 .\"  Language: English
 .\"
-.TH "SET" "7" "2022" "PostgreSQL 12.11" "PostgreSQL 12.11 Documentation"
+.TH "SET" "7" "2022" "PostgreSQL 12.12" "PostgreSQL 12.12 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -167,7 +167,7 @@ SET client_encoding TO \fIvalue\fR\&.
 SEED
 .RS 4
 Sets the internal seed for the random number generator (the function
-\fBrandom\fR)\&. Allowed values are floating\-point numbers between \-1 and 1, which are then multiplied by 2^31\-1\&.
+\fBrandom\fR)\&. Allowed values are floating\-point numbers between \-1 and 1 inclusive\&.
 .sp
 The seed can also be set by invoking the function
 \fBsetseed\fR:

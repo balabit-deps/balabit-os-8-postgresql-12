@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
 .\"      Date: 2022
-.\"    Manual: PostgreSQL 12.11 Documentation
-.\"    Source: PostgreSQL 12.11
+.\"    Manual: PostgreSQL 12.12 Documentation
+.\"    Source: PostgreSQL 12.12
 .\"  Language: English
 .\"
-.TH "RELEASE SAVEPOINT" "7" "2022" "PostgreSQL 12.11" "PostgreSQL 12.11 Documentation"
+.TH "RELEASE SAVEPOINT" "7" "2022" "PostgreSQL 12.12" "PostgreSQL 12.12 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -56,7 +56,7 @@ Specifying a savepoint name that was not previously defined is an error\&.
 .PP
 It is not possible to release a savepoint when the transaction is in an aborted state\&.
 .PP
-If multiple savepoints have the same name, only the one that was most recently defined is released\&.
+If multiple savepoints have the same name, only the most recently defined unreleased one is released\&. Repeated commands will release progressively older savepoints\&.
 .SH "EXAMPLES"
 .PP
 To establish and later destroy a savepoint:

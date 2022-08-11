@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
 .\"      Date: 2022
-.\"    Manual: PostgreSQL 12.11 Documentation
-.\"    Source: PostgreSQL 12.11
+.\"    Manual: PostgreSQL 12.12 Documentation
+.\"    Source: PostgreSQL 12.12
 .\"  Language: English
 .\"
-.TH "CREATE INDEX" "7" "2022" "PostgreSQL 12.11" "PostgreSQL 12.11 Documentation"
+.TH "CREATE INDEX" "7" "2022" "PostgreSQL 12.12" "PostgreSQL 12.12 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -320,7 +320,10 @@ for more details)\&. The default is
 .PP
 autosummarize
 .RS 4
-Defines whether a summarization run is invoked for the previous page range whenever an insertion is detected on the next one\&.
+Defines whether a summarization run is queued for the previous page range whenever an insertion is detected on the next one\&. See
+Section\ \&67.1.1
+for more details\&. The default is
+off\&.
 .RE
 .SS "Building Indexes Concurrently"
 .PP
