@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
 .\"      Date: 2022
-.\"    Manual: PostgreSQL 12.11 Documentation
-.\"    Source: PostgreSQL 12.11
+.\"    Manual: PostgreSQL 12.12 Documentation
+.\"    Source: PostgreSQL 12.12
 .\"  Language: English
 .\"
-.TH "SPI_START_TRANSACTION" "3" "2022" "PostgreSQL 12.11" "PostgreSQL 12.11 Documentation"
+.TH "SPI_START_TRANSACTION" "3" "2022" "PostgreSQL 12.12" "PostgreSQL 12.12 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -28,7 +28,7 @@
 .\" * MAIN CONTENT STARTS HERE *
 .\" -----------------------------------------------------------------
 .SH "NAME"
-SPI_start_transaction \- start a new transaction
+SPI_start_transaction \- obsolete function
 .SH "SYNOPSIS"
 .sp
 .nf
@@ -37,10 +37,9 @@ void SPI_start_transaction(void)
 .SH "DESCRIPTION"
 .PP
 \fBSPI_start_transaction\fR
-starts a new transaction\&. It can only be called after
+does nothing, and exists only for code compatibility with earlier
+PostgreSQL
+releases\&. It used to be required after calling
 \fBSPI_commit\fR
 or
-\fBSPI_rollback\fR, as there is no transaction active at that point\&. Normally, when an SPI\-using procedure is called, there is already a transaction active, so attempting to start another one before closing out the current one will result in an error\&.
-.PP
-This function can only be executed if the SPI connection has been set as nonatomic in the call to
-\fBSPI_connect_ext\fR\&.
+\fBSPI_rollback\fR, but now those functions start a new transaction automatically\&.

@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
 .\"      Date: 2022
-.\"    Manual: PostgreSQL 12.11 Documentation
-.\"    Source: PostgreSQL 12.11
+.\"    Manual: PostgreSQL 12.12 Documentation
+.\"    Source: PostgreSQL 12.12
 .\"  Language: English
 .\"
-.TH "SAVEPOINT" "7" "2022" "PostgreSQL 12.11" "PostgreSQL 12.11 Documentation"
+.TH "SAVEPOINT" "7" "2022" "PostgreSQL 12.12" "PostgreSQL 12.12 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -44,7 +44,7 @@ A savepoint is a special mark inside a transaction that allows all commands that
 .PP
 \fIsavepoint_name\fR
 .RS 4
-The name to give to the new savepoint\&.
+The name to give to the new savepoint\&. If savepoints with the same name already exist, they will be inaccessible until newer identically\-named savepoints are released\&.
 .RE
 .SH "NOTES"
 .PP
@@ -95,6 +95,37 @@ COMMIT;
 .\}
 .sp
 The above transaction will insert both 3 and 4\&.
+.PP
+To use a single savepoint name:
+.sp
+.if n \{\
+.RS 4
+.\}
+.nf
+BEGIN;
+    INSERT INTO table1 VALUES (1);
+    SAVEPOINT my_savepoint;
+    INSERT INTO table1 VALUES (2);
+    SAVEPOINT my_savepoint;
+    INSERT INTO table1 VALUES (3);
+
+    \-\- rollback to the second savepoint
+    ROLLBACK TO SAVEPOINT my_savepoint;
+    SELECT * FROM table1;               \-\- shows rows 1 and 2
+
+    \-\- release the second savepoint
+    RELEASE SAVEPOINT my_savepoint;
+
+    \-\- rollback to the first savepoint
+    ROLLBACK TO SAVEPOINT my_savepoint;
+    SELECT * FROM table1;               \-\- shows only row 1
+COMMIT;
+.fi
+.if n \{\
+.RE
+.\}
+.sp
+The above transaction shows row 3 being rolled back first, then row 2\&.
 .SH "COMPATIBILITY"
 .PP
 SQL requires a savepoint to be destroyed automatically when another savepoint with the same name is established\&. In

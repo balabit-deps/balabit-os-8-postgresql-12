@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
 .\"      Date: 2022
-.\"    Manual: PostgreSQL 12.11 Documentation
-.\"    Source: PostgreSQL 12.11
+.\"    Manual: PostgreSQL 12.12 Documentation
+.\"    Source: PostgreSQL 12.12
 .\"  Language: English
 .\"
-.TH "INSERT" "7" "2022" "PostgreSQL 12.11" "PostgreSQL 12.11 Documentation"
+.TH "INSERT" "7" "2022" "PostgreSQL 12.12" "PostgreSQL 12.12 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -75,6 +75,9 @@ Each column not present in the explicit or implicit column list will be filled w
 .PP
 If the expression for any column is not of the correct data type, automatic type conversion will be attempted\&.
 .PP
+\fBINSERT\fR
+into tables that lack unique indexes will not be blocked by concurrent activity\&. Tables with unique indexes might block if concurrent sessions perform actions that lock or modify rows matching the unique index values being inserted; the details are covered in
+Section\ \&61.5\&.
 ON CONFLICT
 can be used to specify an alternative action to raising a unique constraint or exclusion constraint violation error\&. (See
 ON CONFLICT Clause
@@ -171,7 +174,7 @@ A substitute name for
 \fItable_name\fR\&. When an alias is provided, it completely hides the actual name of the table\&. This is particularly useful when
 ON CONFLICT DO UPDATE
 targets a table named
-\fIexcluded\fR, since that will otherwise be taken as the name of the special table representing rows proposed for insertion\&.
+\fIexcluded\fR, since that will otherwise be taken as the name of the special table representing the row proposed for insertion\&.
 .RE
 .PP
 \fIcolumn_name\fR
@@ -320,7 +323,7 @@ and
 WHERE
 clauses in
 ON CONFLICT DO UPDATE
-have access to the existing row using the table\*(Aqs name (or an alias), and to rows proposed for insertion using the special
+have access to the existing row using the table\*(Aqs name (or an alias), and to the row proposed for insertion using the special
 \fIexcluded\fR
 table\&.
 SELECT
