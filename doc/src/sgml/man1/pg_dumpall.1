@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
 .\"      Date: 2022
-.\"    Manual: PostgreSQL 12.11 Documentation
-.\"    Source: PostgreSQL 12.11
+.\"    Manual: PostgreSQL 12.12 Documentation
+.\"    Source: PostgreSQL 12.12
 .\"  Language: English
 .\"
-.TH "PG_DUMPALL" "1" "2022" "PostgreSQL 12.11" "PostgreSQL 12.11 Documentation"
+.TH "PG_DUMPALL" "1" "2022" "PostgreSQL 12.12" "PostgreSQL 12.12 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -203,7 +203,7 @@ This option disables the use of dollar quoting for function bodies, and forces t
 .RS 4
 This option is relevant only when creating a data\-only dump\&. It instructs
 pg_dumpall
-to include commands to temporarily disable triggers on the target tables while the data is reloaded\&. Use this if you have referential integrity checks or other triggers on the tables that you do not want to invoke during data reload\&.
+to include commands to temporarily disable triggers on the target tables while the data is restored\&. Use this if you have referential integrity checks or other triggers on the tables that you do not want to invoke during data restore\&.
 .sp
 Presently, the commands emitted for
 \fB\-\-disable\-triggers\fR
@@ -256,7 +256,7 @@ When dumping data for a table partition, make the
 \fBCOPY\fR
 or
 \fBINSERT\fR
-statements target the root of the partitioning hierarchy that contains it, rather than the partition itself\&. This causes the appropriate partition to be re\-determined for each row when the data is loaded\&. This may be useful when reloading data on a server where rows do not always fall into the same partitions as they did on the original server\&. That could happen, for example, if the partitioning column is of type text and the two systems have different definitions of the collation used to sort the partitioning column\&.
+statements target the root of the partitioning hierarchy that contains it, rather than the partition itself\&. This causes the appropriate partition to be re\-determined for each row when the data is loaded\&. This may be useful when restoring data on a server where rows do not always fall into the same partitions as they did on the original server\&. That could happen, for example, if the partitioning column is of type text and the two systems have different definitions of the collation used to sort the partitioning column\&.
 .RE
 .PP
 \fB\-\-lock\-wait\-timeout=\fR\fB\fItimeout\fR\fR
@@ -347,7 +347,7 @@ Dump data as
 commands (rather than
 \fBCOPY\fR)\&. Controls the maximum number of rows per
 \fBINSERT\fR
-command\&. The value specified must be a number greater than zero\&. Any error during reloading will cause only rows that are part of the problematic
+command\&. The value specified must be a number greater than zero\&. Any error during restoring will cause only rows that are part of the problematic
 \fBINSERT\fR
 to be lost, rather than the entire table contents\&.
 .RE
@@ -543,7 +543,7 @@ $ \fBpg_dumpall > db\&.out\fR
 .RE
 .\}
 .PP
-To reload database(s) from this file, you can use:
+To restore database(s) from this file, you can use:
 .sp
 .if n \{\
 .RS 4

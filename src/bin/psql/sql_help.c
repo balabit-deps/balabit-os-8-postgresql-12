@@ -2214,7 +2214,8 @@ sql_help_CREATE_FOREIGN_TABLE(PQExpBuffer buf)
 					  "  { %s [ WITH OPTIONS ] [ %s [ ... ] ]\n"
 					  "    | %s }\n"
 					  "    [, ... ]\n"
-					  ") ] %s\n"
+					  ") ]\n"
+					  "{ FOR VALUES %s | DEFAULT }\n"
 					  "  SERVER %s\n"
 					  "[ OPTIONS ( %s '%s' [, ... ] ) ]\n"
 					  "\n"
@@ -2230,7 +2231,14 @@ sql_help_CREATE_FOREIGN_TABLE(PQExpBuffer buf)
 					  "%s\n"
 					  "\n"
 					  "[ CONSTRAINT %s ]\n"
-					  "CHECK ( %s ) [ NO INHERIT ]",
+					  "CHECK ( %s ) [ NO INHERIT ]\n"
+					  "\n"
+					  "%s\n"
+					  "\n"
+					  "IN ( %s [, ...] ) |\n"
+					  "FROM ( { %s | MINVALUE | MAXVALUE } [, ...] )\n"
+					  "  TO ( { %s | MINVALUE | MAXVALUE } [, ...] ) |\n"
+					  "WITH ( MODULUS %s, REMAINDER %s )",
 					  _("table_name"),
 					  _("column_name"),
 					  _("data_type"),
@@ -2259,7 +2267,13 @@ sql_help_CREATE_FOREIGN_TABLE(PQExpBuffer buf)
 					  _("generation_expr"),
 					  _("and table_constraint is:"),
 					  _("constraint_name"),
-					  _("expression"));
+					  _("expression"),
+					  _("and partition_bound_spec is:"),
+					  _("partition_bound_expr"),
+					  _("partition_bound_expr"),
+					  _("partition_bound_expr"),
+					  _("numeric_literal"),
+					  _("numeric_literal"));
 }
 
 static void
@@ -5166,7 +5180,7 @@ const struct _helpStruct QL_HELP[] = {
       N_("define a new foreign table"),
       "sql-createforeigntable",
       sql_help_CREATE_FOREIGN_TABLE,
-      30 },
+      38 },
 
     { "CREATE FUNCTION",
       N_("define a new function"),

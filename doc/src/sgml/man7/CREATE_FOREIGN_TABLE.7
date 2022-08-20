@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
 .\"      Date: 2022
-.\"    Manual: PostgreSQL 12.11 Documentation
-.\"    Source: PostgreSQL 12.11
+.\"    Manual: PostgreSQL 12.12 Documentation
+.\"    Source: PostgreSQL 12.12
 .\"  Language: English
 .\"
-.TH "CREATE FOREIGN TABLE" "7" "2022" "PostgreSQL 12.11" "PostgreSQL 12.11 Documentation"
+.TH "CREATE FOREIGN TABLE" "7" "2022" "PostgreSQL 12.12" "PostgreSQL 12.12 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -46,7 +46,8 @@ CREATE FOREIGN TABLE [ IF NOT EXISTS ] \fItable_name\fR
   { \fIcolumn_name\fR [ WITH OPTIONS ] [ \fIcolumn_constraint\fR [ \&.\&.\&. ] ]
     | \fItable_constraint\fR }
     [, \&.\&.\&. ]
-) ] \fIpartition_bound_spec\fR
+) ]
+{ FOR VALUES \fIpartition_bound_spec\fR | DEFAULT }
   SERVER \fIserver_name\fR
 [ OPTIONS ( \fIoption\fR \*(Aq\fIvalue\fR\*(Aq [, \&.\&.\&. ] ) ]
 
@@ -63,6 +64,13 @@ and \fItable_constraint\fR is:
 
 [ CONSTRAINT \fIconstraint_name\fR ]
 CHECK ( \fIexpression\fR ) [ NO INHERIT ]
+
+and \fIpartition_bound_spec\fR is:
+
+IN ( \fIpartition_bound_expr\fR [, \&.\&.\&.] ) |
+FROM ( { \fIpartition_bound_expr\fR | MINVALUE | MAXVALUE } [, \&.\&.\&.] )
+  TO ( { \fIpartition_bound_expr\fR | MINVALUE | MAXVALUE } [, \&.\&.\&.] ) |
+WITH ( MODULUS \fInumeric_literal\fR, REMAINDER \fInumeric_literal\fR )
 .fi
 .SH "DESCRIPTION"
 .PP
@@ -126,7 +134,7 @@ CREATE TABLE (\fBCREATE_TABLE\fR(7))
 for more details\&.
 .RE
 .PP
-PARTITION OF \fIparent_table\fR FOR VALUES \fIpartition_bound_spec\fR
+PARTITION OF \fIparent_table\fR { FOR VALUES \fIpartition_bound_spec\fR | DEFAULT }
 .RS 4
 This form can be used to create the foreign table as partition of the given parent table with specified partition bound values\&. See the similar form of
 CREATE TABLE (\fBCREATE_TABLE\fR(7))

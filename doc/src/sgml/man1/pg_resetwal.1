@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
 .\"      Date: 2022
-.\"    Manual: PostgreSQL 12.11 Documentation
-.\"    Source: PostgreSQL 12.11
+.\"    Manual: PostgreSQL 12.12 Documentation
+.\"    Source: PostgreSQL 12.12
 .\"  Language: English
 .\"
-.TH "PG_RESETWAL" "1" "2022" "PostgreSQL 12.11" "PostgreSQL 12.11 Documentation"
+.TH "PG_RESETWAL" "1" "2022" "PostgreSQL 12.12" "PostgreSQL 12.12 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -40,7 +40,7 @@ pg_control
 file\&. This function is sometimes needed if these files have become corrupted\&. It should be used only as a last resort, when the server will not start due to such corruption\&.
 .PP
 After running this command, it should be possible to start the server, but bear in mind that the database might contain inconsistent data due to partially\-committed transactions\&. You should immediately dump your data, run
-\fBinitdb\fR, and reload\&. After reload, check for inconsistencies and repair as needed\&.
+\fBinitdb\fR, and restore\&. After restore, check for inconsistencies and repair as needed\&.
 .PP
 This utility can only be run by the user who installed the server, because it requires read/write access to the data directory\&. For safety reasons, you must specify the data directory on the command line\&.
 \fBpg_resetwal\fR
@@ -54,7 +54,7 @@ pg_control, you can force it to proceed anyway by specifying the
 \fB\-f\fR
 (force) option\&. In this case plausible values will be substituted for the missing data\&. Most of the fields can be expected to match, but manual assistance might be needed for the next OID, next transaction ID and epoch, next multitransaction ID and offset, and WAL starting location fields\&. These fields can be set using the options discussed below\&. If you are not able to determine correct values for all these fields,
 \fB\-f\fR
-can still be used, but the recovered database must be treated with even more suspicion than usual: an immediate dump and reload is imperative\&.
+can still be used, but the recovered database must be treated with even more suspicion than usual: an immediate dump and restore is imperative\&.
 \fIDo not\fR
 execute any data\-modifying operations in the database before you dump, as any such action is likely to make the corruption worse\&.
 .SH "OPTIONS"

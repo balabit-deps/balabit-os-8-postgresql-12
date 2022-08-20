@@ -1,3 +1,24 @@
+postgresql-12 (12.12-0ubuntu0.20.04.1) focal-security; urgency=medium
+
+  * New upstream version (LP: #1984012).
+
+    + A dump/restore is not required for those running 12.X.
+
+    + Also, if you are upgrading from a version earlier than 12.10, see
+      those release notes as well please.
+
+    + Do not let extension scripts replace objects not already belonging
+      to the extension (Tom Lane).
+      (CVE-2022-2625)
+
+    + Fix permissions checks in CREATE INDEX (Nathan Bossart,
+      Noah Misch).
+
+    + Details about these and many further changes can be found at:
+      https://www.postgresql.org/docs/12/release-12-12.html
+
+ -- Athos Ribeiro <athos.ribeiro@canonical.com>  Thu, 11 Aug 2022 16:54:40 -0300
+
 postgresql-12 (12.11-0ubuntu0.20.04.1bb1) focal; urgency=medium
 
   * Balabit patched version
