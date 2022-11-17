@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
 .\"      Date: 2022
-.\"    Manual: PostgreSQL 12.12 Documentation
-.\"    Source: PostgreSQL 12.12
+.\"    Manual: PostgreSQL 12.13 Documentation
+.\"    Source: PostgreSQL 12.13
 .\"  Language: English
 .\"
-.TH "CREATE STATISTICS" "7" "2022" "PostgreSQL 12.12" "PostgreSQL 12.12 Documentation"
+.TH "CREATE STATISTICS" "7" "2022" "PostgreSQL 12.13" "PostgreSQL 12.13 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -75,7 +75,9 @@ The name of a table column to be covered by the computed statistics\&. At least 
 .PP
 \fItable_name\fR
 .RS 4
-The name (optionally schema\-qualified) of the table containing the column(s) the statistics are computed on\&.
+The name (optionally schema\-qualified) of the table containing the column(s) the statistics are computed on; see
+\fBANALYZE\fR(7)
+for an explanation of the handling of inheritance and partitions\&.
 .RE
 .SH "NOTES"
 .PP

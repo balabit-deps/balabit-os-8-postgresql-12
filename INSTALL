@@ -478,8 +478,8 @@ Installation Procedure
         UUIDs), using the specified UUID library. "LIBRARY" must be one
         of:
 
-        -   "bsd" to use the UUID functions found in FreeBSD, NetBSD,
-            and some other BSD-derived systems
+        -   "bsd" to use the UUID functions found in FreeBSD and some
+            other BSD-derived systems
 
         -   "e2fs" to use the UUID library created by the e2fsprogs
             project; this library is present in most Linux systems and
