@@ -2107,7 +2107,7 @@ sql_help_CREATE_DATABASE(PQExpBuffer buf)
 {
 	appendPQExpBuffer(buf,
 					  "CREATE DATABASE %s\n"
-					  "    [ [ WITH ] [ OWNER [=] %s ]\n"
+					  "    [ WITH ] [ OWNER [=] %s ]\n"
 					  "           [ TEMPLATE [=] %s ]\n"
 					  "           [ ENCODING [=] %s ]\n"
 					  "           [ LC_COLLATE [=] %s ]\n"
@@ -2115,7 +2115,7 @@ sql_help_CREATE_DATABASE(PQExpBuffer buf)
 					  "           [ TABLESPACE [=] %s ]\n"
 					  "           [ ALLOW_CONNECTIONS [=] %s ]\n"
 					  "           [ CONNECTION LIMIT [=] %s ]\n"
-					  "           [ IS_TEMPLATE [=] %s ] ]",
+					  "           [ IS_TEMPLATE [=] %s ]",
 					  _("name"),
 					  _("user_name"),
 					  _("template"),
@@ -3628,9 +3628,10 @@ static void
 sql_help_FETCH(PQExpBuffer buf)
 {
 	appendPQExpBuffer(buf,
-					  "FETCH [ %s [ FROM | IN ] ] %s\n"
+					  "FETCH [ %s ] [ FROM | IN ] %s\n"
 					  "\n"
-					  "%s\n"
+					  "<phrase>where %s can\n"
+					  "be one of:</phrase>\n"
 					  "\n"
 					  "    NEXT\n"
 					  "    PRIOR\n"
@@ -3648,7 +3649,7 @@ sql_help_FETCH(PQExpBuffer buf)
 					  "    BACKWARD ALL",
 					  _("direction"),
 					  _("cursor_name"),
-					  _("where direction can be empty or one of:"),
+					  _("direction"),
 					  _("count"),
 					  _("count"),
 					  _("count"),
@@ -3872,9 +3873,10 @@ static void
 sql_help_MOVE(PQExpBuffer buf)
 {
 	appendPQExpBuffer(buf,
-					  "MOVE [ %s [ FROM | IN ] ] %s\n"
+					  "MOVE [ %s ] [ FROM | IN ] %s\n"
 					  "\n"
-					  "%s\n"
+					  "<phrase>where %s can\n"
+					  "be one of:</phrase>\n"
 					  "\n"
 					  "    NEXT\n"
 					  "    PRIOR\n"
@@ -3892,7 +3894,7 @@ sql_help_MOVE(PQExpBuffer buf)
 					  "    BACKWARD ALL",
 					  _("direction"),
 					  _("cursor_name"),
-					  _("where direction can be empty or one of:"),
+					  _("direction"),
 					  _("count"),
 					  _("count"),
 					  _("count"),
@@ -4253,7 +4255,9 @@ sql_help_SELECT(PQExpBuffer buf)
 					  "    [ LATERAL ] %s ( [ %s [, ...] ] ) AS ( %s [, ...] )\n"
 					  "    [ LATERAL ] ROWS FROM( %s ( [ %s [, ...] ] ) [ AS ( %s [, ...] ) ] [, ...] )\n"
 					  "                [ WITH ORDINALITY ] [ [ AS ] %s [ ( %s [, ...] ) ] ]\n"
-					  "    %s [ NATURAL ] %s %s [ ON %s | USING ( %s [, ...] ) ]\n"
+					  "    %s %s %s { ON %s | USING ( %s [, ...] ) }\n"
+					  "    %s NATURAL %s %s\n"
+					  "    %s CROSS JOIN %s\n"
 					  "\n"
 					  "%s\n"
 					  "\n"
@@ -4320,6 +4324,11 @@ sql_help_SELECT(PQExpBuffer buf)
 					  _("from_item"),
 					  _("join_condition"),
 					  _("join_column"),
+					  _("from_item"),
+					  _("join_type"),
+					  _("from_item"),
+					  _("from_item"),
+					  _("from_item"),
 					  _("and grouping_element can be one of:"),
 					  _("expression"),
 					  _("expression"),
@@ -4383,11 +4392,12 @@ sql_help_SET(PQExpBuffer buf)
 {
 	appendPQExpBuffer(buf,
 					  "SET [ SESSION | LOCAL ] %s { TO | = } { %s | '%s' | DEFAULT }\n"
-					  "SET [ SESSION | LOCAL ] TIME ZONE { %s | LOCAL | DEFAULT }",
+					  "SET [ SESSION | LOCAL ] TIME ZONE { %s | '%s' | LOCAL | DEFAULT }",
 					  _("configuration_parameter"),
 					  _("value"),
 					  _("value"),
-					  _("timezone"));
+					  _("value"),
+					  _("value"));
 }
 
 static void
@@ -4492,7 +4502,9 @@ sql_help_TABLE(PQExpBuffer buf)
 					  "    [ LATERAL ] %s ( [ %s [, ...] ] ) AS ( %s [, ...] )\n"
 					  "    [ LATERAL ] ROWS FROM( %s ( [ %s [, ...] ] ) [ AS ( %s [, ...] ) ] [, ...] )\n"
 					  "                [ WITH ORDINALITY ] [ [ AS ] %s [ ( %s [, ...] ) ] ]\n"
-					  "    %s [ NATURAL ] %s %s [ ON %s | USING ( %s [, ...] ) ]\n"
+					  "    %s %s %s { ON %s | USING ( %s [, ...] ) }\n"
+					  "    %s NATURAL %s %s\n"
+					  "    %s CROSS JOIN %s\n"
 					  "\n"
 					  "%s\n"
 					  "\n"
@@ -4559,6 +4571,11 @@ sql_help_TABLE(PQExpBuffer buf)
 					  _("from_item"),
 					  _("join_condition"),
 					  _("join_column"),
+					  _("from_item"),
+					  _("join_type"),
+					  _("from_item"),
+					  _("from_item"),
+					  _("from_item"),
 					  _("and grouping_element can be one of:"),
 					  _("expression"),
 					  _("expression"),
@@ -4710,7 +4727,9 @@ sql_help_WITH(PQExpBuffer buf)
 					  "    [ LATERAL ] %s ( [ %s [, ...] ] ) AS ( %s [, ...] )\n"
 					  "    [ LATERAL ] ROWS FROM( %s ( [ %s [, ...] ] ) [ AS ( %s [, ...] ) ] [, ...] )\n"
 					  "                [ WITH ORDINALITY ] [ [ AS ] %s [ ( %s [, ...] ) ] ]\n"
-					  "    %s [ NATURAL ] %s %s [ ON %s | USING ( %s [, ...] ) ]\n"
+					  "    %s %s %s { ON %s | USING ( %s [, ...] ) }\n"
+					  "    %s NATURAL %s %s\n"
+					  "    %s CROSS JOIN %s\n"
 					  "\n"
 					  "%s\n"
 					  "\n"
@@ -4777,6 +4796,11 @@ sql_help_WITH(PQExpBuffer buf)
 					  _("from_item"),
 					  _("join_condition"),
 					  _("join_column"),
+					  _("from_item"),
+					  _("join_type"),
+					  _("from_item"),
+					  _("from_item"),
+					  _("from_item"),
 					  _("and grouping_element can be one of:"),
 					  _("expression"),
 					  _("expression"),
@@ -5678,7 +5702,7 @@ const struct _helpStruct QL_HELP[] = {
       N_("retrieve rows from a query using a cursor"),
       "sql-fetch",
       sql_help_FETCH,
-      17 },
+      18 },
 
     { "GRANT",
       N_("define access privileges"),
@@ -5720,7 +5744,7 @@ const struct _helpStruct QL_HELP[] = {
       N_("position a cursor"),
       "sql-move",
       sql_help_MOVE,
-      17 },
+      18 },
 
     { "NOTIFY",
       N_("generate a notification"),
@@ -5810,7 +5834,7 @@ const struct _helpStruct QL_HELP[] = {
       N_("retrieve rows from a table or view"),
       "sql-select",
       sql_help_SELECT,
-      42 },
+      44 },
 
     { "SELECT INTO",
       N_("define a new table from the results of a query"),
@@ -5864,7 +5888,7 @@ const struct _helpStruct QL_HELP[] = {
       N_("retrieve rows from a table or view"),
       "sql-select",
       sql_help_TABLE,
-      42 },
+      44 },
 
     { "TRUNCATE",
       N_("empty a table or set of tables"),
@@ -5900,7 +5924,7 @@ const struct _helpStruct QL_HELP[] = {
       N_("retrieve rows from a table or view"),
       "sql-select",
       sql_help_WITH,
-      42 },
+      44 },
 
 
     { NULL, NULL, NULL }    /* End of list marker */

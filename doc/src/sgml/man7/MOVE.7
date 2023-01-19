@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
 .\"      Date: 2022
-.\"    Manual: PostgreSQL 12.12 Documentation
-.\"    Source: PostgreSQL 12.12
+.\"    Manual: PostgreSQL 12.13 Documentation
+.\"    Source: PostgreSQL 12.13
 .\"  Language: English
 .\"
-.TH "MOVE" "7" "2022" "PostgreSQL 12.12" "PostgreSQL 12.12 Documentation"
+.TH "MOVE" "7" "2022" "PostgreSQL 12.13" "PostgreSQL 12.13 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -32,9 +32,10 @@ MOVE \- position a cursor
 .SH "SYNOPSIS"
 .sp
 .nf
-MOVE [ \fIdirection\fR [ FROM | IN ] ] \fIcursor_name\fR
+MOVE [ \fIdirection\fR ] [ FROM | IN ] \fIcursor_name\fR
 
-where \fIdirection\fR can be empty or one of:
+where \fIdirection\fR can
+be one of:
 
     NEXT
     PRIOR
