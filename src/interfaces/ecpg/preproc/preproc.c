@@ -1071,7 +1071,7 @@ enum yysymbol_kind_t
   YYSYMBOL_REASSIGN = 388,                 /* REASSIGN  */
   YYSYMBOL_RECHECK = 389,                  /* RECHECK  */
   YYSYMBOL_RECURSIVE = 390,                /* RECURSIVE  */
-  YYSYMBOL_REF = 391,                      /* REF  */
+  YYSYMBOL_REF_P = 391,                    /* REF_P  */
   YYSYMBOL_REFERENCES = 392,               /* REFERENCES  */
   YYSYMBOL_REFERENCING = 393,              /* REFERENCING  */
   YYSYMBOL_REFRESH = 394,                  /* REFRESH  */
@@ -2766,47 +2766,47 @@ static const yytype_int16 yyrline[] =
    15315, 15318, 15322, 15335, 15336, 15338, 15340, 15344, 15358, 15365,
    15422, 15431, 15433, 15434, 15437, 15439, 15440, 15443, 15444, 15445,
    15446, 15447, 15454, 15453, 15463, 15465, 15467, 15468, 15471, 15472,
-   15473, 15474, 15477, 15478, 15482, 15481, 15498, 15496, 15512, 15511,
-   15525, 15531, 15532, 15535, 15537, 15538, 15541, 15542, 15543, 15544,
-   15547, 15548, 15551, 15559, 15576, 15584, 15607, 15721, 15755, 15757,
-   15759, 15763, 15767, 15766, 15817, 15819, 15818, 15833, 15839, 15846,
-   15851, 15857, 15858, 15861, 15862, 15863, 15864, 15865, 15866, 15867,
-   15875, 15883, 15886, 15887, 15888, 15889, 15890, 15891, 15899, 15907,
-   15908, 15909, 15912, 15913, 15916, 15918, 15927, 16027, 16028, 16035,
-   16036, 16037, 16043, 16052, 16055, 16056, 16057, 16058, 16061, 16062,
-   16063, 16066, 16068, 16076, 16077, 16083, 16091, 16092, 16095, 16096,
-   16099, 16104, 16111, 16116, 16123, 16130, 16130, 16132, 16139, 16140,
-   16143, 16144, 16145, 16146, 16147, 16148, 16149, 16150, 16151, 16157,
-   16164, 16176, 16182, 16189, 16197, 16198, 16210, 16221, 16232, 16236,
-   16237, 16240, 16245, 16249, 16250, 16253, 16259, 16267, 16273, 16280,
-   16284, 16285, 16288, 16291, 16295, 16296, 16299, 16305, 16314, 16319,
-   16329, 16339, 16351, 16352, 16353, 16354, 16355, 16356, 16357, 16358,
-   16359, 16360, 16361, 16362, 16363, 16364, 16365, 16372, 16373, 16376,
-   16377, 16384, 16385, 16386, 16393, 16392, 16409, 16410, 16417, 16416,
-   16487, 16493, 16499, 16507, 16513, 16519, 16525, 16531, 16537, 16543,
-   16549, 16555, 16561, 16572, 16573, 16576, 16577, 16578, 16579, 16580,
-   16581, 16582, 16583, 16584, 16585, 16586, 16587, 16588, 16589, 16590,
-   16591, 16592, 16593, 16594, 16595, 16596, 16597, 16600, 16601, 16602,
-   16603, 16604, 16605, 16609, 16610, 16611, 16612, 16613, 16614, 16615,
-   16618, 16621, 16622, 16623, 16624, 16625, 16626, 16627, 16628, 16641,
-   16642, 16643, 16644, 16645, 16646, 16647, 16652, 16653, 16654, 16655,
-   16656, 16657, 16663, 16664, 16665, 16666, 16667, 16668, 16669, 16670,
-   16671, 16672, 16673, 16676, 16677, 16678, 16679, 16680, 16683, 16684,
-   16685, 16686, 16689, 16690, 16691, 16692, 16693, 16694, 16695, 16712,
-   16713, 16714, 16717, 16718, 16719, 16720, 16721, 16722, 16726, 16726,
-   16729, 16735, 16736, 16739, 16741, 16746, 16756, 16767, 16774, 16775,
-   16776, 16779, 16812, 16814, 16816, 16819, 16829, 16839, 16849, 16850,
-   16853, 16855, 16856, 16857, 16860, 16862, 16870, 16871, 16872, 16876,
-   16877, 16881, 16882, 16885, 16886, 16889, 16890, 16891, 16892, 16893,
-   16896, 16897, 16898, 16899, 16900, 16901, 16902, 16903, 16904, 16905,
-   16906, 16907, 16908, 16909, 16910, 16911, 16912, 16913, 16914, 16915,
-   16916, 16917, 16918, 16919, 16920, 16921, 16922, 16923, 16924, 16925,
-   16926, 16927, 16928, 16929, 16930, 16931, 16932, 16933, 16934, 16935,
-   16936, 16937, 16938, 16939, 16940, 16941, 16942, 16943, 16944, 16945,
-   16946, 16947, 16948, 16949, 16950, 16951, 16954, 16955, 16956, 16957,
-   16960, 16961, 16962, 16963, 16964, 16965, 16966, 16967, 16968, 16969,
-   16976, 16977, 16978, 16979, 16982, 16983, 16986, 16987, 16990, 16991,
-   17002, 17003
+   15473, 15474, 15477, 15478, 15482, 15481, 15498, 15497, 15513, 15512,
+   15527, 15533, 15534, 15537, 15539, 15540, 15543, 15544, 15545, 15546,
+   15549, 15550, 15553, 15561, 15578, 15586, 15609, 15723, 15757, 15759,
+   15761, 15765, 15769, 15768, 15819, 15821, 15820, 15835, 15841, 15848,
+   15853, 15859, 15860, 15863, 15864, 15865, 15866, 15867, 15868, 15869,
+   15877, 15885, 15888, 15889, 15890, 15891, 15892, 15893, 15901, 15909,
+   15910, 15911, 15914, 15915, 15918, 15920, 15929, 16029, 16030, 16037,
+   16038, 16039, 16045, 16054, 16057, 16058, 16059, 16060, 16063, 16064,
+   16065, 16068, 16070, 16078, 16079, 16085, 16093, 16094, 16097, 16098,
+   16101, 16106, 16113, 16118, 16125, 16132, 16132, 16134, 16141, 16142,
+   16145, 16146, 16147, 16148, 16149, 16150, 16151, 16152, 16153, 16159,
+   16166, 16178, 16184, 16191, 16199, 16200, 16212, 16223, 16234, 16238,
+   16239, 16242, 16247, 16251, 16252, 16255, 16261, 16269, 16275, 16282,
+   16286, 16287, 16290, 16293, 16297, 16298, 16301, 16307, 16316, 16321,
+   16331, 16341, 16353, 16354, 16355, 16356, 16357, 16358, 16359, 16360,
+   16361, 16362, 16363, 16364, 16365, 16366, 16367, 16374, 16375, 16378,
+   16379, 16386, 16387, 16388, 16395, 16394, 16411, 16412, 16419, 16418,
+   16489, 16495, 16501, 16509, 16515, 16521, 16527, 16533, 16539, 16545,
+   16551, 16557, 16563, 16574, 16575, 16578, 16579, 16580, 16581, 16582,
+   16583, 16584, 16585, 16586, 16587, 16588, 16589, 16590, 16591, 16592,
+   16593, 16594, 16595, 16596, 16597, 16598, 16599, 16602, 16603, 16604,
+   16605, 16606, 16607, 16611, 16612, 16613, 16614, 16615, 16616, 16617,
+   16620, 16623, 16624, 16625, 16626, 16627, 16628, 16629, 16630, 16643,
+   16644, 16645, 16646, 16647, 16648, 16649, 16654, 16655, 16656, 16657,
+   16658, 16659, 16665, 16666, 16667, 16668, 16669, 16670, 16671, 16672,
+   16673, 16674, 16675, 16678, 16679, 16680, 16681, 16682, 16685, 16686,
+   16687, 16688, 16691, 16692, 16693, 16694, 16695, 16696, 16697, 16714,
+   16715, 16716, 16719, 16720, 16721, 16722, 16723, 16724, 16728, 16728,
+   16731, 16737, 16738, 16741, 16743, 16748, 16758, 16769, 16776, 16777,
+   16778, 16781, 16814, 16816, 16818, 16821, 16831, 16841, 16851, 16852,
+   16855, 16857, 16858, 16859, 16862, 16864, 16872, 16873, 16874, 16878,
+   16879, 16883, 16884, 16887, 16888, 16891, 16892, 16893, 16894, 16895,
+   16898, 16899, 16900, 16901, 16902, 16903, 16904, 16905, 16906, 16907,
+   16908, 16909, 16910, 16911, 16912, 16913, 16914, 16915, 16916, 16917,
+   16918, 16919, 16920, 16921, 16922, 16923, 16924, 16925, 16926, 16927,
+   16928, 16929, 16930, 16931, 16932, 16933, 16934, 16935, 16936, 16937,
+   16938, 16939, 16940, 16941, 16942, 16943, 16944, 16945, 16946, 16947,
+   16948, 16949, 16950, 16951, 16952, 16953, 16956, 16957, 16958, 16959,
+   16962, 16963, 16964, 16965, 16966, 16967, 16968, 16969, 16970, 16971,
+   16978, 16979, 16980, 16981, 16984, 16985, 16988, 16989, 16992, 16993,
+   17004, 17005
 };
 #endif
 
@@ -2888,7 +2888,7 @@ static const char *const yytname[] =
   "PRESERVE", "PREPARE", "PREPARED", "PRIMARY", "PRIOR", "PRIVILEGES",
   "PROCEDURAL", "PROCEDURE", "PROCEDURES", "PROGRAM", "PUBLICATION",
   "QUOTE", "RANGE", "READ", "REAL", "REASSIGN", "RECHECK", "RECURSIVE",
-  "REF", "REFERENCES", "REFERENCING", "REFRESH", "REINDEX", "RELATIVE_P",
+  "REF_P", "REFERENCES", "REFERENCING", "REFRESH", "REINDEX", "RELATIVE_P",
   "RELEASE", "RENAME", "REPEATABLE", "REPLACE", "REPLICA", "RESET",
   "RESTART", "RESTRICT", "RETURNING", "RETURNS", "REVOKE", "RIGHT", "ROLE",
   "ROLLBACK", "ROLLUP", "ROUTINE", "ROUTINES", "ROW", "ROWS", "RULE",
@@ -51880,7 +51880,7 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 #line 51881 "preproc.c"
     break;
 
-  case 2111: /* xml_passing_mech: BY REF  */
+  case 2111: /* xml_passing_mech: BY REF_P  */
 #line 12354 "preproc.y"
  { 
  (yyval.str) = mm_strdup("by ref");
@@ -54815,7 +54815,7 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 #line 54816 "preproc.c"
     break;
 
-  case 2481: /* unreserved_keyword: REF  */
+  case 2481: /* unreserved_keyword: REF_P  */
 #line 14086 "preproc.y"
  { 
  (yyval.str) = mm_strdup("ref");
@@ -57452,6 +57452,7 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
   case 2806: /* $@5: %empty  */
 #line 15498 "preproc.y"
                 {
+			actual_type[struct_level].type_storage = (yyvsp[-1].str);
 			actual_type[struct_level].type_enum = (yyvsp[0].type).type_enum;
 			actual_type[struct_level].type_str = (yyvsp[0].type).type_str;
 			actual_type[struct_level].type_dimension = (yyvsp[0].type).type_dimension;
@@ -57460,20 +57461,21 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
 			actual_startline[struct_level] = hashline_number();
 		}
-#line 57464 "preproc.c"
+#line 57465 "preproc.c"
     break;
 
   case 2807: /* var_declaration: storage_declaration var_type $@5 variable_list ';'  */
-#line 15508 "preproc.y"
+#line 15509 "preproc.y"
                 {
 			(yyval.str) = cat_str(5, actual_startline[struct_level], (yyvsp[-4].str), (yyvsp[-3].type).type_str, (yyvsp[-1].str), mm_strdup(";\n"));
 		}
-#line 57472 "preproc.c"
+#line 57473 "preproc.c"
     break;
 
   case 2808: /* $@6: %empty  */
-#line 15512 "preproc.y"
+#line 15513 "preproc.y"
                 {
+			actual_type[struct_level].type_storage = EMPTY;
 			actual_type[struct_level].type_enum = (yyvsp[0].type).type_enum;
 			actual_type[struct_level].type_str = (yyvsp[0].type).type_str;
 			actual_type[struct_level].type_dimension = (yyvsp[0].type).type_dimension;
@@ -57482,93 +57484,93 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
 			actual_startline[struct_level] = hashline_number();
 		}
-#line 57486 "preproc.c"
+#line 57488 "preproc.c"
     break;
 
   case 2809: /* var_declaration: var_type $@6 variable_list ';'  */
-#line 15522 "preproc.y"
+#line 15524 "preproc.y"
                 {
 			(yyval.str) = cat_str(4, actual_startline[struct_level], (yyvsp[-3].type).type_str, (yyvsp[-1].str), mm_strdup(";\n"));
 		}
-#line 57494 "preproc.c"
+#line 57496 "preproc.c"
     break;
 
   case 2810: /* var_declaration: struct_union_type_with_symbol ';'  */
-#line 15526 "preproc.y"
+#line 15528 "preproc.y"
                 {
 			(yyval.str) = cat2_str((yyvsp[-1].str), mm_strdup(";"));
 		}
-#line 57502 "preproc.c"
+#line 57504 "preproc.c"
     break;
 
   case 2811: /* opt_bit_field: ':' Iconst  */
-#line 15531 "preproc.y"
+#line 15533 "preproc.y"
                                 { (yyval.str) =cat2_str(mm_strdup(":"), (yyvsp[0].str)); }
-#line 57508 "preproc.c"
+#line 57510 "preproc.c"
     break;
 
   case 2812: /* opt_bit_field: %empty  */
-#line 15532 "preproc.y"
+#line 15534 "preproc.y"
                                 { (yyval.str) = EMPTY; }
-#line 57514 "preproc.c"
+#line 57516 "preproc.c"
     break;
 
   case 2813: /* storage_declaration: storage_clause storage_modifier  */
-#line 15536 "preproc.y"
+#line 15538 "preproc.y"
                         {(yyval.str) = cat2_str ((yyvsp[-1].str), (yyvsp[0].str)); }
-#line 57520 "preproc.c"
+#line 57522 "preproc.c"
     break;
 
   case 2814: /* storage_declaration: storage_clause  */
-#line 15537 "preproc.y"
+#line 15539 "preproc.y"
                                                 {(yyval.str) = (yyvsp[0].str); }
-#line 57526 "preproc.c"
+#line 57528 "preproc.c"
     break;
 
   case 2815: /* storage_declaration: storage_modifier  */
-#line 15538 "preproc.y"
+#line 15540 "preproc.y"
                                                 {(yyval.str) = (yyvsp[0].str); }
-#line 57532 "preproc.c"
+#line 57534 "preproc.c"
     break;
 
   case 2816: /* storage_clause: S_EXTERN  */
-#line 15541 "preproc.y"
+#line 15543 "preproc.y"
                                 { (yyval.str) = mm_strdup("extern"); }
-#line 57538 "preproc.c"
+#line 57540 "preproc.c"
     break;
 
   case 2817: /* storage_clause: S_STATIC  */
-#line 15542 "preproc.y"
+#line 15544 "preproc.y"
                                                 { (yyval.str) = mm_strdup("static"); }
-#line 57544 "preproc.c"
+#line 57546 "preproc.c"
     break;
 
   case 2818: /* storage_clause: S_REGISTER  */
-#line 15543 "preproc.y"
+#line 15545 "preproc.y"
                                         { (yyval.str) = mm_strdup("register"); }
-#line 57550 "preproc.c"
+#line 57552 "preproc.c"
     break;
 
   case 2819: /* storage_clause: S_AUTO  */
-#line 15544 "preproc.y"
+#line 15546 "preproc.y"
                                                 { (yyval.str) = mm_strdup("auto"); }
-#line 57556 "preproc.c"
+#line 57558 "preproc.c"
     break;
 
   case 2820: /* storage_modifier: S_CONST  */
-#line 15547 "preproc.y"
+#line 15549 "preproc.y"
                                 { (yyval.str) = mm_strdup("const"); }
-#line 57562 "preproc.c"
+#line 57564 "preproc.c"
     break;
 
   case 2821: /* storage_modifier: S_VOLATILE  */
-#line 15548 "preproc.y"
+#line 15550 "preproc.y"
                                         { (yyval.str) = mm_strdup("volatile"); }
-#line 57568 "preproc.c"
+#line 57570 "preproc.c"
     break;
 
   case 2822: /* var_type: simple_type  */
-#line 15552 "preproc.y"
+#line 15554 "preproc.y"
                 {
 			(yyval.type).type_enum = (yyvsp[0].type_enum);
 			(yyval.type).type_str = mm_strdup(ecpg_type_name((yyvsp[0].type_enum)));
@@ -57576,11 +57578,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			(yyval.type).type_index = mm_strdup("-1");
 			(yyval.type).type_sizeof = NULL;
 		}
-#line 57580 "preproc.c"
+#line 57582 "preproc.c"
     break;
 
   case 2823: /* var_type: struct_union_type  */
-#line 15560 "preproc.y"
+#line 15562 "preproc.y"
                 {
 			(yyval.type).type_str = (yyvsp[0].str);
 			(yyval.type).type_dimension = mm_strdup("-1");
@@ -57597,11 +57599,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 				(yyval.type).type_sizeof = NULL;
 			}
 		}
-#line 57601 "preproc.c"
+#line 57603 "preproc.c"
     break;
 
   case 2824: /* var_type: enum_type  */
-#line 15577 "preproc.y"
+#line 15579 "preproc.y"
                 {
 			(yyval.type).type_str = (yyvsp[0].str);
 			(yyval.type).type_enum = ECPGt_int;
@@ -57609,11 +57611,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			(yyval.type).type_index = mm_strdup("-1");
 			(yyval.type).type_sizeof = NULL;
 		}
-#line 57613 "preproc.c"
+#line 57615 "preproc.c"
     break;
 
   case 2825: /* var_type: ECPGColLabelCommon '(' precision opt_scale ')'  */
-#line 15585 "preproc.y"
+#line 15587 "preproc.y"
                 {
 			if (strcmp((yyvsp[-4].str), "numeric") == 0)
 			{
@@ -57636,11 +57638,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			(yyval.type).type_index = mm_strdup("-1");
 			(yyval.type).type_sizeof = NULL;
 		}
-#line 57640 "preproc.c"
+#line 57642 "preproc.c"
     break;
 
   case 2826: /* var_type: ECPGColLabelCommon ecpg_interval  */
-#line 15608 "preproc.y"
+#line 15610 "preproc.y"
                 {
 			if (strlen((yyvsp[0].str)) != 0 && strcmp ((yyvsp[-1].str), "datetime") != 0 && strcmp ((yyvsp[-1].str), "interval") != 0)
 				mmerror (PARSE_ERROR, ET_ERROR, "interval specification not allowed here");
@@ -57754,11 +57756,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 				struct_member_list[struct_level] = ECPGstruct_member_dup(this->struct_member_list);
 			}
 		}
-#line 57758 "preproc.c"
+#line 57760 "preproc.c"
     break;
 
   case 2827: /* var_type: s_struct_union_symbol  */
-#line 15722 "preproc.y"
+#line 15724 "preproc.y"
                 {
 			/* this is for named structs/unions */
 			char *name;
@@ -57790,46 +57792,46 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 				struct_member_list[struct_level] = NULL;
 			}
 		}
-#line 57794 "preproc.c"
+#line 57796 "preproc.c"
     break;
 
   case 2828: /* enum_type: ENUM_P symbol enum_definition  */
-#line 15756 "preproc.y"
+#line 15758 "preproc.y"
                         { (yyval.str) = cat_str(3, mm_strdup("enum"), (yyvsp[-1].str), (yyvsp[0].str)); }
-#line 57800 "preproc.c"
+#line 57802 "preproc.c"
     break;
 
   case 2829: /* enum_type: ENUM_P enum_definition  */
-#line 15758 "preproc.y"
+#line 15760 "preproc.y"
                         { (yyval.str) = cat2_str(mm_strdup("enum"), (yyvsp[0].str)); }
-#line 57806 "preproc.c"
+#line 57808 "preproc.c"
     break;
 
   case 2830: /* enum_type: ENUM_P symbol  */
-#line 15760 "preproc.y"
+#line 15762 "preproc.y"
                         { (yyval.str) = cat2_str(mm_strdup("enum"), (yyvsp[0].str)); }
-#line 57812 "preproc.c"
+#line 57814 "preproc.c"
     break;
 
   case 2831: /* enum_definition: '{' c_list '}'  */
-#line 15764 "preproc.y"
+#line 15766 "preproc.y"
                         { (yyval.str) = cat_str(3, mm_strdup("{"), (yyvsp[-1].str), mm_strdup("}")); }
-#line 57818 "preproc.c"
+#line 57820 "preproc.c"
     break;
 
   case 2832: /* $@7: %empty  */
-#line 15767 "preproc.y"
+#line 15769 "preproc.y"
                 {
 			struct_member_list[struct_level++] = NULL;
 			if (struct_level >= STRUCT_DEPTH)
 				 mmerror(PARSE_ERROR, ET_ERROR, "too many levels in nested structure/union definition");
 			forward_name = mm_strdup((yyvsp[0].struct_union).symbol);
 		}
-#line 57829 "preproc.c"
+#line 57831 "preproc.c"
     break;
 
   case 2833: /* struct_union_type_with_symbol: s_struct_union_symbol $@7 '{' variable_declarations '}'  */
-#line 15774 "preproc.y"
+#line 15776 "preproc.y"
                 {
 			struct typedefs *ptr, *this;
 			struct this_type su_type;
@@ -57871,122 +57873,122 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			types = this;
 			(yyval.str) = cat_str(4, su_type.type_str, mm_strdup("{"), (yyvsp[-1].str), mm_strdup("}"));
 		}
-#line 57875 "preproc.c"
+#line 57877 "preproc.c"
     break;
 
   case 2834: /* struct_union_type: struct_union_type_with_symbol  */
-#line 15817 "preproc.y"
+#line 15819 "preproc.y"
                                                         { (yyval.str) = (yyvsp[0].str); }
-#line 57881 "preproc.c"
+#line 57883 "preproc.c"
     break;
 
   case 2835: /* $@8: %empty  */
-#line 15819 "preproc.y"
+#line 15821 "preproc.y"
                 {
 			struct_member_list[struct_level++] = NULL;
 			if (struct_level >= STRUCT_DEPTH)
 				 mmerror(PARSE_ERROR, ET_ERROR, "too many levels in nested structure/union definition");
 		}
-#line 57891 "preproc.c"
+#line 57893 "preproc.c"
     break;
 
   case 2836: /* struct_union_type: s_struct_union $@8 '{' variable_declarations '}'  */
-#line 15825 "preproc.y"
+#line 15827 "preproc.y"
                 {
 			ECPGfree_struct_member(struct_member_list[struct_level]);
 			struct_member_list[struct_level] = NULL;
 			struct_level--;
 			(yyval.str) = cat_str(4, (yyvsp[-4].str), mm_strdup("{"), (yyvsp[-1].str), mm_strdup("}"));
 		}
-#line 57902 "preproc.c"
+#line 57904 "preproc.c"
     break;
 
   case 2837: /* s_struct_union_symbol: SQL_STRUCT symbol  */
-#line 15834 "preproc.y"
+#line 15836 "preproc.y"
                 {
 			(yyval.struct_union).su = mm_strdup("struct");
 			(yyval.struct_union).symbol = (yyvsp[0].str);
 			ECPGstruct_sizeof = cat_str(3, mm_strdup("sizeof("), cat2_str(mm_strdup((yyval.struct_union).su), mm_strdup((yyval.struct_union).symbol)), mm_strdup(")"));
 		}
-#line 57912 "preproc.c"
+#line 57914 "preproc.c"
     break;
 
   case 2838: /* s_struct_union_symbol: UNION symbol  */
-#line 15840 "preproc.y"
+#line 15842 "preproc.y"
                 {
 			(yyval.struct_union).su = mm_strdup("union");
 			(yyval.struct_union).symbol = (yyvsp[0].str);
 		}
-#line 57921 "preproc.c"
+#line 57923 "preproc.c"
     break;
 
   case 2839: /* s_struct_union: SQL_STRUCT  */
-#line 15847 "preproc.y"
+#line 15849 "preproc.y"
                 {
 			ECPGstruct_sizeof = mm_strdup(""); /* This must not be NULL to distinguish from simple types. */
 			(yyval.str) = mm_strdup("struct");
 		}
-#line 57930 "preproc.c"
+#line 57932 "preproc.c"
     break;
 
   case 2840: /* s_struct_union: UNION  */
-#line 15852 "preproc.y"
+#line 15854 "preproc.y"
                 {
 			(yyval.str) = mm_strdup("union");
 		}
-#line 57938 "preproc.c"
+#line 57940 "preproc.c"
     break;
 
   case 2841: /* simple_type: unsigned_type  */
-#line 15857 "preproc.y"
+#line 15859 "preproc.y"
                                                                 { (yyval.type_enum)=(yyvsp[0].type_enum); }
-#line 57944 "preproc.c"
+#line 57946 "preproc.c"
     break;
 
   case 2842: /* simple_type: opt_signed signed_type  */
-#line 15858 "preproc.y"
+#line 15860 "preproc.y"
                                                                 { (yyval.type_enum)=(yyvsp[0].type_enum); }
-#line 57950 "preproc.c"
+#line 57952 "preproc.c"
     break;
 
   case 2843: /* unsigned_type: SQL_UNSIGNED SQL_SHORT  */
-#line 15861 "preproc.y"
+#line 15863 "preproc.y"
                                                 { (yyval.type_enum) = ECPGt_unsigned_short; }
-#line 57956 "preproc.c"
+#line 57958 "preproc.c"
     break;
 
   case 2844: /* unsigned_type: SQL_UNSIGNED SQL_SHORT INT_P  */
-#line 15862 "preproc.y"
+#line 15864 "preproc.y"
                                                 { (yyval.type_enum) = ECPGt_unsigned_short; }
-#line 57962 "preproc.c"
+#line 57964 "preproc.c"
     break;
 
   case 2845: /* unsigned_type: SQL_UNSIGNED  */
-#line 15863 "preproc.y"
+#line 15865 "preproc.y"
                                                                         { (yyval.type_enum) = ECPGt_unsigned_int; }
-#line 57968 "preproc.c"
+#line 57970 "preproc.c"
     break;
 
   case 2846: /* unsigned_type: SQL_UNSIGNED INT_P  */
-#line 15864 "preproc.y"
+#line 15866 "preproc.y"
                                                                 { (yyval.type_enum) = ECPGt_unsigned_int; }
-#line 57974 "preproc.c"
+#line 57976 "preproc.c"
     break;
 
   case 2847: /* unsigned_type: SQL_UNSIGNED SQL_LONG  */
-#line 15865 "preproc.y"
+#line 15867 "preproc.y"
                                                                 { (yyval.type_enum) = ECPGt_unsigned_long; }
-#line 57980 "preproc.c"
+#line 57982 "preproc.c"
     break;
 
   case 2848: /* unsigned_type: SQL_UNSIGNED SQL_LONG INT_P  */
-#line 15866 "preproc.y"
+#line 15868 "preproc.y"
                                                         { (yyval.type_enum) = ECPGt_unsigned_long; }
-#line 57986 "preproc.c"
+#line 57988 "preproc.c"
     break;
 
   case 2849: /* unsigned_type: SQL_UNSIGNED SQL_LONG SQL_LONG  */
-#line 15868 "preproc.y"
+#line 15870 "preproc.y"
                 {
 #ifdef HAVE_LONG_LONG_INT
 			(yyval.type_enum) = ECPGt_unsigned_long_long;
@@ -57994,11 +57996,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			(yyval.type_enum) = ECPGt_unsigned_long;
 #endif
 		}
-#line 57998 "preproc.c"
+#line 58000 "preproc.c"
     break;
 
   case 2850: /* unsigned_type: SQL_UNSIGNED SQL_LONG SQL_LONG INT_P  */
-#line 15876 "preproc.y"
+#line 15878 "preproc.y"
                 {
 #ifdef HAVE_LONG_LONG_INT
 			(yyval.type_enum) = ECPGt_unsigned_long_long;
@@ -58006,47 +58008,47 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			(yyval.type_enum) = ECPGt_unsigned_long;
 #endif
 		}
-#line 58010 "preproc.c"
+#line 58012 "preproc.c"
     break;
 
   case 2851: /* unsigned_type: SQL_UNSIGNED CHAR_P  */
-#line 15883 "preproc.y"
+#line 15885 "preproc.y"
                                                         { (yyval.type_enum) = ECPGt_unsigned_char; }
-#line 58016 "preproc.c"
+#line 58018 "preproc.c"
     break;
 
   case 2852: /* signed_type: SQL_SHORT  */
-#line 15886 "preproc.y"
+#line 15888 "preproc.y"
                                                 { (yyval.type_enum) = ECPGt_short; }
-#line 58022 "preproc.c"
+#line 58024 "preproc.c"
     break;
 
   case 2853: /* signed_type: SQL_SHORT INT_P  */
-#line 15887 "preproc.y"
+#line 15889 "preproc.y"
                                                         { (yyval.type_enum) = ECPGt_short; }
-#line 58028 "preproc.c"
+#line 58030 "preproc.c"
     break;
 
   case 2854: /* signed_type: INT_P  */
-#line 15888 "preproc.y"
+#line 15890 "preproc.y"
                                                                 { (yyval.type_enum) = ECPGt_int; }
-#line 58034 "preproc.c"
+#line 58036 "preproc.c"
     break;
 
   case 2855: /* signed_type: SQL_LONG  */
-#line 15889 "preproc.y"
+#line 15891 "preproc.y"
                                                                 { (yyval.type_enum) = ECPGt_long; }
-#line 58040 "preproc.c"
+#line 58042 "preproc.c"
     break;
 
   case 2856: /* signed_type: SQL_LONG INT_P  */
-#line 15890 "preproc.y"
+#line 15892 "preproc.y"
                                                         { (yyval.type_enum) = ECPGt_long; }
-#line 58046 "preproc.c"
+#line 58048 "preproc.c"
     break;
 
   case 2857: /* signed_type: SQL_LONG SQL_LONG  */
-#line 15892 "preproc.y"
+#line 15894 "preproc.y"
                 {
 #ifdef HAVE_LONG_LONG_INT
 			(yyval.type_enum) = ECPGt_long_long;
@@ -58054,11 +58056,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			(yyval.type_enum) = ECPGt_long;
 #endif
 		}
-#line 58058 "preproc.c"
+#line 58060 "preproc.c"
     break;
 
   case 2858: /* signed_type: SQL_LONG SQL_LONG INT_P  */
-#line 15900 "preproc.y"
+#line 15902 "preproc.y"
                 {
 #ifdef HAVE_LONG_LONG_INT
 			(yyval.type_enum) = ECPGt_long_long;
@@ -58066,46 +58068,46 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			(yyval.type_enum) = ECPGt_long;
 #endif
 		}
-#line 58070 "preproc.c"
+#line 58072 "preproc.c"
     break;
 
   case 2859: /* signed_type: SQL_BOOL  */
-#line 15907 "preproc.y"
+#line 15909 "preproc.y"
                                                                 { (yyval.type_enum) = ECPGt_bool; }
-#line 58076 "preproc.c"
+#line 58078 "preproc.c"
     break;
 
   case 2860: /* signed_type: CHAR_P  */
-#line 15908 "preproc.y"
+#line 15910 "preproc.y"
                                                                 { (yyval.type_enum) = ECPGt_char; }
-#line 58082 "preproc.c"
+#line 58084 "preproc.c"
     break;
 
   case 2861: /* signed_type: DOUBLE_P  */
-#line 15909 "preproc.y"
+#line 15911 "preproc.y"
                                                                 { (yyval.type_enum) = ECPGt_double; }
-#line 58088 "preproc.c"
+#line 58090 "preproc.c"
     break;
 
   case 2864: /* variable_list: variable  */
-#line 15917 "preproc.y"
+#line 15919 "preproc.y"
                         { (yyval.str) = (yyvsp[0].str); }
-#line 58094 "preproc.c"
+#line 58096 "preproc.c"
     break;
 
   case 2865: /* variable_list: variable_list ',' variable  */
-#line 15919 "preproc.y"
+#line 15921 "preproc.y"
                 {
 			if (actual_type[struct_level].type_enum == ECPGt_varchar || actual_type[struct_level].type_enum == ECPGt_bytea)
-				(yyval.str) = cat_str(3, (yyvsp[-2].str), mm_strdup(";"), (yyvsp[0].str));
+				(yyval.str) = cat_str(4, (yyvsp[-2].str), mm_strdup(";"), mm_strdup(actual_type[struct_level].type_storage), (yyvsp[0].str));
 			else
 				(yyval.str) = cat_str(3, (yyvsp[-2].str), mm_strdup(","), (yyvsp[0].str));
 		}
-#line 58105 "preproc.c"
+#line 58107 "preproc.c"
     break;
 
   case 2866: /* variable: opt_pointer ECPGColLabel opt_array_bounds opt_bit_field opt_initializer  */
-#line 15928 "preproc.y"
+#line 15930 "preproc.y"
                 {
 			struct ECPGtype * type;
 			char *dimension = (yyvsp[-2].index).index1;	/* dimension of array */
@@ -58202,292 +58204,292 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
 			free((yyvsp[-3].str));
 		}
-#line 58206 "preproc.c"
+#line 58208 "preproc.c"
     break;
 
   case 2867: /* opt_initializer: %empty  */
-#line 16027 "preproc.y"
+#line 16029 "preproc.y"
                         { (yyval.str) = EMPTY; }
-#line 58212 "preproc.c"
+#line 58214 "preproc.c"
     break;
 
   case 2868: /* opt_initializer: '=' c_term  */
-#line 16029 "preproc.y"
+#line 16031 "preproc.y"
                 {
 			initializer = 1;
 			(yyval.str) = cat2_str(mm_strdup("="), (yyvsp[0].str));
 		}
-#line 58221 "preproc.c"
+#line 58223 "preproc.c"
     break;
 
   case 2869: /* opt_pointer: %empty  */
-#line 16035 "preproc.y"
+#line 16037 "preproc.y"
                                                 { (yyval.str) = EMPTY; }
-#line 58227 "preproc.c"
+#line 58229 "preproc.c"
     break;
 
   case 2870: /* opt_pointer: '*'  */
-#line 16036 "preproc.y"
+#line 16038 "preproc.y"
                                                                 { (yyval.str) = mm_strdup("*"); }
-#line 58233 "preproc.c"
+#line 58235 "preproc.c"
     break;
 
   case 2871: /* opt_pointer: '*' '*'  */
-#line 16037 "preproc.y"
+#line 16039 "preproc.y"
                                                                 { (yyval.str) = mm_strdup("**"); }
-#line 58239 "preproc.c"
+#line 58241 "preproc.c"
     break;
 
   case 2872: /* ECPGDeclare: DECLARE STATEMENT ecpg_ident  */
-#line 16044 "preproc.y"
+#line 16046 "preproc.y"
                 {
 			/* this is only supported for compatibility */
 			(yyval.str) = cat_str(3, mm_strdup("/* declare statement"), (yyvsp[0].str), mm_strdup("*/"));
 		}
-#line 58248 "preproc.c"
+#line 58250 "preproc.c"
     break;
 
   case 2873: /* ECPGDisconnect: SQL_DISCONNECT dis_name  */
-#line 16052 "preproc.y"
+#line 16054 "preproc.y"
                                         { (yyval.str) = (yyvsp[0].str); }
-#line 58254 "preproc.c"
+#line 58256 "preproc.c"
     break;
 
   case 2874: /* dis_name: connection_object  */
-#line 16055 "preproc.y"
+#line 16057 "preproc.y"
                                                 { (yyval.str) = (yyvsp[0].str); }
-#line 58260 "preproc.c"
+#line 58262 "preproc.c"
     break;
 
   case 2875: /* dis_name: CURRENT_P  */
-#line 16056 "preproc.y"
+#line 16058 "preproc.y"
                                                 { (yyval.str) = mm_strdup("\"CURRENT\""); }
-#line 58266 "preproc.c"
+#line 58268 "preproc.c"
     break;
 
   case 2876: /* dis_name: ALL  */
-#line 16057 "preproc.y"
+#line 16059 "preproc.y"
                                                 { (yyval.str) = mm_strdup("\"ALL\""); }
-#line 58272 "preproc.c"
+#line 58274 "preproc.c"
     break;
 
   case 2877: /* dis_name: %empty  */
-#line 16058 "preproc.y"
+#line 16060 "preproc.y"
                                                 { (yyval.str) = mm_strdup("\"CURRENT\""); }
-#line 58278 "preproc.c"
+#line 58280 "preproc.c"
     break;
 
   case 2878: /* connection_object: database_name  */
-#line 16061 "preproc.y"
+#line 16063 "preproc.y"
                                                 { (yyval.str) = make3_str(mm_strdup("\""), (yyvsp[0].str), mm_strdup("\"")); }
-#line 58284 "preproc.c"
+#line 58286 "preproc.c"
     break;
 
   case 2879: /* connection_object: DEFAULT  */
-#line 16062 "preproc.y"
+#line 16064 "preproc.y"
                                                 { (yyval.str) = mm_strdup("\"DEFAULT\""); }
-#line 58290 "preproc.c"
+#line 58292 "preproc.c"
     break;
 
   case 2880: /* connection_object: char_variable  */
-#line 16063 "preproc.y"
+#line 16065 "preproc.y"
                                                 { (yyval.str) = (yyvsp[0].str); }
-#line 58296 "preproc.c"
+#line 58298 "preproc.c"
     break;
 
   case 2881: /* execstring: char_variable  */
-#line 16067 "preproc.y"
+#line 16069 "preproc.y"
                         { (yyval.str) = (yyvsp[0].str); }
-#line 58302 "preproc.c"
+#line 58304 "preproc.c"
     break;
 
   case 2882: /* execstring: CSTRING  */
-#line 16069 "preproc.y"
+#line 16071 "preproc.y"
                         { (yyval.str) = make3_str(mm_strdup("\""), (yyvsp[0].str), mm_strdup("\"")); }
-#line 58308 "preproc.c"
+#line 58310 "preproc.c"
     break;
 
   case 2883: /* ECPGFree: SQL_FREE cursor_name  */
-#line 16076 "preproc.y"
+#line 16078 "preproc.y"
                                         { (yyval.str) = (yyvsp[0].str); }
-#line 58314 "preproc.c"
+#line 58316 "preproc.c"
     break;
 
   case 2884: /* ECPGFree: SQL_FREE ALL  */
-#line 16077 "preproc.y"
+#line 16079 "preproc.y"
                                 { (yyval.str) = mm_strdup("all"); }
-#line 58320 "preproc.c"
+#line 58322 "preproc.c"
     break;
 
   case 2885: /* ECPGOpen: SQL_OPEN cursor_name opt_ecpg_using  */
-#line 16084 "preproc.y"
+#line 16086 "preproc.y"
                 {
 			if ((yyvsp[-1].str)[0] == ':')
 				remove_variable_from_list(&argsinsert, find_variable((yyvsp[-1].str) + 1));
 			(yyval.str) = (yyvsp[-1].str);
 		}
-#line 58330 "preproc.c"
+#line 58332 "preproc.c"
     break;
 
   case 2886: /* opt_ecpg_using: %empty  */
-#line 16091 "preproc.y"
+#line 16093 "preproc.y"
                                 { (yyval.str) = EMPTY; }
-#line 58336 "preproc.c"
+#line 58338 "preproc.c"
     break;
 
   case 2887: /* opt_ecpg_using: ecpg_using  */
-#line 16092 "preproc.y"
+#line 16094 "preproc.y"
                                         { (yyval.str) = (yyvsp[0].str); }
-#line 58342 "preproc.c"
+#line 58344 "preproc.c"
     break;
 
   case 2888: /* ecpg_using: USING using_list  */
-#line 16095 "preproc.y"
+#line 16097 "preproc.y"
                                         { (yyval.str) = EMPTY; }
-#line 58348 "preproc.c"
+#line 58350 "preproc.c"
     break;
 
   case 2889: /* ecpg_using: using_descriptor  */
-#line 16096 "preproc.y"
+#line 16098 "preproc.y"
                                                 { (yyval.str) = (yyvsp[0].str); }
-#line 58354 "preproc.c"
+#line 58356 "preproc.c"
     break;
 
   case 2890: /* using_descriptor: USING SQL_P SQL_DESCRIPTOR quoted_ident_stringvar  */
-#line 16100 "preproc.y"
+#line 16102 "preproc.y"
                 {
 			add_variable_to_head(&argsinsert, descriptor_variable((yyvsp[0].str),0), &no_indicator);
 			(yyval.str) = EMPTY;
 		}
-#line 58363 "preproc.c"
+#line 58365 "preproc.c"
     break;
 
   case 2891: /* using_descriptor: USING SQL_DESCRIPTOR name  */
-#line 16105 "preproc.y"
+#line 16107 "preproc.y"
                 {
 			add_variable_to_head(&argsinsert, sqlda_variable((yyvsp[0].str)), &no_indicator);
 			(yyval.str) = EMPTY;
 		}
-#line 58372 "preproc.c"
+#line 58374 "preproc.c"
     break;
 
   case 2892: /* into_descriptor: INTO SQL_P SQL_DESCRIPTOR quoted_ident_stringvar  */
-#line 16112 "preproc.y"
+#line 16114 "preproc.y"
                 {
 			add_variable_to_head(&argsresult, descriptor_variable((yyvsp[0].str),1), &no_indicator);
 			(yyval.str) = EMPTY;
 		}
-#line 58381 "preproc.c"
+#line 58383 "preproc.c"
     break;
 
   case 2893: /* into_descriptor: INTO SQL_DESCRIPTOR name  */
-#line 16117 "preproc.y"
+#line 16119 "preproc.y"
                 {
 			add_variable_to_head(&argsresult, sqlda_variable((yyvsp[0].str)), &no_indicator);
 			(yyval.str) = EMPTY;
 		}
-#line 58390 "preproc.c"
+#line 58392 "preproc.c"
     break;
 
   case 2894: /* into_sqlda: INTO name  */
-#line 16124 "preproc.y"
+#line 16126 "preproc.y"
                 {
 			add_variable_to_head(&argsresult, sqlda_variable((yyvsp[0].str)), &no_indicator);
 			(yyval.str) = EMPTY;
 		}
-#line 58399 "preproc.c"
+#line 58401 "preproc.c"
     break;
 
   case 2897: /* UsingValue: UsingConst  */
-#line 16133 "preproc.y"
+#line 16135 "preproc.y"
                 {
 			char *length = mm_alloc(32);
 
 			sprintf(length, "%d", (int) strlen((yyvsp[0].str)));
 			add_variable_to_head(&argsinsert, new_variable((yyvsp[0].str), ECPGmake_simple_type(ECPGt_const, length, 0), 0), &no_indicator);
 		}
-#line 58410 "preproc.c"
+#line 58412 "preproc.c"
     break;
 
   case 2898: /* UsingValue: civar  */
-#line 16139 "preproc.y"
+#line 16141 "preproc.y"
                         { (yyval.str) = EMPTY; }
-#line 58416 "preproc.c"
+#line 58418 "preproc.c"
     break;
 
   case 2899: /* UsingValue: civarind  */
-#line 16140 "preproc.y"
+#line 16142 "preproc.y"
                            { (yyval.str) = EMPTY; }
-#line 58422 "preproc.c"
+#line 58424 "preproc.c"
     break;
 
   case 2900: /* UsingConst: Iconst  */
-#line 16143 "preproc.y"
+#line 16145 "preproc.y"
                                         { (yyval.str) = (yyvsp[0].str); }
-#line 58428 "preproc.c"
+#line 58430 "preproc.c"
     break;
 
   case 2901: /* UsingConst: '+' Iconst  */
-#line 16144 "preproc.y"
+#line 16146 "preproc.y"
                                         { (yyval.str) = cat_str(2, mm_strdup("+"), (yyvsp[0].str)); }
-#line 58434 "preproc.c"
+#line 58436 "preproc.c"
     break;
 
   case 2902: /* UsingConst: '-' Iconst  */
-#line 16145 "preproc.y"
+#line 16147 "preproc.y"
                                         { (yyval.str) = cat_str(2, mm_strdup("-"), (yyvsp[0].str)); }
-#line 58440 "preproc.c"
+#line 58442 "preproc.c"
     break;
 
   case 2903: /* UsingConst: ecpg_fconst  */
-#line 16146 "preproc.y"
+#line 16148 "preproc.y"
                                         { (yyval.str) = (yyvsp[0].str); }
-#line 58446 "preproc.c"
+#line 58448 "preproc.c"
     break;
 
   case 2904: /* UsingConst: '+' ecpg_fconst  */
-#line 16147 "preproc.y"
+#line 16149 "preproc.y"
                                         { (yyval.str) = cat_str(2, mm_strdup("+"), (yyvsp[0].str)); }
-#line 58452 "preproc.c"
+#line 58454 "preproc.c"
     break;
 
   case 2905: /* UsingConst: '-' ecpg_fconst  */
-#line 16148 "preproc.y"
+#line 16150 "preproc.y"
                                         { (yyval.str) = cat_str(2, mm_strdup("-"), (yyvsp[0].str)); }
-#line 58458 "preproc.c"
+#line 58460 "preproc.c"
     break;
 
   case 2906: /* UsingConst: ecpg_sconst  */
-#line 16149 "preproc.y"
+#line 16151 "preproc.y"
                                         { (yyval.str) = (yyvsp[0].str); }
-#line 58464 "preproc.c"
+#line 58466 "preproc.c"
     break;
 
   case 2907: /* UsingConst: ecpg_bconst  */
-#line 16150 "preproc.y"
+#line 16152 "preproc.y"
                                         { (yyval.str) = (yyvsp[0].str); }
-#line 58470 "preproc.c"
+#line 58472 "preproc.c"
     break;
 
   case 2908: /* UsingConst: ecpg_xconst  */
-#line 16151 "preproc.y"
+#line 16153 "preproc.y"
                                         { (yyval.str) = (yyvsp[0].str); }
-#line 58476 "preproc.c"
+#line 58478 "preproc.c"
     break;
 
   case 2909: /* ECPGDescribe: SQL_DESCRIBE INPUT_P prepared_name using_descriptor  */
-#line 16158 "preproc.y"
+#line 16160 "preproc.y"
         {
 		const char *con = connection ? connection : "NULL";
 		mmerror(PARSE_ERROR, ET_WARNING, "using unsupported DESCRIBE statement");
 		(yyval.str) = (char *) mm_alloc(sizeof("1, , ") + strlen(con) + strlen((yyvsp[-1].str)));
 		sprintf((yyval.str), "1, %s, %s", con, (yyvsp[-1].str));
 	}
-#line 58487 "preproc.c"
+#line 58489 "preproc.c"
     break;
 
   case 2910: /* ECPGDescribe: SQL_DESCRIBE opt_output prepared_name using_descriptor  */
-#line 16165 "preproc.y"
+#line 16167 "preproc.y"
         {
 		const char *con = connection ? connection : "NULL";
 		struct variable *var;
@@ -58499,98 +58501,98 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 		(yyval.str) = (char *) mm_alloc(sizeof("0, , ") + strlen(con) + strlen((yyvsp[-1].str)));
 		sprintf((yyval.str), "0, %s, %s", con, (yyvsp[-1].str));
 	}
-#line 58503 "preproc.c"
+#line 58505 "preproc.c"
     break;
 
   case 2911: /* ECPGDescribe: SQL_DESCRIBE opt_output prepared_name into_descriptor  */
-#line 16177 "preproc.y"
+#line 16179 "preproc.y"
         {
 		const char *con = connection ? connection : "NULL";
 		(yyval.str) = (char *) mm_alloc(sizeof("0, , ") + strlen(con) + strlen((yyvsp[-1].str)));
 		sprintf((yyval.str), "0, %s, %s", con, (yyvsp[-1].str));
 	}
-#line 58513 "preproc.c"
+#line 58515 "preproc.c"
     break;
 
   case 2912: /* ECPGDescribe: SQL_DESCRIBE INPUT_P prepared_name into_sqlda  */
-#line 16183 "preproc.y"
+#line 16185 "preproc.y"
         {
 		const char *con = connection ? connection : "NULL";
 		mmerror(PARSE_ERROR, ET_WARNING, "using unsupported DESCRIBE statement");
 		(yyval.str) = (char *) mm_alloc(sizeof("1, , ") + strlen(con) + strlen((yyvsp[-1].str)));
 		sprintf((yyval.str), "1, %s, %s", con, (yyvsp[-1].str));
 	}
-#line 58524 "preproc.c"
+#line 58526 "preproc.c"
     break;
 
   case 2913: /* ECPGDescribe: SQL_DESCRIBE opt_output prepared_name into_sqlda  */
-#line 16190 "preproc.y"
+#line 16192 "preproc.y"
         {
 		const char *con = connection ? connection : "NULL";
 		(yyval.str) = (char *) mm_alloc(sizeof("0, , ") + strlen(con) + strlen((yyvsp[-1].str)));
 		sprintf((yyval.str), "0, %s, %s", con, (yyvsp[-1].str));
 	}
-#line 58534 "preproc.c"
+#line 58536 "preproc.c"
     break;
 
   case 2914: /* opt_output: SQL_OUTPUT  */
-#line 16197 "preproc.y"
+#line 16199 "preproc.y"
                                 { (yyval.str) = mm_strdup("output"); }
-#line 58540 "preproc.c"
+#line 58542 "preproc.c"
     break;
 
   case 2915: /* opt_output: %empty  */
-#line 16198 "preproc.y"
+#line 16200 "preproc.y"
                                 { (yyval.str) = EMPTY; }
-#line 58546 "preproc.c"
+#line 58548 "preproc.c"
     break;
 
   case 2916: /* ECPGAllocateDescr: SQL_ALLOCATE SQL_DESCRIPTOR quoted_ident_stringvar  */
-#line 16211 "preproc.y"
+#line 16213 "preproc.y"
                 {
 			add_descriptor((yyvsp[0].str),connection);
 			(yyval.str) = (yyvsp[0].str);
 		}
-#line 58555 "preproc.c"
+#line 58557 "preproc.c"
     break;
 
   case 2917: /* ECPGDeallocateDescr: DEALLOCATE SQL_DESCRIPTOR quoted_ident_stringvar  */
-#line 16222 "preproc.y"
+#line 16224 "preproc.y"
                 {
 			drop_descriptor((yyvsp[0].str),connection);
 			(yyval.str) = (yyvsp[0].str);
 		}
-#line 58564 "preproc.c"
+#line 58566 "preproc.c"
     break;
 
   case 2918: /* ECPGGetDescriptorHeader: SQL_GET SQL_DESCRIPTOR quoted_ident_stringvar ECPGGetDescHeaderItems  */
-#line 16233 "preproc.y"
+#line 16235 "preproc.y"
                         {  (yyval.str) = (yyvsp[-1].str); }
-#line 58570 "preproc.c"
+#line 58572 "preproc.c"
     break;
 
   case 2921: /* ECPGGetDescHeaderItem: cvariable '=' desc_header_item  */
-#line 16241 "preproc.y"
+#line 16243 "preproc.y"
                         { push_assignment((yyvsp[-2].str), (yyvsp[0].dtype_enum)); }
-#line 58576 "preproc.c"
+#line 58578 "preproc.c"
     break;
 
   case 2922: /* ECPGSetDescriptorHeader: SET SQL_DESCRIPTOR quoted_ident_stringvar ECPGSetDescHeaderItems  */
-#line 16246 "preproc.y"
+#line 16248 "preproc.y"
                         { (yyval.str) = (yyvsp[-1].str); }
-#line 58582 "preproc.c"
+#line 58584 "preproc.c"
     break;
 
   case 2925: /* ECPGSetDescHeaderItem: desc_header_item '=' IntConstVar  */
-#line 16254 "preproc.y"
+#line 16256 "preproc.y"
                 {
 			push_assignment((yyvsp[0].str), (yyvsp[-2].dtype_enum));
 		}
-#line 58590 "preproc.c"
+#line 58592 "preproc.c"
     break;
 
   case 2926: /* IntConstVar: Iconst  */
-#line 16260 "preproc.y"
+#line 16262 "preproc.y"
                 {
 			char *length = mm_alloc(sizeof(int) * CHAR_BIT * 10 / 3);
 
@@ -58598,51 +58600,51 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			new_variable((yyvsp[0].str), ECPGmake_simple_type(ECPGt_const, length, 0), 0);
 			(yyval.str) = (yyvsp[0].str);
 		}
-#line 58602 "preproc.c"
+#line 58604 "preproc.c"
     break;
 
   case 2927: /* IntConstVar: cvariable  */
-#line 16268 "preproc.y"
+#line 16270 "preproc.y"
                 {
 			(yyval.str) = (yyvsp[0].str);
 		}
-#line 58610 "preproc.c"
+#line 58612 "preproc.c"
     break;
 
   case 2928: /* desc_header_item: SQL_COUNT  */
-#line 16273 "preproc.y"
+#line 16275 "preproc.y"
                                                         { (yyval.dtype_enum) = ECPGd_count; }
-#line 58616 "preproc.c"
+#line 58618 "preproc.c"
     break;
 
   case 2929: /* ECPGGetDescriptor: SQL_GET SQL_DESCRIPTOR quoted_ident_stringvar VALUE_P IntConstVar ECPGGetDescItems  */
-#line 16281 "preproc.y"
+#line 16283 "preproc.y"
                         {  (yyval.descriptor).str = (yyvsp[-1].str); (yyval.descriptor).name = (yyvsp[-3].str); }
-#line 58622 "preproc.c"
+#line 58624 "preproc.c"
     break;
 
   case 2932: /* ECPGGetDescItem: cvariable '=' descriptor_item  */
-#line 16288 "preproc.y"
+#line 16290 "preproc.y"
                                                 { push_assignment((yyvsp[-2].str), (yyvsp[0].dtype_enum)); }
-#line 58628 "preproc.c"
+#line 58630 "preproc.c"
     break;
 
   case 2933: /* ECPGSetDescriptor: SET SQL_DESCRIPTOR quoted_ident_stringvar VALUE_P IntConstVar ECPGSetDescItems  */
-#line 16292 "preproc.y"
+#line 16294 "preproc.y"
                         {  (yyval.descriptor).str = (yyvsp[-1].str); (yyval.descriptor).name = (yyvsp[-3].str); }
-#line 58634 "preproc.c"
+#line 58636 "preproc.c"
     break;
 
   case 2936: /* ECPGSetDescItem: descriptor_item '=' AllConstVar  */
-#line 16300 "preproc.y"
+#line 16302 "preproc.y"
                 {
 			push_assignment((yyvsp[0].str), (yyvsp[-2].dtype_enum));
 		}
-#line 58642 "preproc.c"
+#line 58644 "preproc.c"
     break;
 
   case 2937: /* AllConstVar: ecpg_fconst  */
-#line 16306 "preproc.y"
+#line 16308 "preproc.y"
                 {
 			char *length = mm_alloc(sizeof(int) * CHAR_BIT * 10 / 3);
 
@@ -58650,19 +58652,19 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			new_variable((yyvsp[0].str), ECPGmake_simple_type(ECPGt_const, length, 0), 0);
 			(yyval.str) = (yyvsp[0].str);
 		}
-#line 58654 "preproc.c"
+#line 58656 "preproc.c"
     break;
 
   case 2938: /* AllConstVar: IntConstVar  */
-#line 16315 "preproc.y"
+#line 16317 "preproc.y"
                 {
 			(yyval.str) = (yyvsp[0].str);
 		}
-#line 58662 "preproc.c"
+#line 58664 "preproc.c"
     break;
 
   case 2939: /* AllConstVar: '-' ecpg_fconst  */
-#line 16320 "preproc.y"
+#line 16322 "preproc.y"
                 {
 			char *length = mm_alloc(sizeof(int) * CHAR_BIT * 10 / 3);
 			char *var = cat2_str(mm_strdup("-"), (yyvsp[0].str));
@@ -58671,11 +58673,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			new_variable(var, ECPGmake_simple_type(ECPGt_const, length, 0), 0);
 			(yyval.str) = var;
 		}
-#line 58675 "preproc.c"
+#line 58677 "preproc.c"
     break;
 
   case 2940: /* AllConstVar: '-' Iconst  */
-#line 16330 "preproc.y"
+#line 16332 "preproc.y"
                 {
 			char *length = mm_alloc(sizeof(int) * CHAR_BIT * 10 / 3);
 			char *var = cat2_str(mm_strdup("-"), (yyvsp[0].str));
@@ -58684,11 +58686,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			new_variable(var, ECPGmake_simple_type(ECPGt_const, length, 0), 0);
 			(yyval.str) = var;
 		}
-#line 58688 "preproc.c"
+#line 58690 "preproc.c"
     break;
 
   case 2941: /* AllConstVar: ecpg_sconst  */
-#line 16340 "preproc.y"
+#line 16342 "preproc.y"
                 {
 			char *length = mm_alloc(sizeof(int) * CHAR_BIT * 10 / 3);
 			char *var = (yyvsp[0].str) + 1;
@@ -58698,153 +58700,153 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			new_variable(var, ECPGmake_simple_type(ECPGt_const, length, 0), 0);
 			(yyval.str) = var;
 		}
-#line 58702 "preproc.c"
+#line 58704 "preproc.c"
     break;
 
   case 2942: /* descriptor_item: SQL_CARDINALITY  */
-#line 16351 "preproc.y"
+#line 16353 "preproc.y"
                                                         { (yyval.dtype_enum) = ECPGd_cardinality; }
-#line 58708 "preproc.c"
+#line 58710 "preproc.c"
     break;
 
   case 2943: /* descriptor_item: DATA_P  */
-#line 16352 "preproc.y"
+#line 16354 "preproc.y"
                                                         { (yyval.dtype_enum) = ECPGd_data; }
-#line 58714 "preproc.c"
+#line 58716 "preproc.c"
     break;
 
   case 2944: /* descriptor_item: SQL_DATETIME_INTERVAL_CODE  */
-#line 16353 "preproc.y"
+#line 16355 "preproc.y"
                                                         { (yyval.dtype_enum) = ECPGd_di_code; }
-#line 58720 "preproc.c"
+#line 58722 "preproc.c"
     break;
 
   case 2945: /* descriptor_item: SQL_DATETIME_INTERVAL_PRECISION  */
-#line 16354 "preproc.y"
+#line 16356 "preproc.y"
                                                         { (yyval.dtype_enum) = ECPGd_di_precision; }
-#line 58726 "preproc.c"
+#line 58728 "preproc.c"
     break;
 
   case 2946: /* descriptor_item: SQL_INDICATOR  */
-#line 16355 "preproc.y"
+#line 16357 "preproc.y"
                                                         { (yyval.dtype_enum) = ECPGd_indicator; }
-#line 58732 "preproc.c"
+#line 58734 "preproc.c"
     break;
 
   case 2947: /* descriptor_item: SQL_KEY_MEMBER  */
-#line 16356 "preproc.y"
+#line 16358 "preproc.y"
                                                         { (yyval.dtype_enum) = ECPGd_key_member; }
-#line 58738 "preproc.c"
+#line 58740 "preproc.c"
     break;
 
   case 2948: /* descriptor_item: SQL_LENGTH  */
-#line 16357 "preproc.y"
+#line 16359 "preproc.y"
                                                         { (yyval.dtype_enum) = ECPGd_length; }
-#line 58744 "preproc.c"
+#line 58746 "preproc.c"
     break;
 
   case 2949: /* descriptor_item: NAME_P  */
-#line 16358 "preproc.y"
+#line 16360 "preproc.y"
                                                         { (yyval.dtype_enum) = ECPGd_name; }
-#line 58750 "preproc.c"
+#line 58752 "preproc.c"
     break;
 
   case 2950: /* descriptor_item: SQL_NULLABLE  */
-#line 16359 "preproc.y"
+#line 16361 "preproc.y"
                                                         { (yyval.dtype_enum) = ECPGd_nullable; }
-#line 58756 "preproc.c"
+#line 58758 "preproc.c"
     break;
 
   case 2951: /* descriptor_item: SQL_OCTET_LENGTH  */
-#line 16360 "preproc.y"
+#line 16362 "preproc.y"
                                                         { (yyval.dtype_enum) = ECPGd_octet; }
-#line 58762 "preproc.c"
+#line 58764 "preproc.c"
     break;
 
   case 2952: /* descriptor_item: PRECISION  */
-#line 16361 "preproc.y"
+#line 16363 "preproc.y"
                                                         { (yyval.dtype_enum) = ECPGd_precision; }
-#line 58768 "preproc.c"
+#line 58770 "preproc.c"
     break;
 
   case 2953: /* descriptor_item: SQL_RETURNED_LENGTH  */
-#line 16362 "preproc.y"
+#line 16364 "preproc.y"
                                                         { (yyval.dtype_enum) = ECPGd_length; }
-#line 58774 "preproc.c"
+#line 58776 "preproc.c"
     break;
 
   case 2954: /* descriptor_item: SQL_RETURNED_OCTET_LENGTH  */
-#line 16363 "preproc.y"
+#line 16365 "preproc.y"
                                                         { (yyval.dtype_enum) = ECPGd_ret_octet; }
-#line 58780 "preproc.c"
+#line 58782 "preproc.c"
     break;
 
   case 2955: /* descriptor_item: SQL_SCALE  */
-#line 16364 "preproc.y"
+#line 16366 "preproc.y"
                                                         { (yyval.dtype_enum) = ECPGd_scale; }
-#line 58786 "preproc.c"
+#line 58788 "preproc.c"
     break;
 
   case 2956: /* descriptor_item: TYPE_P  */
-#line 16365 "preproc.y"
+#line 16367 "preproc.y"
                                                         { (yyval.dtype_enum) = ECPGd_type; }
-#line 58792 "preproc.c"
+#line 58794 "preproc.c"
     break;
 
   case 2957: /* ECPGSetAutocommit: SET SQL_AUTOCOMMIT '=' on_off  */
-#line 16372 "preproc.y"
+#line 16374 "preproc.y"
                                                         { (yyval.str) = (yyvsp[0].str); }
-#line 58798 "preproc.c"
+#line 58800 "preproc.c"
     break;
 
   case 2958: /* ECPGSetAutocommit: SET SQL_AUTOCOMMIT TO on_off  */
-#line 16373 "preproc.y"
+#line 16375 "preproc.y"
                                                   { (yyval.str) = (yyvsp[0].str); }
-#line 58804 "preproc.c"
+#line 58806 "preproc.c"
     break;
 
   case 2959: /* on_off: ON  */
-#line 16376 "preproc.y"
+#line 16378 "preproc.y"
                                         { (yyval.str) = mm_strdup("on"); }
-#line 58810 "preproc.c"
+#line 58812 "preproc.c"
     break;
 
   case 2960: /* on_off: OFF  */
-#line 16377 "preproc.y"
+#line 16379 "preproc.y"
                                         { (yyval.str) = mm_strdup("off"); }
-#line 58816 "preproc.c"
+#line 58818 "preproc.c"
     break;
 
   case 2961: /* ECPGSetConnection: SET CONNECTION TO connection_object  */
-#line 16384 "preproc.y"
+#line 16386 "preproc.y"
                                                             { (yyval.str) = (yyvsp[0].str); }
-#line 58822 "preproc.c"
+#line 58824 "preproc.c"
     break;
 
   case 2962: /* ECPGSetConnection: SET CONNECTION '=' connection_object  */
-#line 16385 "preproc.y"
+#line 16387 "preproc.y"
                                                        { (yyval.str) = (yyvsp[0].str); }
-#line 58828 "preproc.c"
+#line 58830 "preproc.c"
     break;
 
   case 2963: /* ECPGSetConnection: SET CONNECTION connection_object  */
-#line 16386 "preproc.y"
+#line 16388 "preproc.y"
                                                     { (yyval.str) = (yyvsp[0].str); }
-#line 58834 "preproc.c"
+#line 58836 "preproc.c"
     break;
 
   case 2964: /* $@9: %empty  */
-#line 16393 "preproc.y"
+#line 16395 "preproc.y"
                 {
 			/* reset this variable so we see if there was */
 			/* an initializer specified */
 			initializer = 0;
 		}
-#line 58844 "preproc.c"
+#line 58846 "preproc.c"
     break;
 
   case 2965: /* ECPGTypedef: TYPE_P $@9 ECPGColLabelCommon IS var_type opt_array_bounds opt_reference  */
-#line 16399 "preproc.y"
+#line 16401 "preproc.y"
                 {
 			add_typedef((yyvsp[-4].str), (yyvsp[-1].index).index1, (yyvsp[-1].index).index2, (yyvsp[-2].type).type_enum, (yyvsp[-2].type).type_dimension, (yyvsp[-2].type).type_index, initializer, *(yyvsp[0].str) ? 1 : 0);
 
@@ -58853,33 +58855,33 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			else
 				(yyval.str) = cat_str(6, mm_strdup("typedef "), mm_strdup((yyvsp[-2].type).type_str), *(yyvsp[0].str)?mm_strdup("*"):mm_strdup(""), mm_strdup((yyvsp[-4].str)), mm_strdup((yyvsp[-1].index).str), mm_strdup(";"));
 		}
-#line 58857 "preproc.c"
+#line 58859 "preproc.c"
     break;
 
   case 2966: /* opt_reference: SQL_REFERENCE  */
-#line 16409 "preproc.y"
+#line 16411 "preproc.y"
                                         { (yyval.str) = mm_strdup("reference"); }
-#line 58863 "preproc.c"
+#line 58865 "preproc.c"
     break;
 
   case 2967: /* opt_reference: %empty  */
-#line 16410 "preproc.y"
+#line 16412 "preproc.y"
                                                                 { (yyval.str) = EMPTY; }
-#line 58869 "preproc.c"
+#line 58871 "preproc.c"
     break;
 
   case 2968: /* $@10: %empty  */
-#line 16417 "preproc.y"
+#line 16419 "preproc.y"
                 {
 			/* reset this variable so we see if there was */
 			/* an initializer specified */
 			initializer = 0;
 		}
-#line 58879 "preproc.c"
+#line 58881 "preproc.c"
     break;
 
   case 2969: /* ECPGVar: SQL_VAR $@10 ColLabel IS var_type opt_array_bounds opt_reference  */
-#line 16423 "preproc.y"
+#line 16425 "preproc.y"
                 {
 			struct variable *p = find_variable((yyvsp[-4].str));
 			char *dimension = (yyvsp[-1].index).index1;
@@ -58938,744 +58940,744 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 
 			(yyval.str) = cat_str(7, mm_strdup("/* exec sql var"), mm_strdup((yyvsp[-4].str)), mm_strdup("is"), mm_strdup((yyvsp[-2].type).type_str), mm_strdup((yyvsp[-1].index).str), (yyvsp[0].str), mm_strdup("*/"));
 		}
-#line 58942 "preproc.c"
+#line 58944 "preproc.c"
     break;
 
   case 2970: /* ECPGWhenever: SQL_WHENEVER SQL_SQLERROR action  */
-#line 16488 "preproc.y"
+#line 16490 "preproc.y"
                 {
 			when_error.code = (yyvsp[0].action).code;
 			when_error.command = (yyvsp[0].action).command;
 			(yyval.str) = cat_str(3, mm_strdup("/* exec sql whenever sqlerror "), (yyvsp[0].action).str, mm_strdup("; */"));
 		}
-#line 58952 "preproc.c"
+#line 58954 "preproc.c"
     break;
 
   case 2971: /* ECPGWhenever: SQL_WHENEVER NOT SQL_FOUND action  */
-#line 16494 "preproc.y"
+#line 16496 "preproc.y"
                 {
 			when_nf.code = (yyvsp[0].action).code;
 			when_nf.command = (yyvsp[0].action).command;
 			(yyval.str) = cat_str(3, mm_strdup("/* exec sql whenever not found "), (yyvsp[0].action).str, mm_strdup("; */"));
 		}
-#line 58962 "preproc.c"
+#line 58964 "preproc.c"
     break;
 
   case 2972: /* ECPGWhenever: SQL_WHENEVER SQL_SQLWARNING action  */
-#line 16500 "preproc.y"
+#line 16502 "preproc.y"
                 {
 			when_warn.code = (yyvsp[0].action).code;
 			when_warn.command = (yyvsp[0].action).command;
 			(yyval.str) = cat_str(3, mm_strdup("/* exec sql whenever sql_warning "), (yyvsp[0].action).str, mm_strdup("; */"));
 		}
-#line 58972 "preproc.c"
+#line 58974 "preproc.c"
     break;
 
   case 2973: /* action: CONTINUE_P  */
-#line 16508 "preproc.y"
+#line 16510 "preproc.y"
                 {
 			(yyval.action).code = W_NOTHING;
 			(yyval.action).command = NULL;
 			(yyval.action).str = mm_strdup("continue");
 		}
-#line 58982 "preproc.c"
+#line 58984 "preproc.c"
     break;
 
   case 2974: /* action: SQL_SQLPRINT  */
-#line 16514 "preproc.y"
+#line 16516 "preproc.y"
                 {
 			(yyval.action).code = W_SQLPRINT;
 			(yyval.action).command = NULL;
 			(yyval.action).str = mm_strdup("sqlprint");
 		}
-#line 58992 "preproc.c"
+#line 58994 "preproc.c"
     break;
 
   case 2975: /* action: SQL_STOP  */
-#line 16520 "preproc.y"
+#line 16522 "preproc.y"
                 {
 			(yyval.action).code = W_STOP;
 			(yyval.action).command = NULL;
 			(yyval.action).str = mm_strdup("stop");
 		}
-#line 59002 "preproc.c"
+#line 59004 "preproc.c"
     break;
 
   case 2976: /* action: SQL_GOTO name  */
-#line 16526 "preproc.y"
+#line 16528 "preproc.y"
                 {
 			(yyval.action).code = W_GOTO;
 			(yyval.action).command = mm_strdup((yyvsp[0].str));
 			(yyval.action).str = cat2_str(mm_strdup("goto "), (yyvsp[0].str));
 		}
-#line 59012 "preproc.c"
+#line 59014 "preproc.c"
     break;
 
   case 2977: /* action: SQL_GO TO name  */
-#line 16532 "preproc.y"
+#line 16534 "preproc.y"
                 {
 			(yyval.action).code = W_GOTO;
 			(yyval.action).command = mm_strdup((yyvsp[0].str));
 			(yyval.action).str = cat2_str(mm_strdup("goto "), (yyvsp[0].str));
 		}
-#line 59022 "preproc.c"
+#line 59024 "preproc.c"
     break;
 
   case 2978: /* action: DO name '(' c_args ')'  */
-#line 16538 "preproc.y"
+#line 16540 "preproc.y"
                 {
 			(yyval.action).code = W_DO;
 			(yyval.action).command = cat_str(4, (yyvsp[-3].str), mm_strdup("("), (yyvsp[-1].str), mm_strdup(")"));
 			(yyval.action).str = cat2_str(mm_strdup("do"), mm_strdup((yyval.action).command));
 		}
-#line 59032 "preproc.c"
+#line 59034 "preproc.c"
     break;
 
   case 2979: /* action: DO SQL_BREAK  */
-#line 16544 "preproc.y"
+#line 16546 "preproc.y"
                 {
 			(yyval.action).code = W_BREAK;
 			(yyval.action).command = NULL;
 			(yyval.action).str = mm_strdup("break");
 		}
-#line 59042 "preproc.c"
+#line 59044 "preproc.c"
     break;
 
   case 2980: /* action: DO CONTINUE_P  */
-#line 16550 "preproc.y"
+#line 16552 "preproc.y"
                 {
 			(yyval.action).code = W_CONTINUE;
 			(yyval.action).command = NULL;
 			(yyval.action).str = mm_strdup("continue");
 		}
-#line 59052 "preproc.c"
+#line 59054 "preproc.c"
     break;
 
   case 2981: /* action: CALL name '(' c_args ')'  */
-#line 16556 "preproc.y"
+#line 16558 "preproc.y"
                 {
 			(yyval.action).code = W_DO;
 			(yyval.action).command = cat_str(4, (yyvsp[-3].str), mm_strdup("("), (yyvsp[-1].str), mm_strdup(")"));
 			(yyval.action).str = cat2_str(mm_strdup("call"), mm_strdup((yyval.action).command));
 		}
-#line 59062 "preproc.c"
+#line 59064 "preproc.c"
     break;
 
   case 2982: /* action: CALL name  */
-#line 16562 "preproc.y"
+#line 16564 "preproc.y"
                 {
 			(yyval.action).code = W_DO;
 			(yyval.action).command = cat2_str((yyvsp[0].str), mm_strdup("()"));
 			(yyval.action).str = cat2_str(mm_strdup("call"), mm_strdup((yyval.action).command));
 		}
-#line 59072 "preproc.c"
+#line 59074 "preproc.c"
     break;
 
   case 2983: /* ECPGKeywords: ECPGKeywords_vanames  */
-#line 16572 "preproc.y"
+#line 16574 "preproc.y"
                                         { (yyval.str) = (yyvsp[0].str); }
-#line 59078 "preproc.c"
+#line 59080 "preproc.c"
     break;
 
   case 2984: /* ECPGKeywords: ECPGKeywords_rest  */
-#line 16573 "preproc.y"
+#line 16575 "preproc.y"
                                         { (yyval.str) = (yyvsp[0].str); }
-#line 59084 "preproc.c"
+#line 59086 "preproc.c"
     break;
 
   case 2985: /* ECPGKeywords_vanames: SQL_BREAK  */
-#line 16576 "preproc.y"
+#line 16578 "preproc.y"
                                                 { (yyval.str) = mm_strdup("break"); }
-#line 59090 "preproc.c"
+#line 59092 "preproc.c"
     break;
 
   case 2986: /* ECPGKeywords_vanames: SQL_CARDINALITY  */
-#line 16577 "preproc.y"
+#line 16579 "preproc.y"
                                                                 { (yyval.str) = mm_strdup("cardinality"); }
-#line 59096 "preproc.c"
+#line 59098 "preproc.c"
     break;
 
   case 2987: /* ECPGKeywords_vanames: SQL_COUNT  */
-#line 16578 "preproc.y"
+#line 16580 "preproc.y"
                                                                         { (yyval.str) = mm_strdup("count"); }
-#line 59102 "preproc.c"
+#line 59104 "preproc.c"
     break;
 
   case 2988: /* ECPGKeywords_vanames: SQL_DATETIME_INTERVAL_CODE  */
-#line 16579 "preproc.y"
+#line 16581 "preproc.y"
                                                 { (yyval.str) = mm_strdup("datetime_interval_code"); }
-#line 59108 "preproc.c"
+#line 59110 "preproc.c"
     break;
 
   case 2989: /* ECPGKeywords_vanames: SQL_DATETIME_INTERVAL_PRECISION  */
-#line 16580 "preproc.y"
+#line 16582 "preproc.y"
                                                         { (yyval.str) = mm_strdup("datetime_interval_precision"); }
-#line 59114 "preproc.c"
+#line 59116 "preproc.c"
     break;
 
   case 2990: /* ECPGKeywords_vanames: SQL_FOUND  */
-#line 16581 "preproc.y"
+#line 16583 "preproc.y"
                                                                         { (yyval.str) = mm_strdup("found"); }
-#line 59120 "preproc.c"
+#line 59122 "preproc.c"
     break;
 
   case 2991: /* ECPGKeywords_vanames: SQL_GO  */
-#line 16582 "preproc.y"
+#line 16584 "preproc.y"
                                                                         { (yyval.str) = mm_strdup("go"); }
-#line 59126 "preproc.c"
+#line 59128 "preproc.c"
     break;
 
   case 2992: /* ECPGKeywords_vanames: SQL_GOTO  */
-#line 16583 "preproc.y"
+#line 16585 "preproc.y"
                                                                         { (yyval.str) = mm_strdup("goto"); }
-#line 59132 "preproc.c"
+#line 59134 "preproc.c"
     break;
 
   case 2993: /* ECPGKeywords_vanames: SQL_IDENTIFIED  */
-#line 16584 "preproc.y"
+#line 16586 "preproc.y"
                                                                 { (yyval.str) = mm_strdup("identified"); }
-#line 59138 "preproc.c"
+#line 59140 "preproc.c"
     break;
 
   case 2994: /* ECPGKeywords_vanames: SQL_INDICATOR  */
-#line 16585 "preproc.y"
+#line 16587 "preproc.y"
                                                         { (yyval.str) = mm_strdup("indicator"); }
-#line 59144 "preproc.c"
+#line 59146 "preproc.c"
     break;
 
   case 2995: /* ECPGKeywords_vanames: SQL_KEY_MEMBER  */
-#line 16586 "preproc.y"
+#line 16588 "preproc.y"
                                                         { (yyval.str) = mm_strdup("key_member"); }
-#line 59150 "preproc.c"
+#line 59152 "preproc.c"
     break;
 
   case 2996: /* ECPGKeywords_vanames: SQL_LENGTH  */
-#line 16587 "preproc.y"
+#line 16589 "preproc.y"
                                                         { (yyval.str) = mm_strdup("length"); }
-#line 59156 "preproc.c"
+#line 59158 "preproc.c"
     break;
 
   case 2997: /* ECPGKeywords_vanames: SQL_NULLABLE  */
-#line 16588 "preproc.y"
+#line 16590 "preproc.y"
                                                         { (yyval.str) = mm_strdup("nullable"); }
-#line 59162 "preproc.c"
+#line 59164 "preproc.c"
     break;
 
   case 2998: /* ECPGKeywords_vanames: SQL_OCTET_LENGTH  */
-#line 16589 "preproc.y"
+#line 16591 "preproc.y"
                                                         { (yyval.str) = mm_strdup("octet_length"); }
-#line 59168 "preproc.c"
+#line 59170 "preproc.c"
     break;
 
   case 2999: /* ECPGKeywords_vanames: SQL_RETURNED_LENGTH  */
-#line 16590 "preproc.y"
+#line 16592 "preproc.y"
                                                 { (yyval.str) = mm_strdup("returned_length"); }
-#line 59174 "preproc.c"
+#line 59176 "preproc.c"
     break;
 
   case 3000: /* ECPGKeywords_vanames: SQL_RETURNED_OCTET_LENGTH  */
-#line 16591 "preproc.y"
+#line 16593 "preproc.y"
                                                 { (yyval.str) = mm_strdup("returned_octet_length"); }
-#line 59180 "preproc.c"
+#line 59182 "preproc.c"
     break;
 
   case 3001: /* ECPGKeywords_vanames: SQL_SCALE  */
-#line 16592 "preproc.y"
+#line 16594 "preproc.y"
                                                                 { (yyval.str) = mm_strdup("scale"); }
-#line 59186 "preproc.c"
+#line 59188 "preproc.c"
     break;
 
   case 3002: /* ECPGKeywords_vanames: SQL_SECTION  */
-#line 16593 "preproc.y"
+#line 16595 "preproc.y"
                                                         { (yyval.str) = mm_strdup("section"); }
-#line 59192 "preproc.c"
+#line 59194 "preproc.c"
     break;
 
   case 3003: /* ECPGKeywords_vanames: SQL_SQLERROR  */
-#line 16594 "preproc.y"
+#line 16596 "preproc.y"
                                                         { (yyval.str) = mm_strdup("sqlerror"); }
-#line 59198 "preproc.c"
+#line 59200 "preproc.c"
     break;
 
   case 3004: /* ECPGKeywords_vanames: SQL_SQLPRINT  */
-#line 16595 "preproc.y"
+#line 16597 "preproc.y"
                                                         { (yyval.str) = mm_strdup("sqlprint"); }
-#line 59204 "preproc.c"
+#line 59206 "preproc.c"
     break;
 
   case 3005: /* ECPGKeywords_vanames: SQL_SQLWARNING  */
-#line 16596 "preproc.y"
+#line 16598 "preproc.y"
                                                         { (yyval.str) = mm_strdup("sqlwarning"); }
-#line 59210 "preproc.c"
+#line 59212 "preproc.c"
     break;
 
   case 3006: /* ECPGKeywords_vanames: SQL_STOP  */
-#line 16597 "preproc.y"
+#line 16599 "preproc.y"
                                                                 { (yyval.str) = mm_strdup("stop"); }
-#line 59216 "preproc.c"
+#line 59218 "preproc.c"
     break;
 
   case 3007: /* ECPGKeywords_rest: SQL_CONNECT  */
-#line 16600 "preproc.y"
+#line 16602 "preproc.y"
                                         { (yyval.str) = mm_strdup("connect"); }
-#line 59222 "preproc.c"
+#line 59224 "preproc.c"
     break;
 
   case 3008: /* ECPGKeywords_rest: SQL_DESCRIBE  */
-#line 16601 "preproc.y"
+#line 16603 "preproc.y"
                                                         { (yyval.str) = mm_strdup("describe"); }
-#line 59228 "preproc.c"
+#line 59230 "preproc.c"
     break;
 
   case 3009: /* ECPGKeywords_rest: SQL_DISCONNECT  */
-#line 16602 "preproc.y"
+#line 16604 "preproc.y"
                                                         { (yyval.str) = mm_strdup("disconnect"); }
-#line 59234 "preproc.c"
+#line 59236 "preproc.c"
     break;
 
   case 3010: /* ECPGKeywords_rest: SQL_OPEN  */
-#line 16603 "preproc.y"
+#line 16605 "preproc.y"
                                                                 { (yyval.str) = mm_strdup("open"); }
-#line 59240 "preproc.c"
+#line 59242 "preproc.c"
     break;
 
   case 3011: /* ECPGKeywords_rest: SQL_VAR  */
-#line 16604 "preproc.y"
+#line 16606 "preproc.y"
                                                                 { (yyval.str) = mm_strdup("var"); }
-#line 59246 "preproc.c"
+#line 59248 "preproc.c"
     break;
 
   case 3012: /* ECPGKeywords_rest: SQL_WHENEVER  */
-#line 16605 "preproc.y"
+#line 16607 "preproc.y"
                                                         { (yyval.str) = mm_strdup("whenever"); }
-#line 59252 "preproc.c"
+#line 59254 "preproc.c"
     break;
 
   case 3013: /* ECPGTypeName: SQL_BOOL  */
-#line 16609 "preproc.y"
+#line 16611 "preproc.y"
                                                 { (yyval.str) = mm_strdup("bool"); }
-#line 59258 "preproc.c"
+#line 59260 "preproc.c"
     break;
 
   case 3014: /* ECPGTypeName: SQL_LONG  */
-#line 16610 "preproc.y"
+#line 16612 "preproc.y"
                                                                 { (yyval.str) = mm_strdup("long"); }
-#line 59264 "preproc.c"
+#line 59266 "preproc.c"
     break;
 
   case 3015: /* ECPGTypeName: SQL_OUTPUT  */
-#line 16611 "preproc.y"
+#line 16613 "preproc.y"
                                                         { (yyval.str) = mm_strdup("output"); }
-#line 59270 "preproc.c"
+#line 59272 "preproc.c"
     break;
 
   case 3016: /* ECPGTypeName: SQL_SHORT  */
-#line 16612 "preproc.y"
+#line 16614 "preproc.y"
                                                                 { (yyval.str) = mm_strdup("short"); }
-#line 59276 "preproc.c"
+#line 59278 "preproc.c"
     break;
 
   case 3017: /* ECPGTypeName: SQL_STRUCT  */
-#line 16613 "preproc.y"
+#line 16615 "preproc.y"
                                                         { (yyval.str) = mm_strdup("struct"); }
-#line 59282 "preproc.c"
+#line 59284 "preproc.c"
     break;
 
   case 3018: /* ECPGTypeName: SQL_SIGNED  */
-#line 16614 "preproc.y"
+#line 16616 "preproc.y"
                                                         { (yyval.str) = mm_strdup("signed"); }
-#line 59288 "preproc.c"
+#line 59290 "preproc.c"
     break;
 
   case 3019: /* ECPGTypeName: SQL_UNSIGNED  */
-#line 16615 "preproc.y"
+#line 16617 "preproc.y"
                                                         { (yyval.str) = mm_strdup("unsigned"); }
-#line 59294 "preproc.c"
+#line 59296 "preproc.c"
     break;
 
   case 3020: /* symbol: ColLabel  */
-#line 16618 "preproc.y"
+#line 16620 "preproc.y"
                                                         { (yyval.str) = (yyvsp[0].str); }
-#line 59300 "preproc.c"
+#line 59302 "preproc.c"
     break;
 
   case 3021: /* ECPGColId: ecpg_ident  */
-#line 16621 "preproc.y"
+#line 16623 "preproc.y"
                                                 { (yyval.str) = (yyvsp[0].str); }
-#line 59306 "preproc.c"
+#line 59308 "preproc.c"
     break;
 
   case 3022: /* ECPGColId: unreserved_keyword  */
-#line 16622 "preproc.y"
+#line 16624 "preproc.y"
                                                 { (yyval.str) = (yyvsp[0].str); }
-#line 59312 "preproc.c"
+#line 59314 "preproc.c"
     break;
 
   case 3023: /* ECPGColId: col_name_keyword  */
-#line 16623 "preproc.y"
+#line 16625 "preproc.y"
                                                         { (yyval.str) = (yyvsp[0].str); }
-#line 59318 "preproc.c"
+#line 59320 "preproc.c"
     break;
 
   case 3024: /* ECPGColId: ECPGunreserved_interval  */
-#line 16624 "preproc.y"
+#line 16626 "preproc.y"
                                                 { (yyval.str) = (yyvsp[0].str); }
-#line 59324 "preproc.c"
+#line 59326 "preproc.c"
     break;
 
   case 3025: /* ECPGColId: ECPGKeywords  */
-#line 16625 "preproc.y"
+#line 16627 "preproc.y"
                                                         { (yyval.str) = (yyvsp[0].str); }
-#line 59330 "preproc.c"
+#line 59332 "preproc.c"
     break;
 
   case 3026: /* ECPGColId: ECPGCKeywords  */
-#line 16626 "preproc.y"
+#line 16628 "preproc.y"
                                                         { (yyval.str) = (yyvsp[0].str); }
-#line 59336 "preproc.c"
+#line 59338 "preproc.c"
     break;
 
   case 3027: /* ECPGColId: CHAR_P  */
-#line 16627 "preproc.y"
+#line 16629 "preproc.y"
                                                                 { (yyval.str) = mm_strdup("char"); }
-#line 59342 "preproc.c"
+#line 59344 "preproc.c"
     break;
 
   case 3028: /* ECPGColId: VALUES  */
-#line 16628 "preproc.y"
+#line 16630 "preproc.y"
                                                                 { (yyval.str) = mm_strdup("values"); }
-#line 59348 "preproc.c"
+#line 59350 "preproc.c"
     break;
 
   case 3029: /* ColId: ecpg_ident  */
-#line 16641 "preproc.y"
+#line 16643 "preproc.y"
                                                         { (yyval.str) = (yyvsp[0].str); }
-#line 59354 "preproc.c"
+#line 59356 "preproc.c"
     break;
 
   case 3030: /* ColId: all_unreserved_keyword  */
-#line 16642 "preproc.y"
+#line 16644 "preproc.y"
                                                 { (yyval.str) = (yyvsp[0].str); }
-#line 59360 "preproc.c"
+#line 59362 "preproc.c"
     break;
 
   case 3031: /* ColId: col_name_keyword  */
-#line 16643 "preproc.y"
+#line 16645 "preproc.y"
                                                         { (yyval.str) = (yyvsp[0].str); }
-#line 59366 "preproc.c"
+#line 59368 "preproc.c"
     break;
 
   case 3032: /* ColId: ECPGKeywords  */
-#line 16644 "preproc.y"
+#line 16646 "preproc.y"
                                                         { (yyval.str) = (yyvsp[0].str); }
-#line 59372 "preproc.c"
+#line 59374 "preproc.c"
     break;
 
   case 3033: /* ColId: ECPGCKeywords  */
-#line 16645 "preproc.y"
+#line 16647 "preproc.y"
                                                         { (yyval.str) = (yyvsp[0].str); }
-#line 59378 "preproc.c"
+#line 59380 "preproc.c"
     break;
 
   case 3034: /* ColId: CHAR_P  */
-#line 16646 "preproc.y"
+#line 16648 "preproc.y"
                                                                 { (yyval.str) = mm_strdup("char"); }
-#line 59384 "preproc.c"
+#line 59386 "preproc.c"
     break;
 
   case 3035: /* ColId: VALUES  */
-#line 16647 "preproc.y"
+#line 16649 "preproc.y"
                                                                 { (yyval.str) = mm_strdup("values"); }
-#line 59390 "preproc.c"
+#line 59392 "preproc.c"
     break;
 
   case 3036: /* type_function_name: ecpg_ident  */
-#line 16652 "preproc.y"
+#line 16654 "preproc.y"
                                                 { (yyval.str) = (yyvsp[0].str); }
-#line 59396 "preproc.c"
+#line 59398 "preproc.c"
     break;
 
   case 3037: /* type_function_name: all_unreserved_keyword  */
-#line 16653 "preproc.y"
+#line 16655 "preproc.y"
                                                 { (yyval.str) = (yyvsp[0].str); }
-#line 59402 "preproc.c"
+#line 59404 "preproc.c"
     break;
 
   case 3038: /* type_function_name: type_func_name_keyword  */
-#line 16654 "preproc.y"
+#line 16656 "preproc.y"
                                                 { (yyval.str) = (yyvsp[0].str); }
-#line 59408 "preproc.c"
+#line 59410 "preproc.c"
     break;
 
   case 3039: /* type_function_name: ECPGKeywords  */
-#line 16655 "preproc.y"
+#line 16657 "preproc.y"
                                                         { (yyval.str) = (yyvsp[0].str); }
-#line 59414 "preproc.c"
+#line 59416 "preproc.c"
     break;
 
   case 3040: /* type_function_name: ECPGCKeywords  */
-#line 16656 "preproc.y"
+#line 16658 "preproc.y"
                                                         { (yyval.str) = (yyvsp[0].str); }
-#line 59420 "preproc.c"
+#line 59422 "preproc.c"
     break;
 
   case 3041: /* type_function_name: ECPGTypeName  */
-#line 16657 "preproc.y"
+#line 16659 "preproc.y"
                                                         { (yyval.str) = (yyvsp[0].str); }
-#line 59426 "preproc.c"
+#line 59428 "preproc.c"
     break;
 
   case 3042: /* ColLabel: ECPGColLabel  */
-#line 16663 "preproc.y"
+#line 16665 "preproc.y"
                                                 { (yyval.str) = (yyvsp[0].str); }
-#line 59432 "preproc.c"
+#line 59434 "preproc.c"
     break;
 
   case 3043: /* ColLabel: ECPGTypeName  */
-#line 16664 "preproc.y"
+#line 16666 "preproc.y"
                                                         { (yyval.str) = (yyvsp[0].str); }
-#line 59438 "preproc.c"
+#line 59440 "preproc.c"
     break;
 
   case 3044: /* ColLabel: CHAR_P  */
-#line 16665 "preproc.y"
+#line 16667 "preproc.y"
                                                                 { (yyval.str) = mm_strdup("char"); }
-#line 59444 "preproc.c"
+#line 59446 "preproc.c"
     break;
 
   case 3045: /* ColLabel: CURRENT_P  */
-#line 16666 "preproc.y"
+#line 16668 "preproc.y"
                                                                 { (yyval.str) = mm_strdup("current"); }
-#line 59450 "preproc.c"
+#line 59452 "preproc.c"
     break;
 
   case 3046: /* ColLabel: INPUT_P  */
-#line 16667 "preproc.y"
+#line 16669 "preproc.y"
                                                                 { (yyval.str) = mm_strdup("input"); }
-#line 59456 "preproc.c"
+#line 59458 "preproc.c"
     break;
 
   case 3047: /* ColLabel: INT_P  */
-#line 16668 "preproc.y"
+#line 16670 "preproc.y"
                                                                 { (yyval.str) = mm_strdup("int"); }
-#line 59462 "preproc.c"
+#line 59464 "preproc.c"
     break;
 
   case 3048: /* ColLabel: TO  */
-#line 16669 "preproc.y"
+#line 16671 "preproc.y"
                                                                 { (yyval.str) = mm_strdup("to"); }
-#line 59468 "preproc.c"
+#line 59470 "preproc.c"
     break;
 
   case 3049: /* ColLabel: UNION  */
-#line 16670 "preproc.y"
+#line 16672 "preproc.y"
                                                                 { (yyval.str) = mm_strdup("union"); }
-#line 59474 "preproc.c"
+#line 59476 "preproc.c"
     break;
 
   case 3050: /* ColLabel: VALUES  */
-#line 16671 "preproc.y"
+#line 16673 "preproc.y"
                                                                 { (yyval.str) = mm_strdup("values"); }
-#line 59480 "preproc.c"
+#line 59482 "preproc.c"
     break;
 
   case 3051: /* ColLabel: ECPGCKeywords  */
-#line 16672 "preproc.y"
+#line 16674 "preproc.y"
                                                         { (yyval.str) = (yyvsp[0].str); }
-#line 59486 "preproc.c"
+#line 59488 "preproc.c"
     break;
 
   case 3052: /* ColLabel: ECPGunreserved_interval  */
-#line 16673 "preproc.y"
+#line 16675 "preproc.y"
                                                 { (yyval.str) = (yyvsp[0].str); }
-#line 59492 "preproc.c"
+#line 59494 "preproc.c"
     break;
 
   case 3053: /* ECPGColLabel: ECPGColLabelCommon  */
-#line 16676 "preproc.y"
+#line 16678 "preproc.y"
                                         { (yyval.str) = (yyvsp[0].str); }
-#line 59498 "preproc.c"
+#line 59500 "preproc.c"
     break;
 
   case 3054: /* ECPGColLabel: unreserved_keyword  */
-#line 16677 "preproc.y"
+#line 16679 "preproc.y"
                                                 { (yyval.str) = (yyvsp[0].str); }
-#line 59504 "preproc.c"
+#line 59506 "preproc.c"
     break;
 
   case 3055: /* ECPGColLabel: reserved_keyword  */
-#line 16678 "preproc.y"
+#line 16680 "preproc.y"
                                                         { (yyval.str) = (yyvsp[0].str); }
-#line 59510 "preproc.c"
+#line 59512 "preproc.c"
     break;
 
   case 3056: /* ECPGColLabel: ECPGKeywords_rest  */
-#line 16679 "preproc.y"
+#line 16681 "preproc.y"
                                                         { (yyval.str) = (yyvsp[0].str); }
-#line 59516 "preproc.c"
+#line 59518 "preproc.c"
     break;
 
   case 3057: /* ECPGColLabel: CONNECTION  */
-#line 16680 "preproc.y"
+#line 16682 "preproc.y"
                                                         { (yyval.str) = mm_strdup("connection"); }
-#line 59522 "preproc.c"
+#line 59524 "preproc.c"
     break;
 
   case 3058: /* ECPGColLabelCommon: ecpg_ident  */
-#line 16683 "preproc.y"
+#line 16685 "preproc.y"
                                         { (yyval.str) = (yyvsp[0].str); }
-#line 59528 "preproc.c"
+#line 59530 "preproc.c"
     break;
 
   case 3059: /* ECPGColLabelCommon: col_name_keyword  */
-#line 16684 "preproc.y"
+#line 16686 "preproc.y"
                                                         { (yyval.str) = (yyvsp[0].str); }
-#line 59534 "preproc.c"
+#line 59536 "preproc.c"
     break;
 
   case 3060: /* ECPGColLabelCommon: type_func_name_keyword  */
-#line 16685 "preproc.y"
+#line 16687 "preproc.y"
                                                 { (yyval.str) = (yyvsp[0].str); }
-#line 59540 "preproc.c"
+#line 59542 "preproc.c"
     break;
 
   case 3061: /* ECPGColLabelCommon: ECPGKeywords_vanames  */
-#line 16686 "preproc.y"
+#line 16688 "preproc.y"
                                                 { (yyval.str) = (yyvsp[0].str); }
-#line 59546 "preproc.c"
+#line 59548 "preproc.c"
     break;
 
   case 3062: /* ECPGCKeywords: S_AUTO  */
-#line 16689 "preproc.y"
+#line 16691 "preproc.y"
                                                 { (yyval.str) = mm_strdup("auto"); }
-#line 59552 "preproc.c"
+#line 59554 "preproc.c"
     break;
 
   case 3063: /* ECPGCKeywords: S_CONST  */
-#line 16690 "preproc.y"
+#line 16692 "preproc.y"
                                                                 { (yyval.str) = mm_strdup("const"); }
-#line 59558 "preproc.c"
+#line 59560 "preproc.c"
     break;
 
   case 3064: /* ECPGCKeywords: S_EXTERN  */
-#line 16691 "preproc.y"
+#line 16693 "preproc.y"
                                                                 { (yyval.str) = mm_strdup("extern"); }
-#line 59564 "preproc.c"
+#line 59566 "preproc.c"
     break;
 
   case 3065: /* ECPGCKeywords: S_REGISTER  */
-#line 16692 "preproc.y"
+#line 16694 "preproc.y"
                                                         { (yyval.str) = mm_strdup("register"); }
-#line 59570 "preproc.c"
+#line 59572 "preproc.c"
     break;
 
   case 3066: /* ECPGCKeywords: S_STATIC  */
-#line 16693 "preproc.y"
+#line 16695 "preproc.y"
                                                                 { (yyval.str) = mm_strdup("static"); }
-#line 59576 "preproc.c"
+#line 59578 "preproc.c"
     break;
 
   case 3067: /* ECPGCKeywords: S_TYPEDEF  */
-#line 16694 "preproc.y"
+#line 16696 "preproc.y"
                                                                 { (yyval.str) = mm_strdup("typedef"); }
-#line 59582 "preproc.c"
+#line 59584 "preproc.c"
     break;
 
   case 3068: /* ECPGCKeywords: S_VOLATILE  */
-#line 16695 "preproc.y"
+#line 16697 "preproc.y"
                                                         { (yyval.str) = mm_strdup("volatile"); }
-#line 59588 "preproc.c"
+#line 59590 "preproc.c"
     break;
 
   case 3069: /* all_unreserved_keyword: unreserved_keyword  */
-#line 16712 "preproc.y"
+#line 16714 "preproc.y"
                                                 { (yyval.str) = (yyvsp[0].str); }
-#line 59594 "preproc.c"
+#line 59596 "preproc.c"
     break;
 
   case 3070: /* all_unreserved_keyword: ECPGunreserved_interval  */
-#line 16713 "preproc.y"
+#line 16715 "preproc.y"
                                                                 { (yyval.str) = (yyvsp[0].str); }
-#line 59600 "preproc.c"
+#line 59602 "preproc.c"
     break;
 
   case 3071: /* all_unreserved_keyword: CONNECTION  */
-#line 16714 "preproc.y"
+#line 16716 "preproc.y"
                                                                         { (yyval.str) = mm_strdup("connection"); }
-#line 59606 "preproc.c"
+#line 59608 "preproc.c"
     break;
 
   case 3072: /* ECPGunreserved_interval: DAY_P  */
-#line 16717 "preproc.y"
+#line 16719 "preproc.y"
                                                         { (yyval.str) = mm_strdup("day"); }
-#line 59612 "preproc.c"
+#line 59614 "preproc.c"
     break;
 
   case 3073: /* ECPGunreserved_interval: HOUR_P  */
-#line 16718 "preproc.y"
+#line 16720 "preproc.y"
                                                                                 { (yyval.str) = mm_strdup("hour"); }
-#line 59618 "preproc.c"
+#line 59620 "preproc.c"
     break;
 
   case 3074: /* ECPGunreserved_interval: MINUTE_P  */
-#line 16719 "preproc.y"
+#line 16721 "preproc.y"
                                                                                 { (yyval.str) = mm_strdup("minute"); }
-#line 59624 "preproc.c"
+#line 59626 "preproc.c"
     break;
 
   case 3075: /* ECPGunreserved_interval: MONTH_P  */
-#line 16720 "preproc.y"
+#line 16722 "preproc.y"
                                                                                 { (yyval.str) = mm_strdup("month"); }
-#line 59630 "preproc.c"
+#line 59632 "preproc.c"
     break;
 
   case 3076: /* ECPGunreserved_interval: SECOND_P  */
-#line 16721 "preproc.y"
+#line 16723 "preproc.y"
                                                                                 { (yyval.str) = mm_strdup("second"); }
-#line 59636 "preproc.c"
+#line 59638 "preproc.c"
     break;
 
   case 3077: /* ECPGunreserved_interval: YEAR_P  */
-#line 16722 "preproc.y"
+#line 16724 "preproc.y"
                                                                                 { (yyval.str) = mm_strdup("year"); }
-#line 59642 "preproc.c"
+#line 59644 "preproc.c"
     break;
 
   case 3080: /* ecpgstart: SQL_START  */
-#line 16729 "preproc.y"
+#line 16731 "preproc.y"
                         {
 				reset_variables();
 				pacounter = 1;
 			}
-#line 59651 "preproc.c"
+#line 59653 "preproc.c"
     break;
 
   case 3081: /* c_args: %empty  */
-#line 16735 "preproc.y"
+#line 16737 "preproc.y"
                                 { (yyval.str) = EMPTY; }
-#line 59657 "preproc.c"
+#line 59659 "preproc.c"
     break;
 
   case 3082: /* c_args: c_list  */
-#line 16736 "preproc.y"
+#line 16738 "preproc.y"
                                         { (yyval.str) = (yyvsp[0].str); }
-#line 59663 "preproc.c"
+#line 59665 "preproc.c"
     break;
 
   case 3083: /* coutputvariable: cvariable indicator  */
-#line 16740 "preproc.y"
+#line 16742 "preproc.y"
                         { add_variable_to_head(&argsresult, find_variable((yyvsp[-1].str)), find_variable((yyvsp[0].str))); }
-#line 59669 "preproc.c"
+#line 59671 "preproc.c"
     break;
 
   case 3084: /* coutputvariable: cvariable  */
-#line 16742 "preproc.y"
+#line 16744 "preproc.y"
                         { add_variable_to_head(&argsresult, find_variable((yyvsp[0].str)), &no_indicator); }
-#line 59675 "preproc.c"
+#line 59677 "preproc.c"
     break;
 
   case 3085: /* civarind: cvariable indicator  */
-#line 16747 "preproc.y"
+#line 16749 "preproc.y"
                 {
 			if (find_variable((yyvsp[0].str))->type->type == ECPGt_array)
 				mmerror(PARSE_ERROR, ET_ERROR, "arrays of indicators are not allowed on input");
@@ -59683,11 +59685,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			add_variable_to_head(&argsinsert, find_variable((yyvsp[-1].str)), find_variable((yyvsp[0].str)));
 			(yyval.str) = create_questionmarks((yyvsp[-1].str), false);
 		}
-#line 59687 "preproc.c"
+#line 59689 "preproc.c"
     break;
 
   case 3086: /* char_civar: char_variable  */
-#line 16757 "preproc.y"
+#line 16759 "preproc.y"
                 {
 			char *ptr = strstr((yyvsp[0].str), ".arr");
 
@@ -59696,38 +59698,38 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			add_variable_to_head(&argsinsert, find_variable((yyvsp[0].str)), &no_indicator);
 			(yyval.str) = (yyvsp[0].str);
 		}
-#line 59700 "preproc.c"
+#line 59702 "preproc.c"
     break;
 
   case 3087: /* civar: cvariable  */
-#line 16768 "preproc.y"
+#line 16770 "preproc.y"
                 {
 			add_variable_to_head(&argsinsert, find_variable((yyvsp[0].str)), &no_indicator);
 			(yyval.str) = create_questionmarks((yyvsp[0].str), false);
 		}
-#line 59709 "preproc.c"
+#line 59711 "preproc.c"
     break;
 
   case 3088: /* indicator: cvariable  */
-#line 16774 "preproc.y"
+#line 16776 "preproc.y"
                                                 { check_indicator((find_variable((yyvsp[0].str)))->type); (yyval.str) = (yyvsp[0].str); }
-#line 59715 "preproc.c"
+#line 59717 "preproc.c"
     break;
 
   case 3089: /* indicator: SQL_INDICATOR cvariable  */
-#line 16775 "preproc.y"
+#line 16777 "preproc.y"
                                                 { check_indicator((find_variable((yyvsp[0].str)))->type); (yyval.str) = (yyvsp[0].str); }
-#line 59721 "preproc.c"
+#line 59723 "preproc.c"
     break;
 
   case 3090: /* indicator: SQL_INDICATOR name  */
-#line 16776 "preproc.y"
+#line 16778 "preproc.y"
                                                 { check_indicator((find_variable((yyvsp[0].str)))->type); (yyval.str) = (yyvsp[0].str); }
-#line 59727 "preproc.c"
+#line 59729 "preproc.c"
     break;
 
   case 3091: /* cvariable: CVARIABLE  */
-#line 16780 "preproc.y"
+#line 16782 "preproc.y"
                 {
 			/* As long as multidimensional arrays are not implemented we have to check for those here */
 			char *ptr = (yyvsp[0].str);
@@ -59758,29 +59760,29 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			}
 			(yyval.str) = (yyvsp[0].str);
 		}
-#line 59762 "preproc.c"
+#line 59764 "preproc.c"
     break;
 
   case 3092: /* ecpg_param: PARAM  */
-#line 16812 "preproc.y"
+#line 16814 "preproc.y"
                                 { (yyval.str) = make_name(); }
-#line 59768 "preproc.c"
+#line 59770 "preproc.c"
     break;
 
   case 3093: /* ecpg_bconst: BCONST  */
-#line 16814 "preproc.y"
+#line 16816 "preproc.y"
                                 { (yyval.str) = make_name(); }
-#line 59774 "preproc.c"
+#line 59776 "preproc.c"
     break;
 
   case 3094: /* ecpg_fconst: FCONST  */
-#line 16816 "preproc.y"
+#line 16818 "preproc.y"
                                 { (yyval.str) = make_name(); }
-#line 59780 "preproc.c"
+#line 59782 "preproc.c"
     break;
 
   case 3095: /* ecpg_sconst: SCONST  */
-#line 16820 "preproc.y"
+#line 16822 "preproc.y"
                 {
 			/* could have been input as '' or $$ */
 			(yyval.str) = (char *)mm_alloc(strlen((yyvsp[0].str)) + 3);
@@ -59790,11 +59792,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			(yyval.str)[strlen((yyvsp[0].str))+2]='\0';
 			free((yyvsp[0].str));
 		}
-#line 59794 "preproc.c"
+#line 59796 "preproc.c"
     break;
 
   case 3096: /* ecpg_sconst: ECONST  */
-#line 16830 "preproc.y"
+#line 16832 "preproc.y"
                 {
 			(yyval.str) = (char *)mm_alloc(strlen((yyvsp[0].str)) + 4);
 			(yyval.str)[0]='E';
@@ -59804,11 +59806,11 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			(yyval.str)[strlen((yyvsp[0].str))+3]='\0';
 			free((yyvsp[0].str));
 		}
-#line 59808 "preproc.c"
+#line 59810 "preproc.c"
     break;
 
   case 3097: /* ecpg_sconst: NCONST  */
-#line 16840 "preproc.y"
+#line 16842 "preproc.y"
                 {
 			(yyval.str) = (char *)mm_alloc(strlen((yyvsp[0].str)) + 4);
 			(yyval.str)[0]='N';
@@ -59818,621 +59820,621 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 			(yyval.str)[strlen((yyvsp[0].str))+3]='\0';
 			free((yyvsp[0].str));
 		}
-#line 59822 "preproc.c"
+#line 59824 "preproc.c"
     break;
 
   case 3098: /* ecpg_sconst: UCONST  */
-#line 16849 "preproc.y"
+#line 16851 "preproc.y"
                                 { (yyval.str) = (yyvsp[0].str); }
-#line 59828 "preproc.c"
+#line 59830 "preproc.c"
     break;
 
   case 3099: /* ecpg_sconst: DOLCONST  */
-#line 16850 "preproc.y"
+#line 16852 "preproc.y"
                                 { (yyval.str) = (yyvsp[0].str); }
-#line 59834 "preproc.c"
+#line 59836 "preproc.c"
     break;
 
   case 3100: /* ecpg_xconst: XCONST  */
-#line 16853 "preproc.y"
+#line 16855 "preproc.y"
                                 { (yyval.str) = make_name(); }
-#line 59840 "preproc.c"
+#line 59842 "preproc.c"
     break;
 
   case 3101: /* ecpg_ident: IDENT  */
-#line 16855 "preproc.y"
+#line 16857 "preproc.y"
                                 { (yyval.str) = make_name(); }
-#line 59846 "preproc.c"
+#line 59848 "preproc.c"
     break;
 
   case 3102: /* ecpg_ident: CSTRING  */
-#line 16856 "preproc.y"
+#line 16858 "preproc.y"
                                 { (yyval.str) = make3_str(mm_strdup("\""), (yyvsp[0].str), mm_strdup("\"")); }
-#line 59852 "preproc.c"
+#line 59854 "preproc.c"
     break;
 
   case 3103: /* ecpg_ident: UIDENT  */
-#line 16857 "preproc.y"
+#line 16859 "preproc.y"
                                 { (yyval.str) = (yyvsp[0].str); }
-#line 59858 "preproc.c"
+#line 59860 "preproc.c"
     break;
 
   case 3104: /* quoted_ident_stringvar: name  */
-#line 16861 "preproc.y"
+#line 16863 "preproc.y"
                         { (yyval.str) = make3_str(mm_strdup("\""), (yyvsp[0].str), mm_strdup("\"")); }
-#line 59864 "preproc.c"
+#line 59866 "preproc.c"
     break;
 
   case 3105: /* quoted_ident_stringvar: char_variable  */
-#line 16863 "preproc.y"
+#line 16865 "preproc.y"
                         { (yyval.str) = make3_str(mm_strdup("("), (yyvsp[0].str), mm_strdup(")")); }
-#line 59870 "preproc.c"
+#line 59872 "preproc.c"
     break;
 
   case 3106: /* c_stuff_item: c_anything  */
-#line 16870 "preproc.y"
+#line 16872 "preproc.y"
                                                 { (yyval.str) = (yyvsp[0].str); }
-#line 59876 "preproc.c"
+#line 59878 "preproc.c"
     break;
 
   case 3107: /* c_stuff_item: '(' ')'  */
-#line 16871 "preproc.y"
+#line 16873 "preproc.y"
                                                 { (yyval.str) = mm_strdup("()"); }
-#line 59882 "preproc.c"
+#line 59884 "preproc.c"
     break;
 
   case 3108: /* c_stuff_item: '(' c_stuff ')'  */
-#line 16873 "preproc.y"
+#line 16875 "preproc.y"
                         { (yyval.str) = cat_str(3, mm_strdup("("), (yyvsp[-1].str), mm_strdup(")")); }
-#line 59888 "preproc.c"
+#line 59890 "preproc.c"
     break;
 
   case 3109: /* c_stuff: c_stuff_item  */
-#line 16876 "preproc.y"
+#line 16878 "preproc.y"
                                         { (yyval.str) = (yyvsp[0].str); }
-#line 59894 "preproc.c"
+#line 59896 "preproc.c"
     break;
 
   case 3110: /* c_stuff: c_stuff c_stuff_item  */
-#line 16878 "preproc.y"
+#line 16880 "preproc.y"
                         { (yyval.str) = cat2_str((yyvsp[-1].str), (yyvsp[0].str)); }
-#line 59900 "preproc.c"
+#line 59902 "preproc.c"
     break;
 
   case 3111: /* c_list: c_term  */
-#line 16881 "preproc.y"
+#line 16883 "preproc.y"
                                         { (yyval.str) = (yyvsp[0].str); }
-#line 59906 "preproc.c"
+#line 59908 "preproc.c"
     break;
 
   case 3112: /* c_list: c_list ',' c_term  */
-#line 16882 "preproc.y"
+#line 16884 "preproc.y"
                                         { (yyval.str) = cat_str(3, (yyvsp[-2].str), mm_strdup(","), (yyvsp[0].str)); }
-#line 59912 "preproc.c"
+#line 59914 "preproc.c"
     break;
 
   case 3113: /* c_term: c_stuff  */
-#line 16885 "preproc.y"
+#line 16887 "preproc.y"
                                         { (yyval.str) = (yyvsp[0].str); }
-#line 59918 "preproc.c"
+#line 59920 "preproc.c"
     break;
 
   case 3114: /* c_term: '{' c_list '}'  */
-#line 16886 "preproc.y"
+#line 16888 "preproc.y"
                                         { (yyval.str) = cat_str(3, mm_strdup("{"), (yyvsp[-1].str), mm_strdup("}")); }
-#line 59924 "preproc.c"
+#line 59926 "preproc.c"
     break;
 
   case 3115: /* c_thing: c_anything  */
-#line 16889 "preproc.y"
+#line 16891 "preproc.y"
                                         { (yyval.str) = (yyvsp[0].str); }
-#line 59930 "preproc.c"
+#line 59932 "preproc.c"
     break;
 
   case 3116: /* c_thing: '('  */
-#line 16890 "preproc.y"
+#line 16892 "preproc.y"
                                         { (yyval.str) = mm_strdup("("); }
-#line 59936 "preproc.c"
+#line 59938 "preproc.c"
     break;
 
   case 3117: /* c_thing: ')'  */
-#line 16891 "preproc.y"
+#line 16893 "preproc.y"
                                         { (yyval.str) = mm_strdup(")"); }
-#line 59942 "preproc.c"
+#line 59944 "preproc.c"
     break;
 
   case 3118: /* c_thing: ','  */
-#line 16892 "preproc.y"
+#line 16894 "preproc.y"
                                         { (yyval.str) = mm_strdup(","); }
-#line 59948 "preproc.c"
+#line 59950 "preproc.c"
     break;
 
   case 3119: /* c_thing: ';'  */
-#line 16893 "preproc.y"
+#line 16895 "preproc.y"
                                         { (yyval.str) = mm_strdup(";"); }
-#line 59954 "preproc.c"
+#line 59956 "preproc.c"
     break;
 
   case 3120: /* c_anything: ecpg_ident  */
-#line 16896 "preproc.y"
+#line 16898 "preproc.y"
                                                 { (yyval.str) = (yyvsp[0].str); }
-#line 59960 "preproc.c"
+#line 59962 "preproc.c"
     break;
 
   case 3121: /* c_anything: Iconst  */
-#line 16897 "preproc.y"
+#line 16899 "preproc.y"
                                                 { (yyval.str) = (yyvsp[0].str); }
-#line 59966 "preproc.c"
+#line 59968 "preproc.c"
     break;
 
   case 3122: /* c_anything: ecpg_fconst  */
-#line 16898 "preproc.y"
+#line 16900 "preproc.y"
                                                 { (yyval.str) = (yyvsp[0].str); }
-#line 59972 "preproc.c"
+#line 59974 "preproc.c"
     break;
 
   case 3123: /* c_anything: ecpg_sconst  */
-#line 16899 "preproc.y"
+#line 16901 "preproc.y"
                                                 { (yyval.str) = (yyvsp[0].str); }
-#line 59978 "preproc.c"
+#line 59980 "preproc.c"
     break;
 
   case 3124: /* c_anything: '*'  */
-#line 16900 "preproc.y"
+#line 16902 "preproc.y"
                                                 { (yyval.str) = mm_strdup("*"); }
-#line 59984 "preproc.c"
+#line 59986 "preproc.c"
     break;
 
   case 3125: /* c_anything: '+'  */
-#line 16901 "preproc.y"
+#line 16903 "preproc.y"
                                                 { (yyval.str) = mm_strdup("+"); }
-#line 59990 "preproc.c"
+#line 59992 "preproc.c"
     break;
 
   case 3126: /* c_anything: '-'  */
-#line 16902 "preproc.y"
+#line 16904 "preproc.y"
                                                 { (yyval.str) = mm_strdup("-"); }
-#line 59996 "preproc.c"
+#line 59998 "preproc.c"
     break;
 
   case 3127: /* c_anything: '/'  */
-#line 16903 "preproc.y"
+#line 16905 "preproc.y"
                                                 { (yyval.str) = mm_strdup("/"); }
-#line 60002 "preproc.c"
+#line 60004 "preproc.c"
     break;
 
   case 3128: /* c_anything: '%'  */
-#line 16904 "preproc.y"
+#line 16906 "preproc.y"
                                                 { (yyval.str) = mm_strdup("%"); }
-#line 60008 "preproc.c"
+#line 60010 "preproc.c"
     break;
 
   case 3129: /* c_anything: NULL_P  */
-#line 16905 "preproc.y"
+#line 16907 "preproc.y"
                                                 { (yyval.str) = mm_strdup("NULL"); }
-#line 60014 "preproc.c"
+#line 60016 "preproc.c"
     break;
 
   case 3130: /* c_anything: S_ADD  */
-#line 16906 "preproc.y"
+#line 16908 "preproc.y"
                                                 { (yyval.str) = mm_strdup("+="); }
-#line 60020 "preproc.c"
+#line 60022 "preproc.c"
     break;
 
   case 3131: /* c_anything: S_AND  */
-#line 16907 "preproc.y"
+#line 16909 "preproc.y"
                                                 { (yyval.str) = mm_strdup("&&"); }
-#line 60026 "preproc.c"
+#line 60028 "preproc.c"
     break;
 
   case 3132: /* c_anything: S_ANYTHING  */
-#line 16908 "preproc.y"
+#line 16910 "preproc.y"
                                                 { (yyval.str) = make_name(); }
-#line 60032 "preproc.c"
+#line 60034 "preproc.c"
     break;
 
   case 3133: /* c_anything: S_AUTO  */
-#line 16909 "preproc.y"
+#line 16911 "preproc.y"
                                                 { (yyval.str) = mm_strdup("auto"); }
-#line 60038 "preproc.c"
+#line 60040 "preproc.c"
     break;
 
   case 3134: /* c_anything: S_CONST  */
-#line 16910 "preproc.y"
+#line 16912 "preproc.y"
                                                 { (yyval.str) = mm_strdup("const"); }
-#line 60044 "preproc.c"
+#line 60046 "preproc.c"
     break;
 
   case 3135: /* c_anything: S_DEC  */
-#line 16911 "preproc.y"
+#line 16913 "preproc.y"
                                                 { (yyval.str) = mm_strdup("--"); }
-#line 60050 "preproc.c"
+#line 60052 "preproc.c"
     break;
 
   case 3136: /* c_anything: S_DIV  */
-#line 16912 "preproc.y"
+#line 16914 "preproc.y"
                                                 { (yyval.str) = mm_strdup("/="); }
-#line 60056 "preproc.c"
+#line 60058 "preproc.c"
     break;
 
   case 3137: /* c_anything: S_DOTPOINT  */
-#line 16913 "preproc.y"
+#line 16915 "preproc.y"
                                                 { (yyval.str) = mm_strdup(".*"); }
-#line 60062 "preproc.c"
+#line 60064 "preproc.c"
     break;
 
   case 3138: /* c_anything: S_EQUAL  */
-#line 16914 "preproc.y"
+#line 16916 "preproc.y"
                                                 { (yyval.str) = mm_strdup("=="); }
-#line 60068 "preproc.c"
+#line 60070 "preproc.c"
     break;
 
   case 3139: /* c_anything: S_EXTERN  */
-#line 16915 "preproc.y"
+#line 16917 "preproc.y"
                                                 { (yyval.str) = mm_strdup("extern"); }
-#line 60074 "preproc.c"
+#line 60076 "preproc.c"
     break;
 
   case 3140: /* c_anything: S_INC  */
-#line 16916 "preproc.y"
+#line 16918 "preproc.y"
                                                 { (yyval.str) = mm_strdup("++"); }
-#line 60080 "preproc.c"
+#line 60082 "preproc.c"
     break;
 
   case 3141: /* c_anything: S_LSHIFT  */
-#line 16917 "preproc.y"
+#line 16919 "preproc.y"
                                                 { (yyval.str) = mm_strdup("<<"); }
-#line 60086 "preproc.c"
+#line 60088 "preproc.c"
     break;
 
   case 3142: /* c_anything: S_MEMBER  */
-#line 16918 "preproc.y"
+#line 16920 "preproc.y"
                                                 { (yyval.str) = mm_strdup("->"); }
-#line 60092 "preproc.c"
+#line 60094 "preproc.c"
     break;
 
   case 3143: /* c_anything: S_MEMPOINT  */
-#line 16919 "preproc.y"
+#line 16921 "preproc.y"
                                                 { (yyval.str) = mm_strdup("->*"); }
-#line 60098 "preproc.c"
+#line 60100 "preproc.c"
     break;
 
   case 3144: /* c_anything: S_MOD  */
-#line 16920 "preproc.y"
+#line 16922 "preproc.y"
                                                 { (yyval.str) = mm_strdup("%="); }
-#line 60104 "preproc.c"
+#line 60106 "preproc.c"
     break;
 
   case 3145: /* c_anything: S_MUL  */
-#line 16921 "preproc.y"
+#line 16923 "preproc.y"
                                                 { (yyval.str) = mm_strdup("*="); }
-#line 60110 "preproc.c"
+#line 60112 "preproc.c"
     break;
 
   case 3146: /* c_anything: S_NEQUAL  */
-#line 16922 "preproc.y"
+#line 16924 "preproc.y"
                                                 { (yyval.str) = mm_strdup("!="); }
-#line 60116 "preproc.c"
+#line 60118 "preproc.c"
     break;
 
   case 3147: /* c_anything: S_OR  */
-#line 16923 "preproc.y"
+#line 16925 "preproc.y"
                                                 { (yyval.str) = mm_strdup("||"); }
-#line 60122 "preproc.c"
+#line 60124 "preproc.c"
     break;
 
   case 3148: /* c_anything: S_REGISTER  */
-#line 16924 "preproc.y"
+#line 16926 "preproc.y"
                                                 { (yyval.str) = mm_strdup("register"); }
-#line 60128 "preproc.c"
+#line 60130 "preproc.c"
     break;
 
   case 3149: /* c_anything: S_RSHIFT  */
-#line 16925 "preproc.y"
+#line 16927 "preproc.y"
                                                 { (yyval.str) = mm_strdup(">>"); }
-#line 60134 "preproc.c"
+#line 60136 "preproc.c"
     break;
 
   case 3150: /* c_anything: S_STATIC  */
-#line 16926 "preproc.y"
+#line 16928 "preproc.y"
                                                 { (yyval.str) = mm_strdup("static"); }
-#line 60140 "preproc.c"
+#line 60142 "preproc.c"
     break;
 
   case 3151: /* c_anything: S_SUB  */
-#line 16927 "preproc.y"
+#line 16929 "preproc.y"
                                                 { (yyval.str) = mm_strdup("-="); }
-#line 60146 "preproc.c"
+#line 60148 "preproc.c"
     break;
 
   case 3152: /* c_anything: S_TYPEDEF  */
-#line 16928 "preproc.y"
+#line 16930 "preproc.y"
                                                 { (yyval.str) = mm_strdup("typedef"); }
-#line 60152 "preproc.c"
+#line 60154 "preproc.c"
     break;
 
   case 3153: /* c_anything: S_VOLATILE  */
-#line 16929 "preproc.y"
+#line 16931 "preproc.y"
                                                 { (yyval.str) = mm_strdup("volatile"); }
-#line 60158 "preproc.c"
+#line 60160 "preproc.c"
     break;
 
   case 3154: /* c_anything: SQL_BOOL  */
-#line 16930 "preproc.y"
+#line 16932 "preproc.y"
                                                 { (yyval.str) = mm_strdup("bool"); }
-#line 60164 "preproc.c"
+#line 60166 "preproc.c"
     break;
 
   case 3155: /* c_anything: ENUM_P  */
-#line 16931 "preproc.y"
+#line 16933 "preproc.y"
                                                 { (yyval.str) = mm_strdup("enum"); }
-#line 60170 "preproc.c"
+#line 60172 "preproc.c"
     break;
 
   case 3156: /* c_anything: HOUR_P  */
-#line 16932 "preproc.y"
+#line 16934 "preproc.y"
                                                 { (yyval.str) = mm_strdup("hour"); }
-#line 60176 "preproc.c"
+#line 60178 "preproc.c"
     break;
 
   case 3157: /* c_anything: INT_P  */
-#line 16933 "preproc.y"
+#line 16935 "preproc.y"
                                                 { (yyval.str) = mm_strdup("int"); }
-#line 60182 "preproc.c"
+#line 60184 "preproc.c"
     break;
 
   case 3158: /* c_anything: SQL_LONG  */
-#line 16934 "preproc.y"
+#line 16936 "preproc.y"
                                                 { (yyval.str) = mm_strdup("long"); }
-#line 60188 "preproc.c"
+#line 60190 "preproc.c"
     break;
 
   case 3159: /* c_anything: MINUTE_P  */
-#line 16935 "preproc.y"
+#line 16937 "preproc.y"
                                                 { (yyval.str) = mm_strdup("minute"); }
-#line 60194 "preproc.c"
+#line 60196 "preproc.c"
     break;
 
   case 3160: /* c_anything: MONTH_P  */
-#line 16936 "preproc.y"
+#line 16938 "preproc.y"
                                                 { (yyval.str) = mm_strdup("month"); }
-#line 60200 "preproc.c"
+#line 60202 "preproc.c"
     break;
 
   case 3161: /* c_anything: SECOND_P  */
-#line 16937 "preproc.y"
+#line 16939 "preproc.y"
                                                 { (yyval.str) = mm_strdup("second"); }
-#line 60206 "preproc.c"
+#line 60208 "preproc.c"
     break;
 
   case 3162: /* c_anything: SQL_SHORT  */
-#line 16938 "preproc.y"
+#line 16940 "preproc.y"
                                                 { (yyval.str) = mm_strdup("short"); }
-#line 60212 "preproc.c"
+#line 60214 "preproc.c"
     break;
 
   case 3163: /* c_anything: SQL_SIGNED  */
-#line 16939 "preproc.y"
+#line 16941 "preproc.y"
                                                 { (yyval.str) = mm_strdup("signed"); }
-#line 60218 "preproc.c"
+#line 60220 "preproc.c"
     break;
 
   case 3164: /* c_anything: SQL_STRUCT  */
-#line 16940 "preproc.y"
+#line 16942 "preproc.y"
                                                 { (yyval.str) = mm_strdup("struct"); }
-#line 60224 "preproc.c"
+#line 60226 "preproc.c"
     break;
 
   case 3165: /* c_anything: SQL_UNSIGNED  */
-#line 16941 "preproc.y"
+#line 16943 "preproc.y"
                                                 { (yyval.str) = mm_strdup("unsigned"); }
-#line 60230 "preproc.c"
+#line 60232 "preproc.c"
     break;
 
   case 3166: /* c_anything: YEAR_P  */
-#line 16942 "preproc.y"
+#line 16944 "preproc.y"
                                                 { (yyval.str) = mm_strdup("year"); }
-#line 60236 "preproc.c"
+#line 60238 "preproc.c"
     break;
 
   case 3167: /* c_anything: CHAR_P  */
-#line 16943 "preproc.y"
+#line 16945 "preproc.y"
                                                 { (yyval.str) = mm_strdup("char"); }
-#line 60242 "preproc.c"
+#line 60244 "preproc.c"
     break;
 
   case 3168: /* c_anything: FLOAT_P  */
-#line 16944 "preproc.y"
+#line 16946 "preproc.y"
                                                 { (yyval.str) = mm_strdup("float"); }
-#line 60248 "preproc.c"
+#line 60250 "preproc.c"
     break;
 
   case 3169: /* c_anything: TO  */
-#line 16945 "preproc.y"
+#line 16947 "preproc.y"
                                                 { (yyval.str) = mm_strdup("to"); }
-#line 60254 "preproc.c"
+#line 60256 "preproc.c"
     break;
 
   case 3170: /* c_anything: UNION  */
-#line 16946 "preproc.y"
+#line 16948 "preproc.y"
                                                 { (yyval.str) = mm_strdup("union"); }
-#line 60260 "preproc.c"
+#line 60262 "preproc.c"
     break;
 
   case 3171: /* c_anything: VARCHAR  */
-#line 16947 "preproc.y"
+#line 16949 "preproc.y"
                                                 { (yyval.str) = mm_strdup("varchar"); }
-#line 60266 "preproc.c"
+#line 60268 "preproc.c"
     break;
 
   case 3172: /* c_anything: '['  */
-#line 16948 "preproc.y"
+#line 16950 "preproc.y"
                                                 { (yyval.str) = mm_strdup("["); }
-#line 60272 "preproc.c"
+#line 60274 "preproc.c"
     break;
 
   case 3173: /* c_anything: ']'  */
-#line 16949 "preproc.y"
+#line 16951 "preproc.y"
                                                 { (yyval.str) = mm_strdup("]"); }
-#line 60278 "preproc.c"
+#line 60280 "preproc.c"
     break;
 
   case 3174: /* c_anything: '='  */
-#line 16950 "preproc.y"
+#line 16952 "preproc.y"
                                                 { (yyval.str) = mm_strdup("="); }
-#line 60284 "preproc.c"
+#line 60286 "preproc.c"
     break;
 
   case 3175: /* c_anything: ':'  */
-#line 16951 "preproc.y"
+#line 16953 "preproc.y"
                                                 { (yyval.str) = mm_strdup(":"); }
-#line 60290 "preproc.c"
+#line 60292 "preproc.c"
     break;
 
   case 3176: /* DeallocateStmt: DEALLOCATE prepared_name  */
-#line 16954 "preproc.y"
+#line 16956 "preproc.y"
                                                         { (yyval.str) = (yyvsp[0].str); }
-#line 60296 "preproc.c"
+#line 60298 "preproc.c"
     break;
 
   case 3177: /* DeallocateStmt: DEALLOCATE PREPARE prepared_name  */
-#line 16955 "preproc.y"
+#line 16957 "preproc.y"
                                                         { (yyval.str) = (yyvsp[0].str); }
-#line 60302 "preproc.c"
+#line 60304 "preproc.c"
     break;
 
   case 3178: /* DeallocateStmt: DEALLOCATE ALL  */
-#line 16956 "preproc.y"
+#line 16958 "preproc.y"
                                                         { (yyval.str) = mm_strdup("all"); }
-#line 60308 "preproc.c"
+#line 60310 "preproc.c"
     break;
 
   case 3179: /* DeallocateStmt: DEALLOCATE PREPARE ALL  */
-#line 16957 "preproc.y"
+#line 16959 "preproc.y"
                                                         { (yyval.str) = mm_strdup("all"); }
-#line 60314 "preproc.c"
+#line 60316 "preproc.c"
     break;
 
   case 3180: /* Iresult: Iconst  */
-#line 16960 "preproc.y"
+#line 16962 "preproc.y"
                                                 { (yyval.str) = (yyvsp[0].str); }
-#line 60320 "preproc.c"
+#line 60322 "preproc.c"
     break;
 
   case 3181: /* Iresult: '(' Iresult ')'  */
-#line 16961 "preproc.y"
+#line 16963 "preproc.y"
                                                 { (yyval.str) = cat_str(3, mm_strdup("("), (yyvsp[-1].str), mm_strdup(")")); }
-#line 60326 "preproc.c"
+#line 60328 "preproc.c"
     break;
 
   case 3182: /* Iresult: Iresult '+' Iresult  */
-#line 16962 "preproc.y"
+#line 16964 "preproc.y"
                                                 { (yyval.str) = cat_str(3, (yyvsp[-2].str), mm_strdup("+"), (yyvsp[0].str)); }
-#line 60332 "preproc.c"
+#line 60334 "preproc.c"
     break;
 
   case 3183: /* Iresult: Iresult '-' Iresult  */
-#line 16963 "preproc.y"
+#line 16965 "preproc.y"
                                                 { (yyval.str) = cat_str(3, (yyvsp[-2].str), mm_strdup("-"), (yyvsp[0].str)); }
-#line 60338 "preproc.c"
+#line 60340 "preproc.c"
     break;
 
   case 3184: /* Iresult: Iresult '*' Iresult  */
-#line 16964 "preproc.y"
+#line 16966 "preproc.y"
                                                 { (yyval.str) = cat_str(3, (yyvsp[-2].str), mm_strdup("*"), (yyvsp[0].str)); }
-#line 60344 "preproc.c"
+#line 60346 "preproc.c"
     break;
 
   case 3185: /* Iresult: Iresult '/' Iresult  */
-#line 16965 "preproc.y"
+#line 16967 "preproc.y"
                                                 { (yyval.str) = cat_str(3, (yyvsp[-2].str), mm_strdup("/"), (yyvsp[0].str)); }
-#line 60350 "preproc.c"
+#line 60352 "preproc.c"
     break;
 
   case 3186: /* Iresult: Iresult '%' Iresult  */
-#line 16966 "preproc.y"
+#line 16968 "preproc.y"
                                                 { (yyval.str) = cat_str(3, (yyvsp[-2].str), mm_strdup("%"), (yyvsp[0].str)); }
-#line 60356 "preproc.c"
+#line 60358 "preproc.c"
     break;
 
   case 3187: /* Iresult: ecpg_sconst  */
-#line 16967 "preproc.y"
+#line 16969 "preproc.y"
                                                 { (yyval.str) = (yyvsp[0].str); }
-#line 60362 "preproc.c"
+#line 60364 "preproc.c"
     break;
 
   case 3188: /* Iresult: ColId  */
-#line 16968 "preproc.y"
+#line 16970 "preproc.y"
                                                 { (yyval.str) = (yyvsp[0].str); }
-#line 60368 "preproc.c"
+#line 60370 "preproc.c"
     break;
 
   case 3189: /* Iresult: ColId '(' var_type ')'  */
-#line 16969 "preproc.y"
+#line 16971 "preproc.y"
                                                 { if (pg_strcasecmp((yyvsp[-3].str), "sizeof") != 0)
 							mmerror(PARSE_ERROR, ET_ERROR, "operator not allowed in variable definition");
 						  else
 							(yyval.str) = cat_str(4, (yyvsp[-3].str), mm_strdup("("), (yyvsp[-1].type).type_str, mm_strdup(")"));
 						}
-#line 60378 "preproc.c"
+#line 60380 "preproc.c"
     break;
 
   case 3190: /* execute_rest: %empty  */
-#line 16976 "preproc.y"
+#line 16978 "preproc.y"
                                 { (yyval.str) = EMPTY; }
-#line 60384 "preproc.c"
+#line 60386 "preproc.c"
     break;
 
   case 3191: /* execute_rest: ecpg_using opt_ecpg_into  */
-#line 16977 "preproc.y"
+#line 16979 "preproc.y"
                                     { (yyval.str) = EMPTY; }
-#line 60390 "preproc.c"
+#line 60392 "preproc.c"
     break;
 
   case 3192: /* execute_rest: ecpg_into ecpg_using  */
-#line 16978 "preproc.y"
+#line 16980 "preproc.y"
                                 { (yyval.str) = EMPTY; }
-#line 60396 "preproc.c"
+#line 60398 "preproc.c"
     break;
 
   case 3193: /* execute_rest: ecpg_into  */
-#line 16979 "preproc.y"
+#line 16981 "preproc.y"
                                                 { (yyval.str) = EMPTY; }
-#line 60402 "preproc.c"
+#line 60404 "preproc.c"
     break;
 
   case 3194: /* ecpg_into: INTO into_list  */
-#line 16982 "preproc.y"
+#line 16984 "preproc.y"
                                 { (yyval.str) = EMPTY; }
-#line 60408 "preproc.c"
+#line 60410 "preproc.c"
     break;
 
   case 3195: /* ecpg_into: into_descriptor  */
-#line 16983 "preproc.y"
+#line 16985 "preproc.y"
                                         { (yyval.str) = (yyvsp[0].str); }
-#line 60414 "preproc.c"
+#line 60416 "preproc.c"
     break;
 
   case 3196: /* opt_ecpg_into: %empty  */
-#line 16986 "preproc.y"
+#line 16988 "preproc.y"
                                 { (yyval.str) = EMPTY; }
-#line 60420 "preproc.c"
+#line 60422 "preproc.c"
     break;
 
   case 3197: /* opt_ecpg_into: ecpg_into  */
-#line 16987 "preproc.y"
+#line 16989 "preproc.y"
                                 { (yyval.str) = (yyvsp[0].str); }
-#line 60426 "preproc.c"
+#line 60428 "preproc.c"
     break;
 
   case 3198: /* ecpg_fetch_into: ecpg_into  */
-#line 16990 "preproc.y"
+#line 16992 "preproc.y"
                                 { (yyval.str) = (yyvsp[0].str); }
-#line 60432 "preproc.c"
+#line 60434 "preproc.c"
     break;
 
   case 3199: /* ecpg_fetch_into: using_descriptor  */
-#line 16992 "preproc.y"
+#line 16994 "preproc.y"
         {
 		struct variable *var;
 
@@ -60441,23 +60443,23 @@ mmerror(PARSE_ERROR, ET_WARNING, "unsupported feature will be passed to server")
 		add_variable_to_head(&argsresult, var, &no_indicator);
 		(yyval.str) = (yyvsp[0].str);
 	}
-#line 60445 "preproc.c"
+#line 60447 "preproc.c"
     break;
 
   case 3200: /* opt_ecpg_fetch_into: %empty  */
-#line 17002 "preproc.y"
+#line 17004 "preproc.y"
                                         { (yyval.str) = EMPTY; }
-#line 60451 "preproc.c"
+#line 60453 "preproc.c"
     break;
 
   case 3201: /* opt_ecpg_fetch_into: ecpg_fetch_into  */
-#line 17003 "preproc.y"
+#line 17005 "preproc.y"
                                         { (yyval.str) = (yyvsp[0].str); }
-#line 60457 "preproc.c"
+#line 60459 "preproc.c"
     break;
 
 
-#line 60461 "preproc.c"
+#line 60463 "preproc.c"
 
       default: break;
     }
@@ -60656,7 +60658,7 @@ yyreturn:
   return yyresult;
 }
 
-#line 17006 "preproc.y"
+#line 17008 "preproc.y"
 
 
 void base_yyerror(const char *error)

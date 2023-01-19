@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
 .\"      Date: 2022
-.\"    Manual: PostgreSQL 12.12 Documentation
-.\"    Source: PostgreSQL 12.12
+.\"    Manual: PostgreSQL 12.13 Documentation
+.\"    Source: PostgreSQL 12.13
 .\"  Language: English
 .\"
-.TH "CREATE PUBLICATION" "7" "2022" "PostgreSQL 12.12" "PostgreSQL 12.12 Documentation"
+.TH "CREATE PUBLICATION" "7" "2022" "PostgreSQL 12.13" "PostgreSQL 12.13 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -114,7 +114,7 @@ defined\&. Otherwise those operations will be disallowed on those tables\&.
 .PP
 For an
 \fBINSERT \&.\&.\&. ON CONFLICT\fR
-command, the publication will publish the operation that actually results from the command\&. So depending of the outcome, it may be published as either
+command, the publication will publish the operation that results from the command\&. Depending on the outcome, it may be published as either
 \fBINSERT\fR
 or
 \fBUPDATE\fR, or it may not be published at all\&.
