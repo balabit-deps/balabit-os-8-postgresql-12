@@ -1762,7 +1762,7 @@ sql_help_COMMENT(PQExpBuffer buf)
 					  "  TRIGGER %s ON %s |\n"
 					  "  TYPE %s |\n"
 					  "  VIEW %s\n"
-					  "} IS '%s'\n"
+					  "} IS { %s | NULL }\n"
 					  "\n"
 					  "%s\n"
 					  "\n"
@@ -1834,7 +1834,7 @@ sql_help_COMMENT(PQExpBuffer buf)
 					  _("table_name"),
 					  _("object_name"),
 					  _("object_name"),
-					  _("text"),
+					  _("string_literal"),
 					  _("where aggregate_signature is:"),
 					  _("argmode"),
 					  _("argname"),
@@ -3630,8 +3630,7 @@ sql_help_FETCH(PQExpBuffer buf)
 	appendPQExpBuffer(buf,
 					  "FETCH [ %s ] [ FROM | IN ] %s\n"
 					  "\n"
-					  "<phrase>where %s can\n"
-					  "be one of:</phrase>\n"
+					  "%s\n"
 					  "\n"
 					  "    NEXT\n"
 					  "    PRIOR\n"
@@ -3649,7 +3648,7 @@ sql_help_FETCH(PQExpBuffer buf)
 					  "    BACKWARD ALL",
 					  _("direction"),
 					  _("cursor_name"),
-					  _("direction"),
+					  _("where direction can be one of:"),
 					  _("count"),
 					  _("count"),
 					  _("count"),
@@ -3875,8 +3874,7 @@ sql_help_MOVE(PQExpBuffer buf)
 	appendPQExpBuffer(buf,
 					  "MOVE [ %s ] [ FROM | IN ] %s\n"
 					  "\n"
-					  "<phrase>where %s can\n"
-					  "be one of:</phrase>\n"
+					  "%s\n"
 					  "\n"
 					  "    NEXT\n"
 					  "    PRIOR\n"
@@ -3894,7 +3892,7 @@ sql_help_MOVE(PQExpBuffer buf)
 					  "    BACKWARD ALL",
 					  _("direction"),
 					  _("cursor_name"),
-					  _("direction"),
+					  _("where direction can be one of:"),
 					  _("count"),
 					  _("count"),
 					  _("count"),
@@ -4171,7 +4169,7 @@ sql_help_SECURITY_LABEL(PQExpBuffer buf)
 					  "  TABLESPACE %s |\n"
 					  "  TYPE %s |\n"
 					  "  VIEW %s\n"
-					  "} IS '%s'\n"
+					  "} IS { %s | NULL }\n"
 					  "\n"
 					  "%s\n"
 					  "\n"
@@ -4211,7 +4209,7 @@ sql_help_SECURITY_LABEL(PQExpBuffer buf)
 					  _("object_name"),
 					  _("object_name"),
 					  _("object_name"),
-					  _("label"),
+					  _("string_literal"),
 					  _("where aggregate_signature is:"),
 					  _("argmode"),
 					  _("argname"),
@@ -5702,7 +5700,7 @@ const struct _helpStruct QL_HELP[] = {
       N_("retrieve rows from a query using a cursor"),
       "sql-fetch",
       sql_help_FETCH,
-      18 },
+      17 },
 
     { "GRANT",
       N_("define access privileges"),
@@ -5744,7 +5742,7 @@ const struct _helpStruct QL_HELP[] = {
       N_("position a cursor"),
       "sql-move",
       sql_help_MOVE,
-      18 },
+      17 },
 
     { "NOTIFY",
       N_("generate a notification"),
