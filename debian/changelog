@@ -1,3 +1,21 @@
+postgresql-12 (12.14-0ubuntu0.20.04.1) focal-security; urgency=medium
+
+  * New upstream version (LP: #2006406).
+
+    + A dump/restore is not required for those running 12.X.
+
+    + Also, if you are upgrading from a version earlier than 12.10, see
+      those release notes as well please.
+
+    + libpq can leak memory contents after GSSAPI transport encryption
+      initiation fails (Jacob Champion).
+      (CVE-2022-41862)
+
+    + Details about these and many further changes can be found at:
+      https://www.postgresql.org/docs/12/release-12-14.html
+
+ -- Athos Ribeiro <athos.ribeiro@canonical.com>  Thu, 09 Feb 2023 18:44:37 -0300
+
 postgresql-12 (12.13-0ubuntu0.20.04.1bb1) focal; urgency=medium
 
   * Balabit patched version

@@ -2,12 +2,12 @@
 .\"     Title: ALTER TABLE
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
-.\"      Date: 2022
-.\"    Manual: PostgreSQL 12.13 Documentation
-.\"    Source: PostgreSQL 12.13
+.\"      Date: 2023
+.\"    Manual: PostgreSQL 12.14 Documentation
+.\"    Source: PostgreSQL 12.14
 .\"  Language: English
 .\"
-.TH "ALTER TABLE" "7" "2022" "PostgreSQL 12.13" "PostgreSQL 12.13 Documentation"
+.TH "ALTER TABLE" "7" "2023" "PostgreSQL 12.14" "PostgreSQL 12.14 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -680,7 +680,7 @@ constraint will be used to determine that the table need not be scanned to valid
 NULL
 values\&. If attaching a list partition that will not accept
 NULL
-values, also add
+values, also add a
 NOT NULL
 constraint to the partition key column, unless it\*(Aqs an expression\&.
 .sp
