@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
 .\"      Date: 2023
-.\"    Manual: PostgreSQL 12.15 Documentation
-.\"    Source: PostgreSQL 12.15
+.\"    Manual: PostgreSQL 12.16 Documentation
+.\"    Source: PostgreSQL 12.16
 .\"  Language: English
 .\"
-.TH "CREATE STATISTICS" "7" "2023" "PostgreSQL 12.15" "PostgreSQL 12.15 Documentation"
+.TH "CREATE STATISTICS" "7" "2023" "PostgreSQL 12.16" "PostgreSQL 12.16 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -82,6 +82,9 @@ for an explanation of the handling of inheritance and partitions\&.
 .SH "NOTES"
 .PP
 You must be the owner of a table to create a statistics object reading it\&. Once created, however, the ownership of the statistics object is independent of the underlying table(s)\&.
+.PP
+Extended statistics are not currently used by the planner for selectivity estimations made for table joins\&. This limitation will likely be removed in a future version of
+PostgreSQL\&.
 .SH "EXAMPLES"
 .PP
 Create table
