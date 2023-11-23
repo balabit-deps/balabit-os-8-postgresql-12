@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
 .\"      Date: 2023
-.\"    Manual: PostgreSQL 12.16 Documentation
-.\"    Source: PostgreSQL 12.16
+.\"    Manual: PostgreSQL 12.17 Documentation
+.\"    Source: PostgreSQL 12.17
 .\"  Language: English
 .\"
-.TH "PSQL" "1" "2023" "PostgreSQL 12.16" "PostgreSQL 12.16 Documentation"
+.TH "PSQL" "1" "2023" "PostgreSQL 12.17" "PostgreSQL 12.17 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -656,7 +656,7 @@ is currently connected, followed by the string
 .\}
 .nf
 $ \fBpsql testdb\fR
-psql (12\&.16)
+psql (12\&.17)
 Type "help" for help\&.
 
 testdb=>
@@ -955,7 +955,13 @@ SQL
 \fBCOPY\fR
 command with a file or program data source or destination, because all data must pass through the client/server connection\&. For large amounts of data the
 SQL
-command might be preferable\&.
+command might be preferable\&. Also, because of this pass\-through method,
+\ecopy \&.\&.\&. from
+in
+CSV
+mode will erroneously treat a
+\e\&.
+data value alone on a line as an end\-of\-input marker\&.
 .sp .5v
 .RE
 .RE

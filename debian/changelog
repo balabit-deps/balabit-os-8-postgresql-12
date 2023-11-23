@@ -1,3 +1,75 @@
+postgresql-12 (12.17-0ubuntu0.20.04.1) focal-security; urgency=medium
+
+  * New upstream version (LP: #2040469).
+
+    + A dump/restore is not required for those running 12.X.
+
+    + However, if you use GiST indexes, it may be advisable to reindex them.
+
+    + Also, if you are upgrading from a version earlier than 12.16, see
+      those release notes as well please.
+
+    + Fix handling of unknown-type arguments in DISTINCT "any" aggregate
+      functions (Tom Lane)
+
+      This error led to a text-type value being interpreted as an unknown-type
+      value (that is, a zero-terminated string) at runtime. This could result
+      in disclosure of server memory following the text value.
+      (CVE-2023-5868)
+
+    + Detect integer overflow while computing new array dimensions
+      (Tom Lane)
+
+      When assigning new elements to array subscripts that are outside the
+      current array bounds, an undetected integer overflow could occur in edge
+      cases. Memory stomps that are potentially exploitable for arbitrary code
+      execution are possible, and so is disclosure of server memory.
+      (CVE-2023-5869)
+
+    + Prevent the <literal>pg_signal_backend</literal> role from
+      signalling background workers and autovacuum processes (Noah Misch,
+      Jelte Fennema-Nio)
+
+      The documentation says that pg_signal_backend cannot issue signals to
+      superuser-owned processes. It was able to signal these background
+      processes, though, because they advertise a role OID of zero. Treat that
+      as indicating superuser ownership. The security implications of
+      cancelling one of these process types are fairly small so far as the
+      core code goes (we'll just start another one), but extensions might add
+      background workers that are more vulnerable.
+
+      Also ensure that the is_superuser parameter is set correctly in such
+      processes. No specific security consequences are known for that
+      oversight, but it might be significant for some extensions.
+      (CVE-2023-5870)
+
+    + Fix misbehavior during recursive page split in GiST index build
+      (Heikki Linnakangas)
+
+      Fix a case where the location of a page downlink was incorrectly
+      tracked, and introduce some logic to allow recovering from such
+      situations rather than silently doing the wrong thing.  This error
+      could result in incorrect answers from subsequent index searches.
+      It may be advisable to reindex all GiST indexes after installing
+      this update.
+
+    + Details about these and many further changes can be found at:
+      https://www.postgresql.org/docs/12/release-12-17.html.
+
+  * d/p/libpgport-pkglibdir: Adjust patch to reflect upstream changes.
+
+  * d/p/50-per-version-dirs.patch: Adjust TestLib.pm's
+    scan_server_header and check_pg_config to account for
+    unrelocatability of pg_config.
+    These changes are needed because, during build time,
+    we want to be able to run the upstream tests using the pg_config
+    binary from inside the "debian/" directory, but that doesn't work out
+    of the box because it will print includedir paths that also point to
+    "debian/", instead of to "/usr/include".  Therefore, we need to catch
+    this specific scenario and print the proper includedir paths instead.
+
+ -- Sergio Durigan Junior <sergio.durigan@canonical.com>  Wed, 22 Nov 2023 21:50:50 -0500
+
 postgresql-12 (12.16-0ubuntu0.20.04.1) focal-security; urgency=medium
 
   * New upstream version (LP: #2028426).
