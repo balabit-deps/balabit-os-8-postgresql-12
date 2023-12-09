@@ -10,9 +10,11 @@ Forwarded: No, Debian specific packaging with postgresql-common
 
 Bug-Debian: http://bugs.debian.org/462037
 
---- a/src/Makefile.global.in
-+++ b/src/Makefile.global.in
-@@ -120,7 +120,7 @@ libdir := @libdir@
+Index: postgresql-12/src/Makefile.global.in
+===================================================================
+--- postgresql-12.orig/src/Makefile.global.in	2023-12-01 21:58:51.604837410 -0500
++++ postgresql-12/src/Makefile.global.in	2023-12-01 21:58:51.604837410 -0500
+@@ -120,7 +120,7 @@
  pkglibdir = $(libdir)
  ifeq "$(findstring pgsql, $(pkglibdir))" ""
  ifeq "$(findstring postgres, $(pkglibdir))" ""
@@ -21,7 +23,7 @@ Bug-Debian: http://bugs.debian.org/462037
  endif
  endif
  
-@@ -168,7 +168,7 @@ endif # PGXS
+@@ -168,7 +168,7 @@
  
  # These derived path variables aren't separately configurable.
  
@@ -30,8 +32,10 @@ Bug-Debian: http://bugs.debian.org/462037
  includedir_internal = $(pkgincludedir)/internal
  pgxsdir = $(pkglibdir)/pgxs
  bitcodedir = $(pkglibdir)/bitcode
---- a/src/bin/pg_config/pg_config.c
-+++ b/src/bin/pg_config/pg_config.c
+Index: postgresql-12/src/bin/pg_config/pg_config.c
+===================================================================
+--- postgresql-12.orig/src/bin/pg_config/pg_config.c	2023-12-01 21:58:51.604837410 -0500
++++ postgresql-12/src/bin/pg_config/pg_config.c	2023-12-01 21:58:51.604837410 -0500
 @@ -27,6 +27,8 @@
  #include "port.h"
  #include "common/config_info.h"
@@ -41,7 +45,7 @@ Bug-Debian: http://bugs.debian.org/462037
  static const char *progname;
  
  /*
-@@ -148,11 +150,7 @@ main(int argc, char **argv)
+@@ -148,11 +150,7 @@
  		}
  	}
  
@@ -54,3 +58,29 @@ Bug-Debian: http://bugs.debian.org/462037
  
  	configdata = get_configdata(my_exec_path, &configdata_len);
  	/* no arguments -> print everything */
+Index: postgresql-12/src/test/perl/TestLib.pm
+===================================================================
+--- postgresql-12.orig/src/test/perl/TestLib.pm	2023-11-22 21:44:43.159759450 -0500
++++ postgresql-12/src/test/perl/TestLib.pm	2023-12-02 00:20:57.545254004 -0500
+@@ -473,6 +473,10 @@
+ 	  or die "could not execute pg_config";
+ 	chomp($stdout);
+ 	$stdout =~ s/\r$//;
++	# Debian's pg_config is not relocatable, manually check for correct location
++	if (-d "../../../build/tmp_install/usr/include/postgresql/12/server") {
++		$stdout = "../../../build/tmp_install/usr/include/postgresql/12/server";
++	}
+ 
+ 	open my $header_h, '<', "$stdout/$header_path" or die "$!";
+ 
+@@ -505,6 +509,10 @@
+ 	  or die "could not execute pg_config";
+ 	chomp($stdout);
+ 	$stdout =~ s/\r$//;
++	# Debian's pg_config is not relocatable, manually check for correct location
++	if (-d "../../../build/tmp_install/usr/include/postgresql") {
++		$stdout = "../../../build/tmp_install/usr/include/postgresql";
++	}
+ 
+ 	open my $pg_config_h, '<', "$stdout/pg_config.h" or die "$!";
+ 	my $match = (grep { /^$regexp/ } <$pg_config_h>);
