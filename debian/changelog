@@ -1,3 +1,33 @@
+postgresql-12 (12.19-0ubuntu0.20.04.1) focal; urgency=medium
+
+  * New upstream version (LP: #2067388).
+
+    + A dump/restore is not required for those running 12.X.
+
+    + Also, if you are upgrading from a version earlier than 12.18, see
+      those release notes as well please.
+
+    + Fix INSERT from multiple VALUES rows into a target column that is a
+      domain over an array or composite type (Tom Lane)
+
+      Such cases would either fail with surprising complaints about
+      mismatched datatypes, or insert unexpected coercions that could lead
+      to odd results.
+
+    + Fix incorrect pruning of NULL partition when a table is partitioned
+      on a boolean column and the query has a boolean IS NOT clause (David
+      Rowley)
+
+      A NULL value satisfies a clause such as boolcol IS NOT FALSE, so
+      pruning away a partition containing NULLs yielded incorrect answers.
+
+    + Details about these and many further changes can be found at:
+      https://www.postgresql.org/docs/12/release-12-19.html
+
+  * d/postgresql-12.NEWS: Update.
+
+ -- Sergio Durigan Junior <sergio.durigan@canonical.com>  Tue, 28 May 2024 09:30:50 -0400
+
 postgresql-12 (12.18-0ubuntu0.20.04.1) focal-security; urgency=medium
 
   * New upstream version (LP: #2052850).
