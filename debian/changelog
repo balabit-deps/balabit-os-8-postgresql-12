@@ -1,3 +1,9 @@
+postgresql-12 (12.19-0ubuntu0.20.04.1bb1) focal; urgency=medium
+
+  * Balabit patched version
+
+ -- Balabit Platform Team <devnull@dev.null>  Sat, 06 Jul 2024 14:21:31 +0000
+
 postgresql-12 (12.19-0ubuntu0.20.04.1) focal; urgency=medium
 
   * New upstream version (LP: #2067388).
