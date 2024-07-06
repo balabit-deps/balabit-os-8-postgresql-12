@@ -2458,6 +2458,10 @@ static Node *
 eval_const_expressions_mutator(Node *node,
 							   eval_const_expressions_context *context)
 {
+
+	/* since this function recurses, it could be driven to stack overflow */
+	check_stack_depth();
+
 	if (node == NULL)
 		return NULL;
 	switch (nodeTag(node))
@@ -4356,12 +4360,11 @@ evaluate_function(Oid funcid, Oid result_type, int32 result_typmod,
 	 * Can't simplify if it returns RECORD.  The immediate problem is that it
 	 * will be needing an expected tupdesc which we can't supply here.
 	 *
-	 * In the case where it has OUT parameters, it could get by without an
-	 * expected tupdesc, but we still have issues: get_expr_result_type()
-	 * doesn't know how to extract type info from a RECORD constant, and in
-	 * the case of a NULL function result there doesn't seem to be any clean
-	 * way to fix that.  In view of the likelihood of there being still other
-	 * gotchas, seems best to leave the function call unreduced.
+	 * In the case where it has OUT parameters, we could build an expected
+	 * tupdesc from those, but there may be other gotchas lurking.  In
+	 * particular, if the function were to return NULL, we would produce a
+	 * null constant with no remaining indication of which concrete record
+	 * type it is.  For now, seems best to leave the function call unreduced.
 	 */
 	if (funcform->prorettype == RECORDOID)
 		return NULL;
@@ -4620,8 +4623,9 @@ inline_function(Oid funcid, Oid result_type, Oid result_collid,
 	 * Note: we do not try this until we have verified that no rewriting was
 	 * needed; that's probably not important, but let's be careful.
 	 */
-	if (check_sql_fn_retval(funcid, result_type, list_make1(querytree),
-							&modifyTargetList, NULL))
+	if (check_sql_fn_retval_ext(funcid, result_type, funcform->prokind,
+								list_make1(querytree),
+								&modifyTargetList, NULL))
 		goto fail;				/* reject whole-tuple-result cases */
 
 	/* Now we can grab the tlist expression */
@@ -5145,9 +5149,10 @@ inline_set_returning_function(PlannerInfo *root, RangeTblEntry *rte)
 	 * check_sql_fn_retval, we deliberately exclude domains over composite
 	 * here.)
 	 */
-	if (!check_sql_fn_retval(func_oid, fexpr->funcresulttype,
-							 querytree_list,
-							 &modifyTargetList, NULL) &&
+	if (!check_sql_fn_retval_ext(func_oid, fexpr->funcresulttype,
+								 funcform->prokind,
+								 querytree_list,
+								 &modifyTargetList, NULL) &&
 		(get_typtype(fexpr->funcresulttype) == TYPTYPE_COMPOSITE ||
 		 fexpr->funcresulttype == RECORDOID))
 		goto fail;				/* reject not-whole-tuple-result cases */
