@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>E.17. Release 12.4</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="release-12-5.html" title="E.16. Release 12.5" /><link rel="next" href="release-12-3.html" title="E.18. Release 12.3" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">E.17. Release 12.4</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="release-12-5.html" title="E.16. Release 12.5">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="release.html" title="Appendix E. Release Notes">Up</a></td><th width="60%" align="center">Appendix E. Release Notes</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 12.20 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="release-12-3.html" title="E.18. Release 12.3">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="RELEASE-12-4"><div class="titlepage"><div><div><h2 class="title" style="clear: both">E.17. Release 12.4</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="release-12-4.html#id-1.11.6.21.4">E.17.1. Migration to Version 12.4</a></span></dt><dt><span class="sect2"><a href="release-12-4.html#id-1.11.6.21.5">E.17.2. Changes</a></span></dt></dl></div><p><strong>Release date: </strong>2020-08-13</p><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>E.19. Release 12.4</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="release-12-5.html" title="E.18. Release 12.5" /><link rel="next" href="release-12-3.html" title="E.20. Release 12.3" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">E.19. Release 12.4</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="release-12-5.html" title="E.18. Release 12.5">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="release.html" title="Appendix E. Release Notes">Up</a></td><th width="60%" align="center">Appendix E. Release Notes</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 12.22 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="release-12-3.html" title="E.20. Release 12.3">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="RELEASE-12-4"><div class="titlepage"><div><div><h2 class="title" style="clear: both">E.19. Release 12.4</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="release-12-4.html#id-1.11.6.24.4">E.19.1. Migration to Version 12.4</a></span></dt><dt><span class="sect2"><a href="release-12-4.html#id-1.11.6.24.5">E.19.2. Changes</a></span></dt></dl></div><p><strong>Release date: </strong>2020-08-13</p><p>
    This release contains a variety of fixes from 12.3.
    For information about new features in major release 12, see
-   <a class="xref" href="release-12.html" title="E.21. Release 12">Section E.21</a>.
-  </p><div class="sect2" id="id-1.11.6.21.4"><div class="titlepage"><div><div><h3 class="title">E.17.1. Migration to Version 12.4</h3></div></div></div><p>
+   <a class="xref" href="release-12.html" title="E.23. Release 12">Section E.23</a>.
+  </p><div class="sect2" id="id-1.11.6.24.4"><div class="titlepage"><div><div><h3 class="title">E.19.1. Migration to Version 12.4</h3></div></div></div><p>
     A dump/restore is not required for those running 12.X.
    </p><p>
     However, if you are upgrading from a version earlier than 12.2,
-    see <a class="xref" href="release-12-2.html" title="E.19. Release 12.2">Section E.19</a>.
-   </p></div><div class="sect2" id="id-1.11.6.21.5"><div class="titlepage"><div><div><h3 class="title">E.17.2. Changes</h3></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+    see <a class="xref" href="release-12-2.html" title="E.21. Release 12.2">Section E.21</a>.
+   </p></div><div class="sect2" id="id-1.11.6.24.5"><div class="titlepage"><div><div><h3 class="title">E.19.2. Changes</h3></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
       Set a secure <code class="varname">search_path</code> in logical replication
       walsenders and apply workers (Noah Misch)
+      <a class="ulink" href="https://postgr.es/c/64a71062e" target="_top">§</a>
+      <a class="ulink" href="https://postgr.es/c/515ee4a7e" target="_top">§</a>
      </p><p>
       A malicious user of either the publisher or subscriber database
       could potentially cause execution of arbitrary SQL code by the role
@@ -25,6 +27,7 @@
       (CVE-2020-14349)
      </p></li><li class="listitem"><p>
       Make contrib modules' installation scripts more secure (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/3ba967084" target="_top">§</a>
      </p><p>
       Attacks similar to those described in CVE-2018-1058 could be carried
       out against an extension installation script, if the attacker can
@@ -42,6 +45,8 @@
       (CVE-2020-14350)
      </p></li><li class="listitem"><p>
       Fix edge cases in partition pruning (Etsuro Fujita, Dmitry Dolgov)
+      <a class="ulink" href="https://postgr.es/c/62c4a7729" target="_top">§</a>
+      <a class="ulink" href="https://postgr.es/c/4f2693229" target="_top">§</a>
      </p><p>
       When there are multiple partition key columns, generation of pruning
       tests could misbehave if some columns had no
@@ -51,6 +56,7 @@
      </p></li><li class="listitem"><p>
       Fix construction of parameterized BitmapAnd and BitmapOr index scans
       on the inside of partition-wise nestloop joins (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/de797e823" target="_top">§</a>
      </p><p>
       A plan in which such a scan needed to use a value from the outside
       of the join would usually crash at execution.
@@ -59,9 +65,11 @@
       both static and run-time partition pruning in the same query, and a
       new partition is added concurrently with the query (Amit Langote,
       Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/f992da210" target="_top">§</a>
      </p></li><li class="listitem"><p>
       In logical replication walsender, fix failure to send feedback
       messages after sending a keepalive message (Álvaro Herrera)
+      <a class="ulink" href="https://postgr.es/c/85cb4ec50" target="_top">§</a>
      </p><p>
       This is a relatively minor problem when using built-in logical
       replication, because the built-in walreceiver will send a feedback
@@ -72,6 +80,7 @@
      </p></li><li class="listitem"><p>
       Fix firing of column-specific <code class="literal">UPDATE</code> triggers in
       logical replication subscribers (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/71e561bd4" target="_top">§</a>
      </p><p>
       The code neglected to account for the possibility of column numbers
       being different between the publisher and subscriber tables, so that
@@ -81,12 +90,14 @@
       Update oldest xmin and LSN values
       during <code class="function">pg_replication_slot_advance()</code> (Michael
       Paquier)
+      <a class="ulink" href="https://postgr.es/c/16f43122d" target="_top">§</a>
      </p><p>
       This function previously failed to do that, possibly preventing
       resource cleanup (such as removal of no-longer-needed WAL segments)
       after manual advancement of a replication slot.
      </p></li><li class="listitem"><p>
       Fix slow execution of <code class="function">ts_headline()</code> (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/70248d8f5" target="_top">§</a>
      </p><p>
       The phrase-search fix added in our previous set of minor releases
       could cause <code class="function">ts_headline()</code> to take unreasonable
@@ -95,13 +106,17 @@
      </p></li><li class="listitem"><p>
       Ensure the <code class="function">repeat()</code> function can be interrupted
       by query cancel (Joe Conway)
+      <a class="ulink" href="https://postgr.es/c/3ccae5445" target="_top">§</a>
      </p></li><li class="listitem"><p>
       Fix <code class="function">pg_current_logfile()</code> to not include a
       carriage return (<code class="literal">\r</code>) in its result on Windows
       (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/2564e2d08" target="_top">§</a>
      </p></li><li class="listitem"><p>
       Ensure that <code class="function">pg_read_file()</code> and related
       functions read until EOF is reached (Joe Conway)
+      <a class="ulink" href="https://postgr.es/c/015e899a7" target="_top">§</a>
+      <a class="ulink" href="https://postgr.es/c/b615b2365" target="_top">§</a>
      </p><p>
       Previously, if not given a specific data length to read, these
       functions would stop at whatever file length was reported
@@ -110,6 +125,7 @@
      </p></li><li class="listitem"><p>
       Forbid numeric <code class="literal">NaN</code> values in <code class="type">jsonpath</code>
       computations (Alexander Korotkov)
+      <a class="ulink" href="https://postgr.es/c/f4ae676e3" target="_top">§</a>
      </p><p>
       Neither SQL nor JSON have the concept of <code class="literal">NaN</code>
       (not-a-number), but the <code class="type">jsonpath</code> code attempted to
@@ -118,6 +134,7 @@
      </p></li><li class="listitem"><p>
       Handle single <code class="literal">Inf</code> or <code class="literal">NaN</code>
       inputs correctly in floating-point aggregates (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/874372a94" target="_top">§</a>
      </p><p>
       The affected aggregates are
       <code class="function">corr()</code>,
@@ -136,6 +153,7 @@
      </p></li><li class="listitem"><p>
       Fix mis-handling of <code class="literal">NaN</code> inputs during parallel
       aggregation on <code class="type">numeric</code>-type columns (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/4284e1184" target="_top">§</a>
      </p><p>
       If some partial aggregation workers found only <code class="literal">NaN</code>s
       while others found only non-<code class="literal">NaN</code>s, the results
@@ -143,6 +161,7 @@
       result (i.e., not <code class="literal">NaN</code> when it should be).
      </p></li><li class="listitem"><p>
       Reject time-of-day values greater than 24 hours (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/a958b07bc" target="_top">§</a>
      </p><p>
       The intention of the datetime input code is to
       allow <span class="quote">“<span class="quote">24:00:00</span>”</span> or
@@ -157,14 +176,17 @@
      </p></li><li class="listitem"><p>
       Undo double-quoting of index names in <code class="command">EXPLAIN</code>'s
       non-text output formats (Tom Lane, Euler Taveira)
+      <a class="ulink" href="https://postgr.es/c/d3d875518" target="_top">§</a>
      </p></li><li class="listitem"><p>
       Fix <code class="command">EXPLAIN</code>'s accounting for resource usage,
       particularly buffer accesses, in parallel workers in a plan
       using <code class="literal">Gather Merge</code> nodes
       (Jehan-Guillaume de Rorthais)
+      <a class="ulink" href="https://postgr.es/c/bdaa84e38" target="_top">§</a>
      </p></li><li class="listitem"><p>
       Fix timing of constraint revalidation in <code class="command">ALTER
       TABLE</code> (David Rowley)
+      <a class="ulink" href="https://postgr.es/c/1231a0b0e" target="_top">§</a>
      </p><p>
       If <code class="command">ALTER TABLE</code> needs to fully rewrite the table's
       contents (for example, due to change of a column's data type) and
@@ -175,6 +197,7 @@
      </p></li><li class="listitem"><p>
       Fix <code class="command">REINDEX CONCURRENTLY</code> to preserve the index's
       replication identity flag (Michael Paquier)
+      <a class="ulink" href="https://postgr.es/c/75f147924" target="_top">§</a>
      </p><p>
       Previously, reindexing a table's replica identity index caused the
       setting to be lost, preventing old tuple values from being included
@@ -184,6 +207,8 @@
       <code class="structname">pg_subscription</code>.<code class="structfield">subslotname</code>
       and <code class="structname">pg_subscription_rel</code>.<code class="structfield">srsublsn</code>
       (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/798b4faef" target="_top">§</a>
+      <a class="ulink" href="https://postgr.es/c/b7103bbe3" target="_top">§</a>
      </p><p>
       The bootstrap catalog data incorrectly marks these two catalog
       columns as always non-null.  There's no easy way to correct that
@@ -198,12 +223,15 @@
       Cope with <code class="literal">LATERAL</code> references in restriction
       clauses attached to an un-flattened sub-<code class="literal">SELECT</code> in
       the <code class="literal">FROM</code> clause (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/d3b642ad9" target="_top">§</a>
      </p><p>
       This oversight could result in assertion failures or crashes at
       query execution.
      </p></li><li class="listitem"><p>
       Use the query-specified collation for operators invoked during
       selectivity estimation (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/022cd0bfd" target="_top">§</a>
+      <a class="ulink" href="https://postgr.es/c/171633ff5" target="_top">§</a>
      </p><p>
       Previously, the collation of the underlying database column was
       used.  But using the query's collation is arguably more correct.
@@ -216,18 +244,22 @@
      </p></li><li class="listitem"><p>
       Avoid believing that a never-analyzed foreign table has zero tuples
       (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/153c14cdd" target="_top">§</a>
      </p><p>
       This primarily affected the planner's estimate of the number of
       groups that would be obtained by <code class="literal">GROUP BY</code>.
      </p></li><li class="listitem"><p>
       Remove bogus warning about <span class="quote">“<span class="quote">leftover placeholder tuple</span>”</span>
       in BRIN index de-summarization (Álvaro Herrera)
+      <a class="ulink" href="https://postgr.es/c/ca5001a36" target="_top">§</a>
      </p><p>
       The case can occur legitimately after a cancelled vacuum, so warning
       about it is overly noisy.
      </p></li><li class="listitem"><p>
       Fix selection of tablespaces for <span class="quote">“<span class="quote">shared fileset</span>”</span>
       temporary files (Magnus Hagander, Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/8b83e0160" target="_top">§</a>
+      <a class="ulink" href="https://postgr.es/c/28a862e9d" target="_top">§</a>
      </p><p>
       If <code class="varname">temp_tablespaces</code> is empty or explicitly names
       the database's primary tablespace, such files got placed into
@@ -236,12 +268,15 @@
      </p></li><li class="listitem"><p>
       Fix corner-case error in masking of SP-GiST index pages during WAL
       consistency checking (Alexander Korotkov)
+      <a class="ulink" href="https://postgr.es/c/396a44a01" target="_top">§</a>
      </p><p>
       This could cause false failure reports
       when <code class="varname">wal_consistency_checking</code> is enabled.
      </p></li><li class="listitem"><p>
       Improve error handling in the server's <code class="filename">buffile</code>
       module (Thomas Munro)
+      <a class="ulink" href="https://postgr.es/c/28ee12669" target="_top">§</a>
+      <a class="ulink" href="https://postgr.es/c/8bf4e69a7" target="_top">§</a>
      </p><p>
       Fix some cases where I/O errors were indistinguishable from reaching
       EOF, or were not reported at all.  Also add details such as block
@@ -249,6 +284,7 @@
      </p></li><li class="listitem"><p>
       Fix conflict-checking anomalies in <code class="literal">SERIALIZABLE</code>
       isolation mode (Peter Geoghegan)
+      <a class="ulink" href="https://postgr.es/c/e620a38c2" target="_top">§</a>
      </p><p>
       If a concurrently-inserted tuple was updated by a different
       concurrent transaction, and neither tuple version was visible to the
@@ -260,12 +296,14 @@
      </p></li><li class="listitem"><p>
       Avoid repeated marking of dead btree index entries as dead (Masahiko
       Sawada)
+      <a class="ulink" href="https://postgr.es/c/1d84751c6" target="_top">§</a>
      </p><p>
       While functionally harmless, this led to useless WAL traffic when
       checksums are enabled or <code class="varname">wal_log_hints</code> is on.
      </p></li><li class="listitem"><p>
       Fix checkpointer process to discard file sync requests
       when <code class="varname">fsync</code> is off (Heikki Linnakangas)
+      <a class="ulink" href="https://postgr.es/c/891a2007e" target="_top">§</a>
      </p><p>
       Such requests are treated as no-ops if <code class="varname">fsync</code> is
       off, but we forgot to remove them from the checkpointer's table of
@@ -275,10 +313,13 @@
      </p></li><li class="listitem"><p>
       Avoid trouble during cleanup of a non-exclusive backup when JIT
       compilation has been activated during the backup (Robert Haas)
+      <a class="ulink" href="https://postgr.es/c/bcbc27251" target="_top">§</a>
+      <a class="ulink" href="https://postgr.es/c/7c78040f6" target="_top">§</a>
      </p></li><li class="listitem"><p>
       Fix failure of some code paths to acquire the correct lock before
       modifying <code class="filename">pg_control</code> (Nathan Bossart, Fujii
       Masao)
+      <a class="ulink" href="https://postgr.es/c/72766ad63" target="_top">§</a>
      </p><p>
       This oversight could allow <code class="filename">pg_control</code> to be
       written out with an inconsistent checksum, possibly causing trouble
@@ -287,6 +328,8 @@
      </p></li><li class="listitem"><p>
       Fix errors in <code class="function">currtid()</code>
       and <code class="function">currtid2()</code> (Michael Paquier)
+      <a class="ulink" href="https://postgr.es/c/894041eb2" target="_top">§</a>
+      <a class="ulink" href="https://postgr.es/c/95e389b3c" target="_top">§</a>
      </p><p>
       These functions (which are undocumented and used only by ancient
       versions of the ODBC driver) contained coding errors that could
@@ -296,6 +339,8 @@
       Avoid calling <code class="function">elog()</code>
       or <code class="function">palloc()</code> while holding a spinlock (Michael
       Paquier, Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/03aa25b6e" target="_top">§</a>
+      <a class="ulink" href="https://postgr.es/c/3d474a079" target="_top">§</a>
      </p><p>
       Logic associated with replication slots had several violations of
       this coding rule.  While the odds of trouble are quite low, an error
@@ -303,6 +348,7 @@
      </p></li><li class="listitem"><p>
       Fix assertion in logical replication subscriber to allow use
       of <code class="literal">REPLICA IDENTITY FULL</code> (Euler Taveira)
+      <a class="ulink" href="https://postgr.es/c/b4ded2f22" target="_top">§</a>
      </p><p>
       This was just an incorrect assertion, so it has no impact on
       standard production builds.
@@ -310,6 +356,7 @@
       Ensure that <span class="application">libpq</span> continues to try to
       read from the database connection socket after a write failure
       (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/2edf14f5a" target="_top">§</a>
      </p><p>
       This is important not only to ensure that we collect any final error
       message from a dying server process, but because we do not consider
@@ -320,6 +367,7 @@
      </p></li><li class="listitem"><p>
       Fix bugs in <span class="application">libpq</span>'s management of GSS
       encryption state (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/e8b22a8a2" target="_top">§</a>
      </p><p>
       A connection using GSS encryption could freeze up when attempting to
       reset it after a server restart, or when moving on to the next one of
@@ -327,11 +375,13 @@
      </p></li><li class="listitem"><p>
       Fix <span class="application">ecpg</span> crash with <code class="type">bytea</code>
       and cursor variables (Jehan-Guillaume de Rorthais)
+      <a class="ulink" href="https://postgr.es/c/6425d6f6a" target="_top">§</a>
      </p></li><li class="listitem"><p>
       Report out-of-disk-space errors properly
       in <span class="application">pg_dump</span>
       and <span class="application">pg_basebackup</span> (Justin Pryzby, Tom
       Lane, Álvaro Herrera)
+      <a class="ulink" href="https://postgr.es/c/5b52008a6" target="_top">§</a>
      </p><p>
       Some code paths could produce silly reports like <span class="quote">“<span class="quote">could not
       write file: Success</span>”</span>.
@@ -339,6 +389,8 @@
       Make <span class="application">pg_restore</span> cope with
       data-offset-less custom-format archive files when it needs to
       restore data items out of order (David Gilman, Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/66232220e" target="_top">§</a>
+      <a class="ulink" href="https://postgr.es/c/39a068ce6" target="_top">§</a>
      </p><p>
       <span class="application">pg_dump</span> will produce such files if it
       cannot seek its output (for example, if the output is piped to
@@ -347,6 +399,7 @@
      </p></li><li class="listitem"><p>
       Fix parallel restore of tables having both table-level privileges
       and per-column privileges (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/5fea14f4b" target="_top">§</a>
      </p><p>
       The table-level privilege grants have to be applied first, but a
       parallel restore did not reliably order them that way; this could
@@ -360,6 +413,7 @@
       Ensure that <span class="application">pg_upgrade</span> runs
       with <code class="varname">vacuum_defer_cleanup_age</code> set to zero in the
       target cluster (Bruce Momjian)
+      <a class="ulink" href="https://postgr.es/c/8e933596c" target="_top">§</a>
      </p><p>
       If the target cluster's configuration has been modified to
       set <code class="varname">vacuum_defer_cleanup_age</code> to a nonzero value,
@@ -369,6 +423,8 @@
      </p></li><li class="listitem"><p>
       Fix <span class="application">pg_recvlogical</span> to drain pending
       messages before exiting (Noah Misch)
+      <a class="ulink" href="https://postgr.es/c/73a5c0d81" target="_top">§</a>
+      <a class="ulink" href="https://postgr.es/c/7130be8aa" target="_top">§</a>
      </p><p>
       Without this, the replication sender might detect a send failure and
       exit without making the expected final update to the replication
@@ -379,6 +435,7 @@
      </p></li><li class="listitem"><p>
       Fix <span class="application">pg_rewind</span>'s handling of just-deleted
       files in the source data directory (Justin Pryzby, Michael Paquier)
+      <a class="ulink" href="https://postgr.es/c/92927477f" target="_top">§</a>
      </p><p>
       When working with an on-line source database, concurrent file
       deletions are possible, but <span class="application">pg_rewind</span>
@@ -387,6 +444,7 @@
      </p></li><li class="listitem"><p>
       Make <span class="application">pg_test_fsync</span> use binary I/O mode on
       Windows (Michael Paquier)
+      <a class="ulink" href="https://postgr.es/c/cd113a0b4" target="_top">§</a>
      </p><p>
       Previously it wrote the test file in text mode, which is not an
       accurate reflection of <span class="productname">PostgreSQL</span>'s
@@ -394,11 +452,13 @@
      </p></li><li class="listitem"><p>
       Fix <code class="filename">contrib/amcheck</code> to not complain about
       deleted index pages that are empty (Alexander Korotkov)
+      <a class="ulink" href="https://postgr.es/c/ae1f9b0a9" target="_top">§</a>
      </p><p>
       This state of affairs is normal during WAL replay.
      </p></li><li class="listitem"><p>
       Fix failure to initialize local state correctly
       in <code class="filename">contrib/dblink</code> (Joe Conway)
+      <a class="ulink" href="https://postgr.es/c/e8eb48595" target="_top">§</a>
      </p><p>
       With the right combination of circumstances, this could lead to
       <code class="function">dblink_close()</code> issuing an unexpected
@@ -406,6 +466,7 @@
      </p></li><li class="listitem"><p>
       Fix <code class="filename">contrib/pgcrypto</code>'s misuse
       of <code class="function">deflate()</code> (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/3d4a77815" target="_top">§</a>
      </p><p>
       The <code class="function">pgp_sym_encrypt</code> functions could produce
       incorrect compressed data due to mishandling
@@ -418,6 +479,7 @@
       in <code class="filename">contrib/pgcrypto</code>'s
       <code class="function">pgp_sym_decrypt</code> functions (Kyotaro Horiguchi,
       Michael Paquier)
+      <a class="ulink" href="https://postgr.es/c/5bd087eb5" target="_top">§</a>
      </p><p>
       A compressed stream can validly end with an empty packet, but the
       decompressor failed to handle this and would complain about corrupt
@@ -426,12 +488,14 @@
       Support building our NLS code with Microsoft Visual Studio 2015 or
       later (Juan José Santamaría Flecha, Davinder Singh,
       Amit Kapila)
+      <a class="ulink" href="https://postgr.es/c/98171e59a" target="_top">§</a>
      </p></li><li class="listitem"><p>
       Avoid possible failure of our MSVC install script when there is a
       file named <code class="filename">configure</code> several levels above the
       source code tree (Arnold Müller)
+      <a class="ulink" href="https://postgr.es/c/089baec6f" target="_top">§</a>
      </p><p>
       This could confuse some logic that looked
       for <code class="filename">configure</code> to identify the top level of the
       source tree.
-     </p></li></ul></div></div></div><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navfooter"><hr></hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="release-12-5.html" title="E.16. Release 12.5">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="release.html" title="Appendix E. Release Notes">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="release-12-3.html" title="E.18. Release 12.3">Next</a></td></tr><tr><td width="40%" align="left" valign="top">E.16. Release 12.5 </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="PostgreSQL 12.20 Documentation">Home</a></td><td width="40%" align="right" valign="top"> E.18. Release 12.3</td></tr></table></div></body></html>
+     </p></li></ul></div></div></div><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navfooter"><hr></hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="release-12-5.html" title="E.18. Release 12.5">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="release.html" title="Appendix E. Release Notes">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="release-12-3.html" title="E.20. Release 12.3">Next</a></td></tr><tr><td width="40%" align="left" valign="top">E.18. Release 12.5 </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="PostgreSQL 12.22 Documentation">Home</a></td><td width="40%" align="right" valign="top"> E.20. Release 12.3</td></tr></table></div></body></html>

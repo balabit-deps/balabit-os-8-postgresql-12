@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>E.1. Release 12.20</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="release.html" title="Appendix E. Release Notes" /><link rel="next" href="release-12-19.html" title="E.2. Release 12.19" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">E.1. Release 12.20</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="release.html" title="Appendix E. Release Notes">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="release.html" title="Appendix E. Release Notes">Up</a></td><th width="60%" align="center">Appendix E. Release Notes</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 12.20 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="release-12-19.html" title="E.2. Release 12.19">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="RELEASE-12-20"><div class="titlepage"><div><div><h2 class="title" style="clear: both">E.1. Release 12.20</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="release-12-20.html#id-1.11.6.5.5">E.1.1. Migration to Version 12.20</a></span></dt><dt><span class="sect2"><a href="release-12-20.html#id-1.11.6.5.6">E.1.2. Changes</a></span></dt></dl></div><p><strong>Release date: </strong>2024-08-08</p><p>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>E.3. Release 12.20</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets Vsnapshot" /><link rel="prev" href="release-12-21.html" title="E.2. Release 12.21" /><link rel="next" href="release-12-19.html" title="E.4. Release 12.19" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">E.3. Release 12.20</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="release-12-21.html" title="E.2. Release 12.21">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="release.html" title="Appendix E. Release Notes">Up</a></td><th width="60%" align="center">Appendix E. Release Notes</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 12.22 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="release-12-19.html" title="E.4. Release 12.19">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="RELEASE-12-20"><div class="titlepage"><div><div><h2 class="title" style="clear: both">E.3. Release 12.20</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="release-12-20.html#id-1.11.6.8.5">E.3.1. Migration to Version 12.20</a></span></dt><dt><span class="sect2"><a href="release-12-20.html#id-1.11.6.8.6">E.3.2. Changes</a></span></dt></dl></div><p><strong>Release date: </strong>2024-08-08</p><p>
    This release contains a variety of fixes from 12.19.
    For information about new features in major release 12, see
-   <a class="xref" href="release-12.html" title="E.21. Release 12">Section E.21</a>.
+   <a class="xref" href="release-12.html" title="E.23. Release 12">Section E.23</a>.
   </p><p>
    The <span class="productname">PostgreSQL</span> community will stop
    releasing updates for the 12.X release series in November 2024.
    Users are encouraged to update to a newer release branch soon.
-  </p><div class="sect2" id="id-1.11.6.5.5"><div class="titlepage"><div><div><h3 class="title">E.1.1. Migration to Version 12.20</h3></div></div></div><p>
+  </p><div class="sect2" id="id-1.11.6.8.5"><div class="titlepage"><div><div><h3 class="title">E.3.1. Migration to Version 12.20</h3></div></div></div><p>
     A dump/restore is not required for those running 12.X.
    </p><p>
     However, if you are upgrading from a version earlier than 12.18,
-    see <a class="xref" href="release-12-18.html" title="E.3. Release 12.18">Section E.3</a>.
-   </p></div><div class="sect2" id="id-1.11.6.5.6"><div class="titlepage"><div><div><h3 class="title">E.1.2. Changes</h3></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
+    see <a class="xref" href="release-12-18.html" title="E.5. Release 12.18">Section E.5</a>.
+   </p></div><div class="sect2" id="id-1.11.6.8.6"><div class="titlepage"><div><div><h3 class="title">E.3.2. Changes</h3></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>
       Prevent unauthorized code execution
       during <span class="application">pg_dump</span> (Masahiko Sawada)
+      <a class="ulink" href="https://postgr.es/c/79c7a7e29" target="_top">§</a>
      </p><p>
       An attacker able to create and drop non-temporary objects could
       inject SQL code that would be executed by a
@@ -37,10 +38,13 @@
       Fix failure after attaching a table as a partition, if the
       table had previously had inheritance children
       (Álvaro Herrera)
+      <a class="ulink" href="https://postgr.es/c/08b6a9ecf" target="_top">§</a>
      </p></li><li class="listitem"><p>
       Fix <code class="command">ALTER TABLE DETACH PARTITION</code> for cases
       involving inconsistent index-based constraints
       (Álvaro Herrera, Tender Wang)
+      <a class="ulink" href="https://postgr.es/c/d0054432d" target="_top">§</a>
+      <a class="ulink" href="https://postgr.es/c/067cb6c5d" target="_top">§</a>
      </p><p>
       When a partitioned table has an index that is not associated with a
       constraint, but a partition has an equivalent index that is, then
@@ -51,6 +55,8 @@
      </p></li><li class="listitem"><p>
       Fix handling of polymorphic output arguments for procedures
       (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/70ffb27b2" target="_top">§</a>
+      <a class="ulink" href="https://postgr.es/c/4208f44c9" target="_top">§</a>
      </p><p>
       The SQL <code class="command">CALL</code> statement did not resolve the
       correct data types for such arguments, leading to errors such
@@ -60,6 +66,7 @@
      </p></li><li class="listitem"><p>
       Fix behavior of stable functions called from
       a <code class="command">CALL</code> statement's argument list (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/0be81dd71" target="_top">§</a>
      </p><p>
       If the <code class="command">CALL</code> is within an atomic context
       (e.g. there's an outer transaction block), such functions were
@@ -68,6 +75,7 @@
      </p></li><li class="listitem"><p>
       Detect integer overflow in <code class="type">money</code> calculations
       (Joseph Koshakow)
+      <a class="ulink" href="https://postgr.es/c/4f9628158" target="_top">§</a>
      </p><p>
       None of the arithmetic functions for the <code class="type">money</code> type
       checked for overflow before, so they would silently give wrong
@@ -76,6 +84,7 @@
       Fix over-aggressive clamping of the scale argument
       in <code class="function">round(numeric)</code>
       and <code class="function">trunc(numeric)</code> (Dean Rasheed)
+      <a class="ulink" href="https://postgr.es/c/8badee787" target="_top">§</a>
      </p><p>
       These functions clamped their scale argument to +/-2000, but there
       are valid use-cases for it to be larger; the functions returned
@@ -85,11 +94,13 @@
       Prevent <code class="function">pg_sequence_last_value()</code> from failing
       on unlogged sequences on standby servers and on temporary sequences
       of other sessions (Nathan Bossart)
+      <a class="ulink" href="https://postgr.es/c/2812059d3" target="_top">§</a>
      </p><p>
       Make it return NULL in these cases instead of throwing an error.
      </p></li><li class="listitem"><p>
       Fix parsing of ignored operators
       in <code class="function">websearch_to_tsquery()</code> (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/5e63a6f43" target="_top">§</a>
      </p><p>
       Per the manual, punctuation in the input
       of <code class="function">websearch_to_tsquery()</code> is ignored except for
@@ -101,6 +112,7 @@
      </p></li><li class="listitem"><p>
       Detect another integer overflow case while computing new array
       dimensions (Joseph Koshakow)
+      <a class="ulink" href="https://postgr.es/c/878e8c6be" target="_top">§</a>
      </p><p>
       Reject applying array
       dimensions <code class="literal">[-2147483648:2147483647]</code> to an empty
@@ -109,6 +121,7 @@
      </p></li><li class="listitem"><p>
       Detect another case of a new catalog cache entry becoming stale
       while detoasting its fields (Noah Misch)
+      <a class="ulink" href="https://postgr.es/c/11f3815d6" target="_top">§</a>
      </p><p>
       An in-place update occurring while we expand out-of-line fields in a
       catalog tuple could be missed, leading to a catalog cache entry that
@@ -119,6 +132,7 @@
       Correctly check updatability of view columns targeted
       by <code class="literal">INSERT</code> ... <code class="literal">DEFAULT</code>
       (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/feca6c688" target="_top">§</a>
      </p><p>
       If such a column is non-updatable, we should give an error reporting
       that.  But the check was missed and then later code would report an
@@ -128,6 +142,7 @@
      </p></li><li class="listitem"><p>
       Avoid reporting an unhelpful internal error for incorrect recursive
       queries (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/236b225ed" target="_top">§</a>
      </p><p>
       Rearrange the order of error checks so that we throw an on-point
       error when a <code class="command">WITH RECURSIVE</code> query does not have a
@@ -137,6 +152,7 @@
      </p></li><li class="listitem"><p>
       Don't throw an error if a queued <code class="literal">AFTER</code> trigger no
       longer exists (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/b0037bbef" target="_top">§</a>
      </p><p>
       It's possible for a transaction to execute an operation that queues
       a deferred <code class="literal">AFTER</code> trigger for later execution, and
@@ -148,6 +164,7 @@
      </p></li><li class="listitem"><p>
       Fix failure to remove <code class="structname">pg_init_privs</code> entries
       for column-level privileges when their table is dropped (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/0a39343ae" target="_top">§</a>
      </p><p>
       If an extension grants some column-level privileges on a table it
       creates, relevant catalog entries would remain behind after the
@@ -157,6 +174,7 @@
      </p></li><li class="listitem"><p>
       Fix selection of an arbiter index for <code class="literal">ON CONFLICT</code>
       when the desired index has expressions or predicates (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/9256bf6eb" target="_top">§</a>
      </p><p>
       If a query using <code class="literal">ON CONFLICT</code> accesses the target
       table through an updatable view, it could fail with <span class="quote">“<span class="quote">there is
@@ -165,6 +183,7 @@
      </p></li><li class="listitem"><p>
       Refuse to modify a temporary table of another session
       with <code class="literal">ALTER TABLE</code> (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/b8efd756d" target="_top">§</a>
      </p><p>
       Permissions checks normally would prevent this case from arising,
       but it is possible to reach it by altering a parent table whose
@@ -174,6 +193,7 @@
       Fix failure to recalculate sub-queries generated
       from <code class="function">MIN()</code> or <code class="function">MAX()</code>
       aggregates (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/686c995fc" target="_top">§</a>
      </p><p>
       In some cases the aggregate result computed at one row of the outer
       query could be re-used for later rows when it should not be.  This
@@ -183,6 +203,7 @@
      </p></li><li class="listitem"><p>
       Avoid crashing when a JIT-inlined backend function throws an error
       (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/dccda847b" target="_top">§</a>
      </p><p>
       The error state can include pointers into the dynamically loaded
       module holding the JIT-compiled code (for error location strings).
@@ -192,6 +213,7 @@
      </p></li><li class="listitem"><p>
       Cope with behavioral changes in <span class="application">libxml2</span>
       version 2.13.x (Erik Wienhold, Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/a134baea7" target="_top">§</a>
      </p><p>
       Notably, we now suppress <span class="quote">“<span class="quote">chunk is not well balanced</span>”</span>
       errors from <span class="application">libxml2</span>, unless that is the
@@ -203,6 +225,7 @@
      </p></li><li class="listitem"><p>
       Fix handling of subtransactions of prepared transactions
       when starting a hot standby server (Heikki Linnakangas)
+      <a class="ulink" href="https://postgr.es/c/5dea6628b" target="_top">§</a>
      </p><p>
       When starting a standby's replay at a shutdown checkpoint WAL
       record, transactions that had been prepared but not yet committed on
@@ -214,6 +237,7 @@
      </p></li><li class="listitem"><p>
       Prevent incorrect initialization of logical replication slots
       (Masahiko Sawada)
+      <a class="ulink" href="https://postgr.es/c/1b3707587" target="_top">§</a>
      </p><p>
       In some cases a replication slot's start point within the WAL stream
       could be set to a point within a transaction, leading to assertion
@@ -221,6 +245,7 @@
      </p></li><li class="listitem"><p>
       Avoid memory leakage after servicing a notify or sinval interrupt
       (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/8565fb6fb" target="_top">§</a>
      </p><p>
       The processing functions for these events could switch the current
       memory context to TopMemoryContext, resulting in session-lifespan
@@ -231,6 +256,7 @@
      </p></li><li class="listitem"><p>
       Avoid possibly missing end-of-input events on Windows sockets
       (Thomas Munro)
+      <a class="ulink" href="https://postgr.es/c/ba9fcac72" target="_top">§</a>
      </p><p>
       Windows reports an FD_CLOSE event only once after the remote end of
       the connection disconnects.  With unlucky timing, we could miss that
@@ -239,12 +265,16 @@
      </p></li><li class="listitem"><p>
       Disable creation of stateful TLS session tickets by OpenSSL
       (Daniel Gustafsson)
+      <a class="ulink" href="https://postgr.es/c/32121c077" target="_top">§</a>
+      <a class="ulink" href="https://postgr.es/c/ac77add23" target="_top">§</a>
+      <a class="ulink" href="https://postgr.es/c/e6dd0b863" target="_top">§</a>
      </p><p>
       This avoids possible failures with clients that think receipt of
       a session ticket means that TLS session resumption is supported.
      </p></li><li class="listitem"><p>
       When replanning a <span class="application">PL/pgSQL</span> <span class="quote">“<span class="quote">simple
       expression</span>”</span>, check it's still simple (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/ec210914c" target="_top">§</a>
      </p><p>
       Certain fairly-artificial cases, such as dropping a referenced
       function and recreating it as an aggregate, could lead to surprising
@@ -252,9 +282,11 @@
      </p></li><li class="listitem"><p>
       Fix incompatibility between <span class="application">PL/Perl</span> and
       Perl 5.40 (Andrew Dunstan)
+      <a class="ulink" href="https://postgr.es/c/ab46e132f" target="_top">§</a>
      </p></li><li class="listitem"><p>
       Fix recursive <code class="type">RECORD</code>-returning
       <span class="application">PL/Python</span> functions (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/157b1e6b4" target="_top">§</a>
      </p><p>
       If we recurse to a new call of the same function that passes a
       different column definition list (<code class="literal">AS</code> clause), it
@@ -264,6 +296,7 @@
       Don't corrupt <span class="application">PL/Python</span>'s
       <code class="literal">TD</code> dictionary during a recursive trigger call
       (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/4488142a4" target="_top">§</a>
      </p><p>
       If a <span class="application">PL/Python</span>-language trigger caused
       another one to be invoked, the <code class="literal">TD</code> dictionary
@@ -273,18 +306,21 @@
       Fix <span class="application">PL/Tcl</span>'s reporting of invalid list
       syntax in the result of a function returning tuple (Erik Wienhold,
       Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/30487423c" target="_top">§</a>
      </p><p>
       Such a case could result in a crash, or in emission of misleading
       context information that actually refers to the previous Tcl error.
      </p></li><li class="listitem"><p>
       Avoid non-thread-safe usage of <code class="function">strerror()</code>
       in <span class="application">libpq</span> (Peter Eisentraut)
+      <a class="ulink" href="https://postgr.es/c/407048999" target="_top">§</a>
      </p><p>
       Certain error messages returned by OpenSSL could become garbled in
       multi-threaded applications.
      </p></li><li class="listitem"><p>
       Ensure that <code class="literal">pg_restore</code> <code class="option">-l</code>
       reports dependent TOC entries correctly (Tom Lane)
+      <a class="ulink" href="https://postgr.es/c/a3c00ab15" target="_top">§</a>
      </p><p>
       If <code class="option">-l</code> was specified together with selective-restore
       options such as <code class="option">-n</code> or <code class="option">-N</code>,
@@ -294,9 +330,11 @@
       Avoid clashing with
       system-provided <code class="filename">&lt;regex.h&gt;</code> headers
       (Thomas Munro)
+      <a class="ulink" href="https://postgr.es/c/274a8195d" target="_top">§</a>
      </p><p>
       This fixes a compilation failure on macOS version 15 and up.
      </p></li><li class="listitem"><p>
       Fix otherwise-harmless assertion failures in <code class="literal">REINDEX
       CONCURRENTLY</code> applied to an SP-GiST index (Tom Lane)
-     </p></li></ul></div></div></div><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navfooter"><hr></hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="release.html" title="Appendix E. Release Notes">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="release.html" title="Appendix E. Release Notes">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="release-12-19.html" title="E.2. Release 12.19">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Appendix E. Release Notes </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="PostgreSQL 12.20 Documentation">Home</a></td><td width="40%" align="right" valign="top"> E.2. Release 12.19</td></tr></table></div></body></html>
+      <a class="ulink" href="https://postgr.es/c/3e3e2ebea" target="_top">§</a>
+     </p></li></ul></div></div></div><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navfooter"><hr></hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="release-12-21.html" title="E.2. Release 12.21">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="release.html" title="Appendix E. Release Notes">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="release-12-19.html" title="E.4. Release 12.19">Next</a></td></tr><tr><td width="40%" align="left" valign="top">E.2. Release 12.21 </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="PostgreSQL 12.22 Documentation">Home</a></td><td width="40%" align="right" valign="top"> E.4. Release 12.19</td></tr></table></div></body></html>
