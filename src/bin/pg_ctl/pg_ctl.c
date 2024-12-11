@@ -95,6 +95,7 @@ static char *register_username = NULL;
 static char *register_password = NULL;
 static char *argv0 = NULL;
 static bool allow_core_files = false;
+static time_t start_time;
 
 static char postopts_file[MAXPGPATH];
 static char version_file[MAXPGPATH];
@@ -613,15 +614,18 @@ wait_for_postmaster_start(pgpid_t pm_pid, bool do_checkpoint)
 		{
 			/* File is complete enough for us, parse it */
 			pgpid_t		pmpid;
+			time_t		pmstart;
 
 			/*
-			 * Make sanity checks.  If it's for the wrong PID, then either
-			 * we * are looking * at the wrong data directory, or this is
-			 * a pre-existing pidfile * that hasn't (yet?) been overwritten
-			 * by our child postmaster
+			 * Make sanity checks.  If it's for the wrong PID, or the recorded
+			 * start time is before pg_ctl started, then either we are looking
+			 * at the wrong data directory, or this is a pre-existing pidfile
+			 * that hasn't (yet?) been overwritten by our child postmaster.
+			 * Allow 2 seconds slop for possible cross-process clock skew.
 			 */
 			pmpid = atol(optlines[LOCK_FILE_LINE_PID - 1]);
-			if (
+			pmstart = atol(optlines[LOCK_FILE_LINE_START_TIME - 1]);
+			if (pmstart >= start_time - 2 &&
 #ifndef WIN32
 				pmpid == pm_pid
 #else
@@ -2340,6 +2344,7 @@ main(int argc, char **argv)
 	pg_logging_init(argv[0]);
 	progname = get_progname(argv[0]);
 	set_pglocale_pgservice(argv[0], PG_TEXTDOMAIN("pg_ctl"));
+	start_time = time(NULL);
 
 	/*
 	 * save argv[0] so do_start() can look for the postmaster if necessary. we
