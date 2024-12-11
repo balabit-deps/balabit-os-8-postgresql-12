@@ -1,3 +1,9 @@
+postgresql-12 (12.20-0ubuntu0.20.04.1bb2) focal; urgency=medium
+
+  * Revert "src/bin/pg_ctl/pg_ctl.c: add patch for pg_ctl race with ntpd"
+
+ -- Balabit Platform Team <devnull@dev.null>  Wed, 11 Dec 2024 14:44:21 +0100
+
 postgresql-12 (12.20-0ubuntu0.20.04.1bb1) focal; urgency=medium
 
   * Balabit patched version
