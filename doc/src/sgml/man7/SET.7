@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets vsnapshot <http://docbook.sf.net/>
 .\"      Date: 2024
-.\"    Manual: PostgreSQL 12.20 Documentation
-.\"    Source: PostgreSQL 12.20
+.\"    Manual: PostgreSQL 12.22 Documentation
+.\"    Source: PostgreSQL 12.22
 .\"  Language: English
 .\"
-.TH "SET" "7" "2024" "PostgreSQL 12.20" "PostgreSQL 12.20 Documentation"
+.TH "SET" "7" "2024" "PostgreSQL 12.22" "PostgreSQL 12.22 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -191,7 +191,7 @@ SET timezone TO \*(Aq\fIvalue\fR\*(Aq\&. The syntax
 SET TIME ZONE
 allows special syntax for the time zone specification\&. Here are examples of valid values:
 .PP
-\*(AqPST8PDT\*(Aq
+\*(AqAmerica/Los_Angeles\*(Aq
 .RS 4
 The time zone for Berkeley, California\&.
 .RE
@@ -275,7 +275,7 @@ Set the time zone for Berkeley, California:
 .RS 4
 .\}
 .nf
-SET TIME ZONE \*(AqPST8PDT\*(Aq;
+SET TIME ZONE \*(AqAmerica/Los_Angeles\*(Aq;
 .fi
 .if n \{\
 .RE
