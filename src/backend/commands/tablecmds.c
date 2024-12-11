@@ -3028,6 +3028,115 @@ SetRelationHasSubclass(Oid relationId, bool relhassubclass)
 }
 
 /*
+ * CheckRelationTableSpaceMove
+ *		Check if relation can be moved to new tablespace.
+ *
+ * NOTE: The caller must hold AccessExclusiveLock on the relation.
+ *
+ * Returns true if the relation can be moved to the new tablespace; raises
+ * an error if it is not possible to do the move; returns false if the move
+ * would have no effect.
+ */
+bool
+CheckRelationTableSpaceMove(Relation rel, Oid newTableSpaceId)
+{
+	Oid			oldTableSpaceId;
+
+	/*
+	 * No work if no change in tablespace.  Note that MyDatabaseTableSpace is
+	 * stored as 0.
+	 */
+	oldTableSpaceId = rel->rd_rel->reltablespace;
+	if (newTableSpaceId == oldTableSpaceId ||
+		(newTableSpaceId == MyDatabaseTableSpace && oldTableSpaceId == 0))
+		return false;
+
+	/*
+	 * We cannot support moving mapped relations into different tablespaces.
+	 * (In particular this eliminates all shared catalogs.)
+	 */
+	if (RelationIsMapped(rel))
+		ereport(ERROR,
+				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+				 errmsg("cannot move system relation \"%s\"",
+						RelationGetRelationName(rel))));
+
+	/* Cannot move a non-shared relation into pg_global */
+	if (newTableSpaceId == GLOBALTABLESPACE_OID)
+		ereport(ERROR,
+				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
+				 errmsg("only shared relations can be placed in pg_global tablespace")));
+
+	/*
+	 * Do not allow moving temp tables of other backends ... their local
+	 * buffer manager is not going to cope.
+	 */
+	if (RELATION_IS_OTHER_TEMP(rel))
+		ereport(ERROR,
+				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+				 errmsg("cannot move temporary tables of other sessions")));
+
+	return true;
+}
+
+/*
+ * SetRelationTableSpace
+ *		Set new reltablespace and relfilenode in pg_class entry.
+ *
+ * newTableSpaceId is the new tablespace for the relation, and
+ * newRelFileNode its new filenode.  If newRelFileNode is InvalidOid,
+ * this field is not updated.
+ *
+ * NOTE: The caller must hold AccessExclusiveLock on the relation.
+ *
+ * The caller of this routine had better check if a relation can be
+ * moved to this new tablespace by calling CheckRelationTableSpaceMove()
+ * first, and is responsible for making the change visible with
+ * CommandCounterIncrement().
+ */
+void
+SetRelationTableSpace(Relation rel,
+					  Oid newTableSpaceId,
+					  Oid newRelFileNode)
+{
+	Relation	pg_class;
+	HeapTuple	tuple;
+	ItemPointerData otid;
+	Form_pg_class rd_rel;
+	Oid			reloid = RelationGetRelid(rel);
+
+	Assert(CheckRelationTableSpaceMove(rel, newTableSpaceId));
+
+	/* Get a modifiable copy of the relation's pg_class row. */
+	pg_class = table_open(RelationRelationId, RowExclusiveLock);
+
+	tuple = SearchSysCacheLockedCopy1(RELOID, ObjectIdGetDatum(reloid));
+	if (!HeapTupleIsValid(tuple))
+		elog(ERROR, "cache lookup failed for relation %u", reloid);
+	otid = tuple->t_self;
+	rd_rel = (Form_pg_class) GETSTRUCT(tuple);
+
+	/* Update the pg_class row. */
+	rd_rel->reltablespace = (newTableSpaceId == MyDatabaseTableSpace) ?
+		InvalidOid : newTableSpaceId;
+	if (OidIsValid(newRelFileNode))
+		rd_rel->relfilenode = newRelFileNode;
+	CatalogTupleUpdate(pg_class, &otid, tuple);
+	UnlockTuple(pg_class, &otid, InplaceUpdateTupleLock);
+
+	/*
+	 * Record dependency on tablespace.  This is only required for relations
+	 * that have no physical storage.
+	 */
+	if (!RELKIND_HAS_STORAGE(rel->rd_rel->relkind))
+		changeDependencyOnTablespace(RelationRelationId, reloid,
+									 rd_rel->reltablespace);
+
+	heap_freetuple(tuple);
+	table_close(pg_class, RowExclusiveLock);
+}
+
+/*
  *		renameatt_check			- basic sanity checks before attribute rename
  */
 static void
@@ -3507,6 +3616,7 @@ RenameRelationInternal(Oid myrelid, const char *newrelname, bool is_internal, bo
 {
 	Relation	targetrelation;
 	Relation	relrelation;	/* for RELATION relation */
+	ItemPointerData otid;
 	HeapTuple	reltup;
 	Form_pg_class relform;
 	Oid			namespaceId;
@@ -3529,9 +3639,10 @@ RenameRelationInternal(Oid myrelid, const char *newrelname, bool is_internal, bo
 	 */
 	relrelation = table_open(RelationRelationId, RowExclusiveLock);
 
-	reltup = SearchSysCacheCopy1(RELOID, ObjectIdGetDatum(myrelid));
+	reltup = SearchSysCacheLockedCopy1(RELOID, ObjectIdGetDatum(myrelid));
 	if (!HeapTupleIsValid(reltup))	/* shouldn't happen */
 		elog(ERROR, "cache lookup failed for relation %u", myrelid);
+	otid = reltup->t_self;
 	relform = (Form_pg_class) GETSTRUCT(reltup);
 
 	if (get_relname_relid(newrelname, namespaceId) != InvalidOid)
@@ -3556,7 +3667,8 @@ RenameRelationInternal(Oid myrelid, const char *newrelname, bool is_internal, bo
 	 */
 	namestrcpy(&(relform->relname), newrelname);
 
-	CatalogTupleUpdate(relrelation, &reltup->t_self, reltup);
+	CatalogTupleUpdate(relrelation, &otid, reltup);
+	UnlockTuple(relrelation, &otid, InplaceUpdateTupleLock);
 
 	InvokeObjectPostAlterHookArg(RelationRelationId, myrelid, 0,
 								 InvalidOid, is_internal);
@@ -9185,6 +9297,23 @@ CloneFkReferencing(List **wqueue, Relation parentRel, Relation partRel)
 	{
 		ForeignKeyCacheInfo *fk = lfirst(cell);
 
+		/*
+		 * Refuse to attach a table as partition that this partitioned table
+		 * already has a foreign key to.  This isn't useful schema, which is
+		 * proven by the fact that there have been no user complaints that
+		 * it's already impossible to achieve this in the opposite direction,
+		 * i.e., creating a foreign key that references a partition.  This
+		 * restriction allows us to dodge some complexities around
+		 * pg_constraint and pg_trigger row creations that would be needed
+		 * during ATTACH/DETACH for this kind of relationship.
+		 */
+		if (fk->confrelid == RelationGetRelid(partRel))
+			ereport(ERROR,
+					(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
+					 errmsg("cannot attach table \"%s\" as a partition because it is referenced by foreign key \"%s\"",
+							RelationGetRelationName(partRel),
+							get_constraint_name(fk->conoid))));
+
 		clone = lappend_oid(clone, fk->conoid);
 	}
 
@@ -10937,6 +11066,16 @@ ATPrepAlterColumnType(List **wqueue,
 						colName)));
 
 	/*
+	 * Cannot specify USING when altering type of a generated column, because
+	 * that would violate the generation expression.
+	 */
+	if (attTup->attgenerated && def->cooked_default)
+		ereport(ERROR,
+				(errcode(ERRCODE_INVALID_COLUMN_DEFINITION),
+				 errmsg("cannot specify USING when altering type of generated column"),
+				 errdetail("Column \"%s\" is a generated column.", colName)));
+
+	/*
 	 * Don't alter inherited columns.  At outer level, there had better not be
 	 * any inherited definition; when recursing, we assume this was checked at
 	 * the parent level (see below).
@@ -11012,11 +11151,12 @@ ATPrepAlterColumnType(List **wqueue,
 						(errcode(ERRCODE_DATATYPE_MISMATCH),
 						 errmsg("column \"%s\" cannot be cast automatically to type %s",
 								colName, format_type_be(targettype)),
+						 !attTup->attgenerated ?
 				/* translator: USING is SQL, don't translate it */
 						 errhint("You might need to specify \"USING %s::%s\".",
 								 quote_identifier(colName),
 								 format_type_with_typemod(targettype,
-														  targettypmod))));
+														  targettypmod)) : 0));
 		}
 
 		/* Fix collations after all else */
@@ -12877,7 +13017,7 @@ ATExecSetRelOptions(Relation rel, List *defList, AlterTableType operation,
 
 	/* Fetch heap tuple */
 	relid = RelationGetRelid(rel);
-	tuple = SearchSysCache1(RELOID, ObjectIdGetDatum(relid));
+	tuple = SearchSysCacheLocked1(RELOID, ObjectIdGetDatum(relid));
 	if (!HeapTupleIsValid(tuple))
 		elog(ERROR, "cache lookup failed for relation %u", relid);
 
@@ -12978,6 +13118,7 @@ ATExecSetRelOptions(Relation rel, List *defList, AlterTableType operation,
 								 repl_val, repl_null, repl_repl);
 
 	CatalogTupleUpdate(pgclass, &newtuple->t_self, newtuple);
+	UnlockTuple(pgclass, &tuple->t_self, InplaceUpdateTupleLock);
 
 	InvokeObjectPostAlterHook(RelationRelationId, RelationGetRelid(rel), 0);
 
@@ -13058,13 +13199,9 @@ static void
 ATExecSetTableSpace(Oid tableOid, Oid newTableSpace, LOCKMODE lockmode)
 {
 	Relation	rel;
-	Oid			oldTableSpace;
 	Oid			reltoastrelid;
 	Oid			newrelfilenode;
 	RelFileNode newrnode;
-	Relation	pg_class;
-	HeapTuple	tuple;
-	Form_pg_class rd_rel;
 	List	   *reltoastidxids = NIL;
 	ListCell   *lc;
 
@@ -13073,44 +13210,14 @@ ATExecSetTableSpace(Oid tableOid, Oid newTableSpace, LOCKMODE lockmode)
 	 */
 	rel = relation_open(tableOid, lockmode);
 
-	/*
-	 * No work if no change in tablespace.
-	 */
-	oldTableSpace = rel->rd_rel->reltablespace;
-	if (newTableSpace == oldTableSpace ||
-		(newTableSpace == MyDatabaseTableSpace && oldTableSpace == 0))
+	/* Check first if relation can be moved to new tablespace */
+	if (!CheckRelationTableSpaceMove(rel, newTableSpace))
 	{
 		InvokeObjectPostAlterHook(RelationRelationId,
 								  RelationGetRelid(rel), 0);
-
 		relation_close(rel, NoLock);
 		return;
 	}
-
-	/*
-	 * We cannot support moving mapped relations into different tablespaces.
-	 * (In particular this eliminates all shared catalogs.)
-	 */
-	if (RelationIsMapped(rel))
-		ereport(ERROR,
-				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-				 errmsg("cannot move system relation \"%s\"",
-						RelationGetRelationName(rel))));
-
-	/* Can't move a non-shared relation into pg_global */
-	if (newTableSpace == GLOBALTABLESPACE_OID)
-		ereport(ERROR,
-				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-				 errmsg("only shared relations can be placed in pg_global tablespace")));
-
-	/*
-	 * Don't allow moving temp tables of other backends ... their local buffer
-	 * manager is not going to cope.
-	 */
-	if (RELATION_IS_OTHER_TEMP(rel))
-		ereport(ERROR,
-				(errcode(ERRCODE_FEATURE_NOT_SUPPORTED),
-				 errmsg("cannot move temporary tables of other sessions")));
 
 	reltoastrelid = rel->rd_rel->reltoastrelid;
 	/* Fetch the list of indexes on toast relation if necessary */
@@ -13121,14 +13228,6 @@ ATExecSetTableSpace(Oid tableOid, Oid newTableSpace, LOCKMODE lockmode)
 		reltoastidxids = RelationGetIndexList(toastRel);
 		relation_close(toastRel, lockmode);
 	}
-
-	/* Get a modifiable copy of the relation's pg_class row */
-	pg_class = table_open(RelationRelationId, RowExclusiveLock);
-
-	tuple = SearchSysCacheCopy1(RELOID, ObjectIdGetDatum(tableOid));
-	if (!HeapTupleIsValid(tuple))
-		elog(ERROR, "cache lookup failed for relation %u", tableOid);
-	rd_rel = (Form_pg_class) GETSTRUCT(tuple);
 
 	/*
 	 * Relfilenodes are not unique in databases across tablespaces, so we need
@@ -13160,17 +13259,12 @@ ATExecSetTableSpace(Oid tableOid, Oid newTableSpace, LOCKMODE lockmode)
 	 *
 	 * NB: This wouldn't work if ATExecSetTableSpace() were allowed to be
 	 * executed on pg_class or its indexes (the above copy wouldn't contain
-	 * the updated pg_class entry), but that's forbidden above.
+	 * the updated pg_class entry), but that's forbidden with
+	 * CheckRelationTableSpaceMove().
 	 */
-	rd_rel->reltablespace = (newTableSpace == MyDatabaseTableSpace) ? InvalidOid : newTableSpace;
-	rd_rel->relfilenode = newrelfilenode;
-	CatalogTupleUpdate(pg_class, &tuple->t_self, tuple);
+	SetRelationTableSpace(rel, newTableSpace, newrelfilenode);
 
 	InvokeObjectPostAlterHook(RelationRelationId, RelationGetRelid(rel), 0);
-
-	heap_freetuple(tuple);
-
-	table_close(pg_class, RowExclusiveLock);
 
 	relation_close(rel, NoLock);
 
@@ -13197,56 +13291,25 @@ ATExecSetTableSpace(Oid tableOid, Oid newTableSpace, LOCKMODE lockmode)
 static void
 ATExecSetTableSpaceNoStorage(Relation rel, Oid newTableSpace)
 {
-	HeapTuple	tuple;
-	Oid			oldTableSpace;
-	Relation	pg_class;
-	Form_pg_class rd_rel;
-	Oid			reloid = RelationGetRelid(rel);
-
 	/*
 	 * Shouldn't be called on relations having storage; these are processed in
 	 * phase 3.
 	 */
 	Assert(!RELKIND_HAS_STORAGE(rel->rd_rel->relkind));
 
-	/* Can't allow a non-shared relation in pg_global */
-	if (newTableSpace == GLOBALTABLESPACE_OID)
-		ereport(ERROR,
-				(errcode(ERRCODE_INVALID_PARAMETER_VALUE),
-				 errmsg("only shared relations can be placed in pg_global tablespace")));
-
-	/*
-	 * No work if no change in tablespace.
-	 */
-	oldTableSpace = rel->rd_rel->reltablespace;
-	if (newTableSpace == oldTableSpace ||
-		(newTableSpace == MyDatabaseTableSpace && oldTableSpace == 0))
+	/* check if relation can be moved to its new tablespace */
+	if (!CheckRelationTableSpaceMove(rel, newTableSpace))
 	{
-		InvokeObjectPostAlterHook(RelationRelationId, reloid, 0);
+		InvokeObjectPostAlterHook(RelationRelationId,
+								  RelationGetRelid(rel),
+								  0);
 		return;
 	}
 
-	/* Get a modifiable copy of the relation's pg_class row */
-	pg_class = table_open(RelationRelationId, RowExclusiveLock);
+	/* Update can be done, so change reltablespace */
+	SetRelationTableSpace(rel, newTableSpace, InvalidOid);
 
-	tuple = SearchSysCacheCopy1(RELOID, ObjectIdGetDatum(reloid));
-	if (!HeapTupleIsValid(tuple))
-		elog(ERROR, "cache lookup failed for relation %u", reloid);
-	rd_rel = (Form_pg_class) GETSTRUCT(tuple);
-
-	/* update the pg_class row */
-	rd_rel->reltablespace = (newTableSpace == MyDatabaseTableSpace) ? InvalidOid : newTableSpace;
-	CatalogTupleUpdate(pg_class, &tuple->t_self, tuple);
-
-	/* Record dependency on tablespace */
-	changeDependencyOnTablespace(RelationRelationId,
-								 reloid, rd_rel->reltablespace);
-
-	InvokeObjectPostAlterHook(RelationRelationId, reloid, 0);
-
-	heap_freetuple(tuple);
-
-	table_close(pg_class, RowExclusiveLock);
+	InvokeObjectPostAlterHook(RelationRelationId, RelationGetRelid(rel), 0);
 
 	/* Make sure the reltablespace change is visible */
 	CommandCounterIncrement();
@@ -15122,7 +15185,8 @@ AlterRelationNamespaceInternal(Relation classRel, Oid relOid,
 	ObjectAddress thisobj;
 	bool		already_done = false;
 
-	classTup = SearchSysCacheCopy1(RELOID, ObjectIdGetDatum(relOid));
+	/* no rel lock for relkind=c so use LOCKTAG_TUPLE */
+	classTup = SearchSysCacheLockedCopy1(RELOID, ObjectIdGetDatum(relOid));
 	if (!HeapTupleIsValid(classTup))
 		elog(ERROR, "cache lookup failed for relation %u", relOid);
 	classForm = (Form_pg_class) GETSTRUCT(classTup);
@@ -15141,6 +15205,8 @@ AlterRelationNamespaceInternal(Relation classRel, Oid relOid,
 	already_done = object_address_present(&thisobj, objsMoved);
 	if (!already_done && oldNspOid != newNspOid)
 	{
+		ItemPointerData otid = classTup->t_self;
+
 		/* check for duplicate name (more friendly than unique-index failure) */
 		if (get_relname_relid(NameStr(classForm->relname),
 							  newNspOid) != InvalidOid)
@@ -15153,7 +15219,9 @@ AlterRelationNamespaceInternal(Relation classRel, Oid relOid,
 		/* classTup is a copy, so OK to scribble on */
 		classForm->relnamespace = newNspOid;
 
-		CatalogTupleUpdate(classRel, &classTup->t_self, classTup);
+		CatalogTupleUpdate(classRel, &otid, classTup);
+		UnlockTuple(classRel, &otid, InplaceUpdateTupleLock);
+
 
 		/* Update dependency on schema if caller said so */
 		if (hasDependEntry &&
@@ -15165,6 +15233,8 @@ AlterRelationNamespaceInternal(Relation classRel, Oid relOid,
 			elog(ERROR, "failed to change schema dependency for relation \"%s\"",
 				 NameStr(classForm->relname));
 	}
+	else
+		UnlockTuple(classRel, &classTup->t_self, InplaceUpdateTupleLock);
 	if (!already_done)
 	{
 		add_exact_object_address(&thisobj, objsMoved);
