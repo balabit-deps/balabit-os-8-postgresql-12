@@ -1,3 +1,13 @@
+postgresql-12 (12.22-0ubuntu0.20.04.2) focal-security; urgency=medium
+
+  * SECURITY UPDATE: PostgreSQL quoting APIs miss neutralizing quoting
+    syntax in text that fails encoding validation
+    - debian/patches/CVE-2025-1094-*.patch: backport security fixes from
+      REL_13_STABLE branch.
+    - CVE-2025-1094
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Mon, 17 Feb 2025 11:44:17 -0500
+
 postgresql-12 (12.22-0ubuntu0.20.04.1bb1) focal; urgency=medium
 
   * src/bin/pg_ctl/pg_ctl.c: add patch for pg_ctl race with ntpd
