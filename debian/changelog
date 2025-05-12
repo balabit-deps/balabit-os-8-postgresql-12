@@ -1,3 +1,22 @@
+postgresql-12 (12.22-0ubuntu0.20.04.4) focal-security; urgency=medium
+
+  * SECURITY UPDATE: crash via incomplete multibyte character
+    - debian/patches/CVE-2025-4207.patch: with GB18030, prevent SIGSEGV
+      from reading past end of allocation in
+      src/backend/utils/mb/mbutils.c, src/backend/utils/mb/wchar.c,
+      src/include/mb/pg_wchar.h, src/interfaces/libpq/fe-exec.c,
+      src/interfaces/libpq/fe-misc.c,
+      src/test/modules/test_escape/test_escape.c.
+    - CVE-2025-4207
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Mon, 12 May 2025 14:17:28 +0200
+
+postgresql-12 (12.22-0ubuntu0.20.04.3) focal; urgency=medium
+
+  * Avoid using timezone Asia/Manila in regression tests (LP: #2095233)
+
+ -- Benjamin Drung <bdrung@ubuntu.com>  Thu, 20 Mar 2025 15:30:18 +0100
+
 postgresql-12 (12.22-0ubuntu0.20.04.2) focal-security; urgency=medium
 
   * SECURITY UPDATE: PostgreSQL quoting APIs miss neutralizing quoting
