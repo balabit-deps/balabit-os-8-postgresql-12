@@ -19,3 +19,5 @@ CVE-2025-1094-09.patch
 CVE-2025-1094-10.patch
 CVE-2025-1094-11.patch
 CVE-2025-1094-12.patch
+Avoid-using-timezone-Asia-Manila-in-regression-tests.patch
+CVE-2025-4207.patch
